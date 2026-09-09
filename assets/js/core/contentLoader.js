@@ -53,7 +53,7 @@ async function resolveContentUrl(slug) {
       const pages = data.pages || [];
       const page = pages.find(p => p.slug === slug);
       if (page && page.path) {
-        // page.path は "/index.html" や "/contents/shika.html" のような形式
+        // page.path は "/index.html" 또는 "/contents/shika.html" のような形式
         return u(page.path.replace(/^\//, ''));
       }
     }
@@ -94,7 +94,10 @@ export async function initContentLoader() {
       log('info', 'content_loaded', { slug, url, format: 'html' });
     })
     .catch((err) => {
-      const message = `コンテンツの読み込みに失敗しました\nslug: ${slug}\nurl: ${url}\nerror: ${String(err)}`;
+      const message = `콘텐츠를 불러오지 못했습니다
+slug: ${slug}
+url: ${url}
+error: ${String(err)}`;
       log('error', 'content_load_failed', { slug, url, error: String(err) });
       renderError(el, message);
     });

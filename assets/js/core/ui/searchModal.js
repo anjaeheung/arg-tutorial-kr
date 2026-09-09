@@ -49,7 +49,7 @@ function createModal() {
   content.className = 'search-modal__content';
 
   const heading = document.createElement('h2');
-  heading.textContent = '検索結果';
+  heading.textContent = '검색 결과';
 
   const body = document.createElement('div');
   body.className = 'search-modal__body';
@@ -59,7 +59,7 @@ function createModal() {
 
   const close = document.createElement('button');
   close.type = 'button';
-  close.textContent = '閉じる';
+  close.textContent = '닫기';
 
   actions.appendChild(close);
   content.append(heading, body, actions);
@@ -69,8 +69,8 @@ function createModal() {
 }
 
 const HINT_MESSAGES = {
-  needMore: 'キーワードはまだ不完全です',
-  partial: 'キーワードの一部は正しいようです'
+  needMore: '키워드가 아직 완전하지 않습니다',
+  partial: '키워드의 일부는 맞는 것 같습니다'
 };
 
 function renderSearchResults(body, results, hint) {
@@ -81,7 +81,7 @@ function renderSearchResults(body, results, hint) {
 
   if (!results || results.length === 0) {
     const li = document.createElement('li');
-    li.textContent = '該当する記録は見つかりませんでした。';
+    li.textContent = '해당하는 기록을 찾지 못했습니다.';
     ul.appendChild(li);
   } else {
     results.forEach(item => {
@@ -91,7 +91,7 @@ function renderSearchResults(body, results, hint) {
       a.href = item.path;
       a.target = '_blank';
       a.rel = 'noopener noreferrer';
-      a.textContent = item.title || '無題の記録';
+      a.textContent = item.title || '제목 없는 기록';
 
       li.appendChild(a);
       ul.appendChild(li);

@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>はじまり</title>
+  <title>시작</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/css/search-modal.css">
@@ -15,11 +15,11 @@
 <body>
   <!-- 上部ナビゲーション・ヘッダー -->
   <nav class="top-nav">
-    <div class="top-nav__title">ARG初心者チュートリアル！</div>
+    <div class="top-nav__title">ARG 초보자 튜토리얼!</div>
     <div class="top-nav__search">
-      <label class="visually-hidden" for="searchInput">検索</label>
-      <input id="searchInput" placeholder="キーワードを入力">
-      <button id="searchBtn" type="button">検索</button>
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
     </div>
   </nav>
 
@@ -30,24 +30,24 @@
     <main class="content">
       <article class="article">
         <header class="article-header">
-          <h1 class="article-title">ARG初心者チュートリアルへようこそ！</h1>
+          <h1 class="article-title">ARG 초보자 튜토리얼에 오신 것을 환영합니다!</h1>
         </header>
         <div class="article-body">
           <div class="article-body">
-          みなさんはじめまして。<br>
-          Web探索型ARGの進め方を練習するページを作りました。<br>
-          世の中にはいろんなWeb探索型ARGがあって難しそう…<br>
-          クリアできる気がしなくてプレイするのが不安…<br>
-          そんな人のための<span class="nobreak">練習用ARGです！</span><br>
-          一緒にいろんなパターンを<span class="nobreak">練習しましょう！</span><br>
-          <br>まずは一歩目、サイト内検索を<span class="nobreak">試してみましょう！</span><br>
-          　　ARG初心者チュートリアル　と右上の検索フォームから<span class="nobreak">検索してください。</span>
+          여러분 처음 뵙겠습니다.<br>
+          웹 탐색형 ARG를 진행하는 법을 연습하는 페이지를 만들었습니다.<br>
+          세상에는 여러 웹 탐색형 ARG가 있는데 어려워 보이고…<br>
+          클리어할 자신이 없어서 플레이하기가 불안하고…<br>
+          그런 분들을 위한 <span class="nobreak">연습용 ARG입니다!</span><br>
+          함께 여러 패턴을 <span class="nobreak">연습해 봅시다!</span><br>
+          <br>우선 첫걸음, 사이트 내 검색을 <span class="nobreak">시험해 봅시다!</span><br>
+          　　ARG초보자튜토리얼　을 오른쪽 위 검색창에서 <span class="nobreak">검색해 주세요.</span>
         </div>
       </article>
     </main>
     <footer class="site-footer">
-      <p>&copy; 2026 ARG初心者チュートリアル</p>
-      <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
     
       <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
     </footer>
@@ -80,10 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // 子要素を1つも持たない（末端の要素である）場合のみ判定します
         if (el.children.length === 0) {
           // 不完全なメッセージの要素だけを非表示にします
-          if (el.textContent.includes('キーワードはまだ不完全です')) {
+          if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
             el.style.display = 'none';
           }
-          if (el.textContent.includes('キーワードの一部は正しいようです')) {
+          if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
             el.style.display = 'none';
           }
         }
