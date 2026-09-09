@@ -1,0 +1,5 @@
+# 원본 스냅샷 — 참조용 로컬 보관, 배포/공개 대상 아님
+_original/
+# 탐색 과정에서 생긴 중간 산출물
+tools/hints.txt
+tools/hints.json

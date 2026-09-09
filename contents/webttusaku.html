@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web探索型ARG</title>
+  <link rel="stylesheet" href="../assets/css/search-modal.css">
+  <link rel="stylesheet" href="../assets/css/page-counter.css">
+  <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+  <link rel="stylesheet" href="../assets/css/search-bar.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <!-- 【新規追加】縦読みブロックの頭揃え・縦ライン死守用スタイル -->
+  <style>
+    .vertical-mystery-block {
+      display: inline-block;          /* 1つのブロックとして機能させつつ、周囲の文脈に馴染ませます */
+      text-align: left;               /* 確実に左揃え（頭揃え）を強制 */
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; /* 全環境共通の等幅フォント */
+      letter-spacing: 0;              /* 文字間隔をリセット */
+      white-space: nowrap;            /* 勝手な自動折り返しによる縦読みの崩れを完全に防ぎます */
+      font-size: clamp(10px, 3.2vw, 1rem); /* スマホ画面でもはみ出さず、かつ折り返されないよう文字サイズを自動縮小 */
+      vertical-align: middle;
+      margin: 10px 0;                 /* 上下に少しスペースを確保 */
+    }
+  </style>
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body>
+  <!-- 上部ナビゲーション・ヘッダー -->
+  <nav class="top-nav">
+    <div class="top-nav__title">ARG初心者チュートリアル！</div>
+    <div class="top-nav__search">
+      <label class="visually-hidden" for="searchInput">検索</label>
+      <input id="searchInput" placeholder="キーワードを入力">
+      <button id="searchBtn" type="button">検索</button>
+    </div>
+  </nav>
+
+  <div class="site-container">
+    <header class="site-header">
+      
+    </header>
+
+  <div class="site-container">
+    <main class="content">
+      <article class="article">
+        <header class="article-header">
+          <h1 class="article-title">強調表示は<span class="nobreak">見逃さない！</span></h1>
+        </header>
+        <div class="article-body">
+          <p>Web探索型ARGとは、実在するウェブページを探索し、謎を解くゲームです。<br>
+            なんてAIのような返しを<span class="nobreak">してみました。</span><br>
+            実際に存在するwebページを検索して奥に進んで行く<br>
+            因習村や怪しい宗教、怪しい会社など調べたくなる<span class="nobreak">題材ですよね。</span><br>
+            いつか私の団もそんな<span class="nobreak">怪しい集団の仲間入りが</span><span class="nobreak">できるでしょうか。</span><br>
+            <span class="vertical-mystery-block"><b>不</b>穏なことを言ってみたかっただけです。　　　　　　　　　　<br><b>自</b>分の制作したこのチュートリアルは、そのようなことなく、全<br><b>然</b>秘密を暴いていくような要素はありません。　　　　　　　　</span><br>
+            
+            話がそれましたね。こんな風にわかりやすく<br>
+            「」や太字で示してあることが多いです。<span class="nobreak">（というかそうしないと</span><span class="nobreak">結構総当たりになりがち</span><span class="nobreak">だったり）</span><br>
+            特に導入部分ではこうしてわかりやすく始まることが多いと思います。<br>
+            <b>「」、太字は要チェック</b>。<br>
+            それでは次へどうぞ。明らかに怪しいですよね。<br>
+            よくある縦です。3文字で。
+          </p>
+          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">ケ</p>
+
+        </div>
+      </article>
+    </main>
+  </div>
+<footer class="site-footer">
+      <p>&copy; 2026 ARG初心者チュートリアル</p>
+      <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+    
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+  </div>
+
+<!-- page counter -->
+  <div id="page-counter" class="page-counter">
+  <span id="page-current"></span>
+  <span class="sep"> / </span>
+  <!-- エラー防止のために要素は残しつつ、非表示クラスを追加します -->
+  <span id="page-total" class="hidden-total"></span>
+  <!-- ここに表示したい分母の数字を直書きします -->
+  <span>12</span>
+</div>
+
+
+<script>window.YACHO_BASE = "../"; window.YACHO_PROVIDER_MODE = "json";</script>
+<script type="module" src="../assets/js/core/index.js"></script>
+<!-- 特定のシステムメッセージのみを安全に非表示にするスクリプト -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new MutationObserver(() => {
+    // 検索モーダルのエリアを取得
+    const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]');
+    if (modal) {
+      // モーダル内の要素を取得
+      const elements = modal.querySelectorAll('p, span, div');
+      elements.forEach((el) => {
+        // 【修正点】子要素を1つも持たない（末端の要素である）場合のみ判定します
+        if (el.children.length === 0) {
+          // 不完全なメッセージの要素だけを非表示にします
+          if (el.textContent.includes('キーワードはまだ不完全です')) {
+            el.style.display = 'none';
+          }
+          if (el.textContent.includes('キーワードの一部は正しいようです')) {
+            el.style.display = 'none';
+          }
+        }
+      });
+    }
+  });
+
+  // モーダルの動的な変化を監視
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+});
+</script>
+
+</body>
+
+</html>

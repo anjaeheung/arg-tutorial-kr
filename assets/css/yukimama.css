@@ -1,0 +1,580 @@
+/* ==========================================
+   CSS Variables (最小限に整理)
+   ========================================== */
+:root {
+  --bg-body: #000000;             /* 完全な黒 */
+  --text-main: #e2e8f0;           /* 黒背景で視認性の高い、優しい淡いグレー */
+}
+
+/* ==========================================
+   Base & Layout (全体設定)
+   ========================================== */
+body.arudan-page {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-body);
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+/* オープニング終了時の赤背景移行 */
+html.opening-done,
+body.arudan-page.opening-done {
+  background-color: #ff3333 !important;
+  transition: none !important;
+}
+
+/* 本編コンテナ */
+.site-container {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+body.opening-done .site-container {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 赤背景の中でカード部分が浮いてしまわないよう透明化 */
+.arudan-article {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 8px;
+  padding: 40px 30px;
+  box-shadow: none !important;
+}
+
+/* ==========================================
+   オープニング演出（「どうして」増殖・赤染）用スタイル
+   ========================================== */
+#opening-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  overflow: hidden; 
+}
+
+#opening-overlay.fill-red {
+  background-color: #ff3333 !important;
+  transition: background-color 0.4s ease-in;
+}
+
+#opening-overlay.fade-out-text .opening-text,
+#opening-overlay.fade-out-text .spam-text {
+  opacity: 0 !important;
+  transition: opacity 0.8s ease !important;
+}
+
+.opening-text {
+  font-family: "Hiragino Maru Gothic ProN", "Hiragino Maru Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "Yu Gothic UI", "Meiryo", sans-serif;
+  font-size: clamp(3rem, 12vw, 6rem); 
+  color: #ff3333;                   
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: openingTextAnim 0.8s ease-out forwards;
+}
+
+@keyframes openingTextAnim {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.spam-text {
+  position: absolute;
+  font-family: "Hiragino Maru Gothic ProN", "Hiragino Maru Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "Yu Gothic UI", "Meiryo", sans-serif;
+  color: #ff3333; 
+  font-weight: bold;
+  pointer-events: none;
+  opacity: 0;
+  animation: spamFadeIn 0.15s ease-out forwards;
+}
+
+@keyframes spamFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ==========================================
+   装飾・その他の汎用スタイル（動的追加用）
+   ========================================== */
+.highlight-cyan {
+  color: #00b4ff;          
+  font-weight: bold;       
+  text-shadow: 0 0 8px rgba(0, 180, 255, 0.6); 
+}
+
+.highlight-green {
+  color: #39d31d;          
+  font-weight: bold;       
+  text-shadow: 0 0 8px rgba(57, 211, 29, 0.6); 
+}
+
+.g-color {
+  color: #8B2EE0;
+  font-weight: bold;
+}
+
+.nobreak {
+  display: inline-block;
+}
+
+.typing-segment.nobreak {
+  white-space: nowrap;
+  display: inline-block;
+}
+/* ==========================================
+   追加：白文字（ねえ　どうして？）とノイズの演出
+   ========================================== */
+
+/* 1. 白文字のスタイル */
+.question-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* 初期状態：少し縮小して透明 */
+  transform: translate(-50%, -50%) scale(0.85);
+  opacity: 0;
+  
+  font-family: "Hiragino Maru Gothic ProN", "Hiragino Maru Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "Yu Gothic UI", "Meiryo", sans-serif;
+  font-size: clamp(3rem, 10vw, 5.5rem); 
+  color: #ffffff; /* 白文字 */
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10001;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+  transition: opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+}
+
+/* 表示用クラス：追加されるとフェードインしながら適正サイズになる */
+.question-text.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* 2. ノイズオーバーレイのスタイル */
+#noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10002;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: overlay;
+  transition: opacity 0.4s ease;
+}
+
+#noise-overlay.active {
+  opacity: 0.35; /* ノイズの不透明度 */
+  background: 
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0px, rgba(255, 255, 255, 0.08) 1px, transparent 1px, transparent 3px),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 3px);
+  animation: noise-vibration 0.08s infinite;
+}
+
+@keyframes noise-vibration {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-1px, 1px); }
+  100% { transform: translate(1px, -1px); }
+}
+
+/* 3. 画面全体の激しいグリッチ揺れ */
+.screen-glitch {
+  animation: heavy-shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes heavy-shake {
+  10%, 90% { transform: translate3d(-2px, 0, 0) scale(1.01); }
+  20%, 80% { transform: translate3d(4px, 0, 0) scale(0.99); }
+  30%, 50%, 70% { transform: translate3d(-8px, 4px, 0) scale(1.02); }
+  40%, 60% { transform: translate3d(8px, -4px, 0) scale(0.98); }
+}
+/* ==========================================
+   追加：複数テキスト（ねえ どうして？ / その次）とノイズの演出
+   ========================================== */
+
+/* テキスト表示用の共通基本スタイル */
+.opening-question {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* 初期状態：少し縮小して透明 */
+  transform: translate(-50%, -50%) scale(0.85);
+  opacity: 0;
+  
+  font-family: "Hiragino Maru Gothic ProN", "Hiragino Maru Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "Yu Gothic UI", "Meiryo", sans-serif;
+  color: #ffffff; /* 白文字 */
+  font-weight: bold;
+  text-align: center;
+  width: 90%; /* スマホでの左右余白を確保 */
+  max-width: 800px;
+  pointer-events: none;
+  z-index: 10001;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+  /* 0.5秒かけてふわっと表示・消失 */
+  transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+
+/* 表示用クラス（フェードイン） */
+.opening-question.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* [1つ目のテキスト] 「ねえ　どうして？」用のサイズ指定 */
+.opening-question.first-msg {
+  font-size: clamp(3rem, 10vw, 5.5rem); 
+  letter-spacing: 0.15em;
+  white-space: nowrap; /* 一行で表示 */
+}
+
+/* [2つ目のテキスト] 三行表示に合わせてサイズと行間を最適化 */
+.opening-question.second-msg {
+  font-size: clamp(2.2rem, 8vw, 4.2rem); /* 三行用にサイズを少し大きく調整 */
+  letter-spacing: 0.1em;
+  line-height: 1.6; /* 行間を少し広げて読みやすくします */
+}
+
+/* オーバーレイ全体の最終フェードアウト（1秒かけて消す） */
+#opening-overlay.fade-out-all {
+  opacity: 0 !important;
+  transition: opacity 1.0s ease-out !important;
+}
+
+/* 2. ノイズオーバーレイのスタイル */
+#noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10002;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: overlay;
+  transition: opacity 0.5s ease;
+}
+
+#noise-overlay.active {
+  opacity: 0.35;
+  background: 
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0px, rgba(255, 255, 255, 0.08) 1px, transparent 1px, transparent 3px),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 3px);
+  animation: noise-vibration 0.08s infinite;
+}
+
+@keyframes noise-vibration {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-1px, 1px); }
+  100% { transform: translate(1px, -1px); }
+}
+
+/* 3. 画面全体の激しいグリッチ揺れ（開始時に一時的に適用） */
+.screen-glitch {
+  animation: heavy-shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes heavy-shake {
+  10%, 90% { transform: translate3d(-2px, 0, 0) scale(1.01); }
+  20%, 80% { transform: translate3d(4px, 0, 0) scale(0.99); }
+  30%, 50%, 70% { transform: translate3d(-8px, 4px, 0) scale(1.02); }
+  40%, 60% { transform: translate3d(8px, -4px, 0) scale(0.98); }
+}
+/* ==========================================
+   追加：整列スパム（どうして）と「そっか」の演出
+   ========================================== */
+
+/* 規則正しく並ぶ「どうして」のコンテナ（画面全体をグリッド状に分割） */
+#grid-spam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  /* 画面幅に合わせて自動で格子状（横に約90pxごと、縦に約45pxごと）に分割 */
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(45px, 1fr));
+  gap: 5px;
+  justify-items: center;
+  align-items: center;
+  z-index: 10003;
+  overflow: hidden;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+/* 格子状に並ぶ「どうして」の文字スタイル */
+.grid-item {
+  font-family: "Hiragino Maru Gothic ProN", "Hiragino Maru Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "Yu Gothic UI", "Meiryo", sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-weight: bold;
+  color: #ffffff; /* 白文字で整列 */
+  opacity: 0;
+  white-space: nowrap;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  animation: gridFadeIn 0.15s ease-out forwards;
+}
+
+@keyframes gridFadeIn {
+  to {
+    opacity: 0.85; /* 最大の濃さ */
+  }
+}
+
+/* [3つ目のテキスト] 「そっか」用のサイズ指定 */
+.opening-question.third-msg {
+  font-size: clamp(4rem, 12vw, 7rem); 
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+}
+/* ==========================================
+   追加：縦1列（同志になってくれるんだね）の演出
+   ========================================== */
+
+/* [4つ目のテキスト] 縦書き1列用のスタイル */
+.opening-question.fourth-msg {
+  writing-mode: vertical-rl; /* 縦書きにする */
+  text-orientation: upright; /* 文字の向きを縦向きに保つ */
+  
+  /* ==========================================
+     【重要】共通スタイルの幅設定（90%）が縦書きと干渉して
+     左右に大きくズレるバグを防ぎ、物理的な中央（センター）に配置します
+     ========================================== */
+  width: auto !important;
+  max-width: none !important;
+  height: auto;
+  
+  font-size: clamp(1.8rem, 5vw, 3rem); /* 縦幅が画面高からはみ出ないサイズ */
+  letter-spacing: 0.25em; /* 縦の文字間隔 */
+  white-space: nowrap;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+}
+/* ==========================================
+   追加：残す「ありがとう」と周囲の増殖演出
+   ========================================== */
+
+/* 1. 本編コンテナをオーバーレイ(10000)よりも手前に配置するよう上書きします */
+.site-container {
+  position: relative !important;
+  z-index: 10100 !important; /* オーバーレイより手前に表示 */
+  opacity: 0;
+  transition: opacity 1.5s ease; /* 本編の出現を少しゆったりと美しく見せます */
+  pointer-events: none;
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+body.opening-done .site-container {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 2. 中央の「ありがとう」用のスタイル */
+.opening-question.fifth-msg {
+  font-size: clamp(3.2rem, 11vw, 5.8rem); 
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.85);
+}
+
+/* 3. 周囲に増殖して画面に残る「ありがとう」のスタイル */
+.arigatou-spam {
+  position: absolute;
+  font-family: "Hiragino Maru Gothic ProN", "Hiragino Maru Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "Yu Gothic UI", "Meiryo", sans-serif;
+  color: #ffffff; 
+  font-weight: bold;
+  pointer-events: none;
+  opacity: 0;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  /* 0.15秒でふわっと出現し、そのまま固定化させます */
+  animation: spamFadeIn 0.15s ease-out forwards;
+  z-index: 9999; /* 中央の白文字や本編(10100)よりは奥に配置 */
+}
+/* ==========================================
+   追加：整列した「ありがとう」と中央の「大きなありがとう」の演出
+   ========================================== */
+
+/* 1. 本編コンテナ（変更なし：一番手前） */
+.site-container {
+  position: relative !important;
+  z-index: 10100 !important;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  pointer-events: none;
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+body.opening-done .site-container {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 2. 中央の「大きなありがとう」のスタイル（グリッドより手前に表示） */
+.opening-question.fifth-msg {
+  font-size: clamp(3.5rem, 11vw, 5.8rem); 
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+  z-index: 10004 !important; /* 周囲のグリッド(10003)より手前に出す */
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.9);
+}
+
+/* 3. 周囲にきれいに並んで残る「ありがとう」のグリッドコンテナ */
+#grid-arigatou-spam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
+  gap: 5px;
+  justify-items: center;
+  align-items: center;
+  z-index: 10003; /* 中央の大きな文字よりは背後に配置 */
+  overflow: hidden;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+/* 格子状に整列する個々の「ありがとう」のスタイル */
+.arigatou-grid-item {
+  font-family: "Hiragino Maru Gothic ProN", "Hiragino Maru Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "Yu Gothic UI", "Meiryo", sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: bold;
+  color: #ffffff;
+  opacity: 0;
+  white-space: nowrap;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+  /* 0.2秒かけてふわっと出現させ、そのまま固定 */
+  animation: gridFadeIn 0.2s ease-out forwards;
+}
+/* ==========================================
+   追加：特大黒文字（これからも たくさん あそぼうね）の演出
+   ========================================== */
+
+/* [6つ目のテキスト] 特大黒文字（三行）のスタイル */
+.opening-question.sixth-msg {
+  font-size: clamp(2.5rem, 9vw, 5.2rem); /* 三行で画面に収まる特大サイズ */
+  color: #000000 !important; /* 純粋な黒文字 */
+  font-weight: 900; /* 極太フォントで存在感を強調 */
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  z-index: 10006 !important; /* 白い「ありがとう」グリッド(10003)よりもさらに手前に配置 */
+  /* 黒の不気味さを際立たせるため、あえてテキストの光彩（影）を排除します */
+  text-shadow: none !important; 
+}
+/* ==========================================
+   追加：超高密度「ありがとう」と極太黒文字を最後まで残す演出
+   ========================================== */
+
+/* 1. 本編コンテナ（最前面・操作可能） */
+.site-container {
+  position: relative !important;
+  z-index: 10100 !important;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  pointer-events: none;
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+body.opening-done .site-container {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 【重要】本編移行後、背後に残った文字たちがクリックなどの操作を邪魔しないようにします */
+body.opening-done #opening-overlay {
+  pointer-events: none !important;
+}
+
+/* 2. 中央の「大きなありがとう」（グリッドより手前に表示） */
+.opening-question.fifth-msg {
+  font-size: clamp(3.5rem, 11vw, 5.8rem); 
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+  z-index: 10004 !important; /* 周囲のグリッド(10003)より手前に出す */
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.9);
+}
+
+/* 3. 周囲に【超高密度】で敷き詰める「ありがとう」のグリッドコンテナ */
+#grid-arigatou-spam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  /* 格子マスのサイズを大幅に小さくし、大量に敷き詰められるようにします */
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(32px, 1fr));
+  gap: 3px;
+  justify-items: center;
+  align-items: center;
+  z-index: 10003; /* 中央の大きな文字よりは背後に配置 */
+  overflow: hidden;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* 格子状に整列する個々の細かい「ありがとう」のスタイル */
+.arigatou-grid-item {
+  font-family: "Hiragino Maru Gothic ProN", "Hiragino Maru Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "Yu Gothic UI", "Meiryo", sans-serif;
+  font-size: clamp(0.7rem, 1.8vw, 0.95rem); /* 文字サイズを非常に細かく縮小 */
+  font-weight: bold;
+  color: #ffffff;
+  opacity: 0;
+  white-space: nowrap;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
+  animation: gridFadeIn 0.2s ease-out forwards;
+}
+
+/* [6つ目のテキスト] 極太の黒文字（三行）のスタイル */
+.opening-question.sixth-msg {
+  font-size: clamp(3.2rem, 10vw, 5.8rem); /* サイズをさらに極太・特大に拡張 */
+  color: #000000 !important; /* 純粋な黒文字 */
+  font-weight: 900; /* 極太フォントで存在感を最大化 */
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  z-index: 10006 !important; /* すべての「ありがとう」よりもさらに手前に配置 */
+  
+  /* 【重要ハック】赤背景と同色の極太の光彩を何重にも施すことで、
+     背後に敷き詰められた無数の白い「ありがとう」を綺麗に消し去り、
+     黒い極太文字の輪郭をクッキリと浮かび上がらせて圧倒的に目立たせます */
+  text-shadow: 
+    0 0 15px #ff3333,
+    0 0 25px #ff3333,
+    0 0 35px #ff3333,
+    0 0 45px #ff3333 !important; 
+}

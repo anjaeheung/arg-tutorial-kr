@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="UTF-8">
+ <meta name="robots" content="noindex, nofollow">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>超!ARG団</title>
+
+ <!-- 整理後の外部CSSを読み込み -->
+ <link rel="stylesheet" href="../assets/css/yukimama.css">
+
+ <style>
+   /* ==========================================
+      クレジット等の先制非表示スタイルのみインラインに残します
+      ========================================== */
+   .yacho-credit,
+   .yacho-footer,
+   [class*="yacho" i],
+   [id*="yacho" i],
+   [class*="credit" i],
+   [id*="credit" i] {
+     display: none !important;
+     opacity: 0 !important;
+     visibility: hidden !important;
+     pointer-events: none !important;
+   }
+
+   /* ==========================================
+      「ねえ　どうして？」のレスポンシブ対応
+      ========================================== */
+   .opening-question.first-msg {
+     position: absolute !important;
+     top: 50% !important;
+     left: 50% !important;
+     transform: translate(-50%, -50%) !important;
+     width: 100% !important;
+     max-width: 90vw !important; /* 画面幅の90%以内に収める */
+     margin: 0 !important;
+     text-align: center !important;
+     white-space: nowrap !important; /* 1行で綺麗に収める */
+     box-sizing: border-box !important;
+     
+     /* clamp() を使い、スマホなどの小画面では画面横幅（8vw）に追従して縮小させ、
+        PCなどの大画面では大きくなりすぎないよう最大 4.5rem に制限します */
+     font-size: clamp(1.8rem, 8vw, 4.5rem) !important;
+   }
+ </style>
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body class="arudan-page">
+
+ <!-- オープニング演出用オーバーレイ -->
+ <div id="opening-overlay">
+   <div class="opening-text">どうして</div>
+ </div>
+
+ <!-- 画面ノイズ演出用のオーバーレイ -->
+ <div id="noise-overlay"></div>
+
+<div class="site-container">
+ <main class="content">
+   <article class="article arudan-article">
+     <div class="article-body">
+       <!-- 新しい演出用ステージ領域 -->
+       <div id="stage"></div>
+     </div>
+   </article>
+</main>
+</div>
+
+<script>
+  window.YACHO_BASE = "../";
+  window.YACHO_PROVIDER_MODE = "json";
+</script>
+<script type="module" src="../assets/js/core/index.js"></script>
+<script>
+ document.addEventListener('DOMContentLoaded', () => {
+   // 1. 検索モーダルおよび【システム自動挿入クレジット】のリアルタイム監視
+   const observer = new MutationObserver(() => {
+     const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]'); 
+     if (modal) {
+       const elements = modal.querySelectorAll('p, span, div');
+       elements.forEach((el) => {
+         if (el.children.length === 0) {
+           if (el.textContent.includes('キーワードはまだ不完全です')) { 
+             el.style.display = 'none'; 
+           }
+           if (el.textContent.includes('キーワードの一部は正しいようです')) {
+             el.style.display = 'none';
+           }
+         }
+       }); 
+     }
+
+     const allElements = document.querySelectorAll('p, span, div, a, footer, li');
+     allElements.forEach((el) => {
+       if (
+         el.textContent.includes('Powered by YACHO') || 
+         el.textContent.includes('YACHO(SIM3)') || 
+         el.textContent.includes('SIM3')
+       ) {
+         el.style.setProperty('display', 'none', 'important');
+         el.style.setProperty('opacity', '0', 'important');
+         el.style.setProperty('visibility', 'hidden', 'important');
+         
+         if (el.parentElement && el.parentElement.tagName === 'A') {
+           el.parentElement.style.setProperty('display', 'none', 'important');
+         }
+       }
+     });
+   }); 
+
+   observer.observe(document.body, {
+     childList: true,
+     subtree: true
+   }); 
+
+   // 2. オープニング演出の制御
+   const overlay = document.getElementById('opening-overlay');
+   const noise = document.getElementById('noise-overlay');
+   
+   // 冒頭の「どうして」増殖演出を制御するフラグ
+   let isSpamActive = true;
+
+   if (overlay) {
+     // [1] 「どうして」スパム演出スタート（1.2秒後）
+     setTimeout(() => {
+       startSpamming();
+     }, 1200);
+
+     // [2] 背景が赤に染まる（3.8秒後）
+     setTimeout(() => {
+       overlay.classList.add('fill-red');
+       document.documentElement.classList.add('opening-done'); 
+       document.body.classList.add('opening-done');            
+     }, 3800);
+
+     // [3] 赤文字を消去し、1つ目のテキスト「ねえ　どうして？」を表示 ＆ ノイズ・画面揺れ（4.3秒後）
+     let firstMsg;
+     setTimeout(() => {
+       isSpamActive = false; // 冒頭のスパム処理を完全に停止
+
+       const oldTexts = overlay.querySelectorAll('.opening-text, .spam-text');
+       oldTexts.forEach(el => {
+         el.remove();
+       });
+
+       firstMsg = document.createElement('div');
+       firstMsg.className = 'opening-question first-msg';
+       firstMsg.textContent = 'ねえ　どうして？';
+       overlay.appendChild(firstMsg);
+
+       requestAnimationFrame(() => {
+         firstMsg.classList.add('show');
+       });
+
+       if (noise) {
+         noise.classList.add('active');
+       }
+       document.body.classList.add('screen-glitch');
+     }, 4300);
+
+     // [4] 「ねえ　どうして？」をフェードアウト（7.3秒後：3秒間表示）
+     setTimeout(() => {
+       if (firstMsg) {
+         firstMsg.classList.remove('show');
+       }
+     }, 7300);
+
+     // [5] 2つ目のテキスト「どうして あんなに〜」（三行）を表示（8.1秒後）
+     let secondMsg;
+     setTimeout(() => {
+       if (firstMsg) {
+         firstMsg.remove();
+       }
+
+       secondMsg = document.createElement('div');
+       secondMsg.className = 'opening-question second-msg';
+       secondMsg.innerHTML = 'どうして<br>あんなにはやく<br>みつけたの？';
+       overlay.appendChild(secondMsg);
+
+       requestAnimationFrame(() => {
+         secondMsg.classList.add('show');
+       });
+     }, 8100);
+
+     // [6] 2つ目のテキストをフェードアウト（11.1秒後：3秒間表示）
+     setTimeout(() => {
+       if (secondMsg) {
+         secondMsg.classList.remove('show');
+       }
+     }, 11100);
+
+     // [6.3] 2つ目のテキスト消去後、画面全体に綺麗に「どうして」を敷き詰める（11.9秒後）
+     setTimeout(() => {
+       if (secondMsg) {
+         secondMsg.remove();
+       }
+       showOrderlySpam();
+     }, 11900);
+
+     // [6.6] 敷き詰められた「どうして」をすべて瞬時に消去し、すぐに「そっか」を表示（13.4秒後）
+     let thirdMsg;
+     setTimeout(() => {
+       const grid = document.getElementById('grid-spam');
+       if (grid) {
+         grid.remove(); // 格子状に並んだ文字を即時に全消去
+       }
+
+       thirdMsg = document.createElement('div');
+       thirdMsg.className = 'opening-question third-msg';
+       thirdMsg.textContent = 'そっか';
+       overlay.appendChild(thirdMsg);
+
+       requestAnimationFrame(() => {
+         thirdMsg.classList.add('show');
+       });
+     }, 13400);
+
+     // [6.9] 「そっか」をフェードアウト（16.4秒後：3秒間表示）
+     setTimeout(() => {
+       if (thirdMsg) {
+         thirdMsg.classList.remove('show');
+       }
+     }, 16400);
+
+     // [6.95] 「そっか」消去後、4つ目のテキスト「同志になってくれるんだね」を表示（17.2秒後）
+     let fourthMsg;
+     setTimeout(() => {
+       if (thirdMsg) {
+         thirdMsg.remove();
+       }
+
+       fourthMsg = document.createElement('div');
+       fourthMsg.className = 'opening-question fourth-msg';
+       fourthMsg.textContent = '同志になってくれるんだね';
+       overlay.appendChild(fourthMsg);
+
+       requestAnimationFrame(() => {
+         fourthMsg.classList.add('show');
+       });
+     }, 17200);
+
+     // [6.98] 「同志になってくれるんだね」をフェードアウト（20.2秒後：3秒間表示）
+     setTimeout(() => {
+       if (fourthMsg) {
+         fourthMsg.classList.remove('show');
+       }
+     }, 20200);
+
+     // [7.1] 「同志になってくれるんだね」消去後、中央に大きく「ありがとう」をフェードイン（21.0秒後：消去せず残す）
+     let fifthMsg;
+     setTimeout(() => {
+       if (fourthMsg) {
+         fourthMsg.remove();
+       }
+
+       fifthMsg = document.createElement('div');
+       fifthMsg.className = 'opening-question fifth-msg';
+       fifthMsg.textContent = 'ありがとう';
+       overlay.appendChild(fifthMsg);
+
+       requestAnimationFrame(() => {
+         fifthMsg.classList.add('show');
+       });
+     }, 21000);
+
+     // [7.2] 中央の「ありがとう」を残したまま、周りに「ありがとう」を細かくきれいに敷き詰める（22.0秒後：消去せず残す）
+     setTimeout(() => {
+       showOrderlyArigatouSpam();
+     }, 22000);
+
+     // [7.4] 敷き詰め完了後、最前面に特大の黒文字で「これからもたくさんあそぼうね」を表示（26.3秒后：消去せず残す）
+     let sixthMsg;
+     setTimeout(() => {
+       sixthMsg = document.createElement('div');
+       sixthMsg.className = 'opening-question sixth-msg';
+       sixthMsg.innerHTML = 'これからも<br>たくさん<br>あそぼうね';
+       overlay.appendChild(sixthMsg);
+
+       requestAnimationFrame(() => {
+         sixthMsg.classList.add('show');
+       });
+     }, 26300);
+
+     // 【変更】黒文字「これからもたくさんあそぼうね」のフェードアウトおよび消去処理は完全に削除。
+     // これにより、すべての白文字・黒文字テキストが消えずに画面に残り続けます。
+
+     // [7.6] 画面上のノイズをゆっくりフェードアウト（29.3秒後）
+     setTimeout(() => {
+       if (noise) {
+         noise.style.opacity = '0';
+       }
+     }, 29300);
+
+     // [8] 画面揺れ演出用のクラスを削除（30.3秒後）
+     setTimeout(() => {
+       document.body.classList.remove('screen-glitch');
+     }, 30300);
+
+     // [9] 本編への完全移行（31.1秒後）
+     // ※すべての文字を背後に表示し残した状態で、本編（site-container）を手前に浮き上がらせます。
+     setTimeout(() => {
+       if (noise) {
+         noise.classList.remove('active');
+         noise.style.display = 'none';
+       }
+     }, 31100);
+     
+   } else {
+     document.documentElement.classList.add('opening-done');
+     document.body.classList.add('opening-done');
+   }
+
+   // 3. 「どうして」スパム演出の定義（冒頭のバラバラ増殖）
+   function startSpamming() {
+     let count = 0;
+     const maxCount = 280;      
+     let currentInterval = 100;  
+     const minInterval = 5;      
+     const decay = 0.97;        
+
+     function spawn() {
+       if (!isSpamActive || count >= maxCount || !overlay) {
+         return;
+       }
+
+       const span = document.createElement('span');
+       span.className = 'spam-text';
+       span.textContent = 'どうして';
+       
+       const x = Math.random() * 100; 
+       const y = Math.random() * 100; 
+       const rotate = (Math.random() - 0.5) * 80; 
+       const fontSize = Math.random() * (4.5 - 1.2) + 1.2; 
+       const delay = Math.random() * 0.05; 
+
+       span.style.left = `${x}%`;
+       span.style.top = `${y}%`;
+       span.style.transform = `translate(-50%, -50%) rotate(${rotate}deg)`;
+       span.style.fontSize = `${fontSize}rem`;
+       span.style.animationDelay = `${delay}s`;
+
+       overlay.appendChild(span);
+       count++;
+
+       currentInterval = Math.max(minInterval, currentInterval * decay);
+
+       setTimeout(spawn, currentInterval);
+     }
+
+     spawn();
+   }
+
+   // 4. 「どうして」を綺麗に（格子状に）敷き詰める演出
+   function showOrderlySpam() {
+     const grid = document.createElement('div');
+     grid.id = 'grid-spam';
+     overlay.appendChild(grid);
+     
+     const totalCount = 350; 
+     for (let i = 0; i < totalCount; i++) {
+       const item = document.createElement('div');
+       item.className = 'grid-item';
+       item.textContent = 'どうして';
+       item.style.animationDelay = `${Math.random() * 0.4}s`;
+       grid.appendChild(item);
+     }
+   }
+
+   // 5. 「ありがとう」を【超高密度】で綺麗に敷き詰める演出
+   function showOrderlyArigatouSpam() {
+     const grid = document.createElement('div');
+     grid.id = 'grid-arigatou-spam';
+     overlay.appendChild(grid);
+     
+     // 敷き詰める格子セルが細かくなったため、生成個数を増量して高密度にします
+     const totalCount = 1000; 
+     for (let i = 0; i < totalCount; i++) {
+       const item = document.createElement('div');
+       item.className = 'arigatou-grid-item';
+       item.textContent = 'ありがとう';
+       // 0秒〜0.5秒の間でランダムに高速パラパラと敷き詰めます
+       item.style.animationDelay = `${Math.random() * 0.5}s`;
+       grid.appendChild(item);
+     }
+   }
+ });
+ </script>
+
+<footer style="text-align:center;padding:12px 0 8px;"><p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p></footer>
+</body>
+</html>

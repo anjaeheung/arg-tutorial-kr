@@ -1,0 +1,23 @@
+{
+  "超!ARG団 + まりc": {
+    "file": "まりc超!ARG団",
+    "paths": [
+      "contents/maric-choARGdan.html"
+    ],
+    "hint": null
+  },
+  "超!ARG団 + 現実世界": {
+    "file": "現実世界超!ARG団",
+    "paths": [
+      "contents/theARGworld.html"
+    ],
+    "hint": null
+  },
+  "超!ARG団 + 目的": {
+    "file": "目的超!ARG団",
+    "paths": [
+      "contents/mokuteki-choARGdan.html"
+    ],
+    "hint": null
+  }
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>超!ARG団</title>
+ <!-- 各種CSSを読み込みます -->
+ <link rel="stylesheet" href="../assets/css/search-modal.css">
+ <link rel="stylesheet" href="../assets/css/page-counter.css">
+ <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+ <link rel="stylesheet" href="../assets/css/search-bar.css">
+ <!-- 新しい制御用CSS「kouhan.css」を適用させます -->
+ <link rel="stylesheet" href="../assets/css/kouhan.css">
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body class="arudan-page">
+
+ <!-- 上部ナビゲーション・ヘッダー -->
+ <nav class="top-nav">
+ <div class="top-nav__title">超!ARG団チュートリアル!</div>
+ <div class="top-nav__search">
+ <label class="visually-hidden" for="searchInput">検索</label>
+ <input id="searchInput" placeholder="キーワードを入力">
+ <button id="searchBtn" type="button">検索</button>
+ </div>
+ </nav>
+<div class="site-container">
+ <main class="content">
+ <article class="article arudan-article">
+ <div class="article-body">
+      <div class="arudan-logo">まりcについて</div>
+
+      <!-- 本文エリア：初期状態は非表示（opacity: 0）に設定 -->
+      <p class="arudan-text" style="opacity: 0; transition: opacity 1.2s ease;">
+        正解です。<br>
+            どう考えたかは重要では<span class="nobreak">ありません。</span><br>
+            あなたがそう検索した、という事実が私はうれしいです。<br>
+            ここまで来てくれている、<span class="nobreak">その事実が。</span><br>
+            まりcについて、ですね。<br>
+            あいつはARG狂いです。<br>
+            資金の関係で有料の物はなかなかできていないようですが…<br>
+        noteで#ARGを検索したときに<span class="nobreak">出るもの</span>はほぼ<span class="nobreak">やっているようですね。</span><br>
+            何を思ってそんなことをしているのか、はたまた理由はないのか…<br>
+            この<span class="highlight-green">世</span>の中にあるARGはすべてやりたいそうです。狂ってますね。<br>
+            ブートキャンプは本当に<span class="nobreak">嬉しいそうですよ。</span><br>
+            ARGが増えるし、<span class="nobreak">作者も増える、と。</span><br>
+            <br>
+            あなたもきっと、同じ気持ちでしょう？
+
+      </p>
+    </div>
+  </article>
+</main>
+
+<!-- フッター -->
+<footer class="site-footer arudan-footer">
+  <p>&copy; 2026 超！ARG団</p>
+  <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+</div>
+<div id="page-counter" class="page-counter">
+ <span id="page-current"></span>
+ <span class="sep"> / </span>
+ <span id="page-total" class="hidden-total"></span>
+ <span>20</span>
+ </div>
+<script>
+  window.YACHO_BASE = "../";
+  window.YACHO_PROVIDER_MODE = "json";
+</script>
+<script type="module" src="../assets/js/core/index.js"></script>
+ <script>
+ document.addEventListener('DOMContentLoaded', () => {
+   // 1. 検索モーダルの監視
+   const observer = new MutationObserver(() => {
+     const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]'); 
+     if (modal) {
+       const elements = modal.querySelectorAll('p, span, div');
+       elements.forEach((el) => {
+         if (el.children.length === 0) {
+           if (el.textContent.includes('キーワードはまだ不完全です')) { 
+             el.style.display = 'none'; 
+           }
+           if (el.textContent.includes('キーワードの一部は正しいようです')) {
+             el.style.display = 'none';
+           }
+         }
+       }); 
+     }
+   }); 
+
+   observer.observe(document.body, {
+     childList: true,
+     subtree: true
+   }); 
+
+   // 2. 本文テキストのアニメーション動的生成・制御スクリプト
+   function initTextAnimation() {
+     const targetContainer = document.querySelector('.arudan-text');
+     if (!targetContainer) return;
+     
+     if (targetContainer.dataset.animated === 'true') return;
+     targetContainer.dataset.animated = 'true';
+
+     const originalContent = targetContainer.innerHTML;
+     const rawLines = originalContent.split(/<br\s*\/?>/i).map(line => line.trim());
+     const validLines = rawLines.filter(line => line !== '');
+     if (validLines.length < 2) return;
+     
+     // 最後の1行をタイピング対象に指定
+     const lastText = validLines.pop();
+     
+     targetContainer.innerHTML = '';
+     targetContainer.style.opacity = '1';
+     
+     const fadeLines = [];
+     validLines.forEach((text) => {
+       const span = document.createElement('span');
+       span.className = 'fade-line';
+       span.style.opacity = '0';
+       span.style.display = 'block';
+       span.style.transition = 'opacity 0.8s ease';
+       span.style.marginBottom = '0.5em';
+       span.innerHTML = text;
+       targetContainer.appendChild(span);
+       fadeLines.push(span);
+     });
+     
+     targetContainer.appendChild(document.createElement('br'));
+     
+     const typingSpan = document.createElement('span');
+     typingSpan.id = 'typing-line';
+     typingSpan.style.display = 'block';
+     typingSpan.style.minHeight = '1.5em';
+     targetContainer.appendChild(typingSpan);
+     
+     // ★「と称して〜」が表示されてから、タイピング開始までのウェイトを短縮
+     const lineInterval = 1000;       // 各行の表示間隔（1秒）
+     const waitBeforeTyping = 3000;    // 「と称して〜」が表示されてからの追加ウェイト。3秒でタイピングが始まります
+     const typingSpeed = 100;         // タイピングの速度（1文字あたり0.1秒）
+     
+     function showLine(index) {
+       if (index < fadeLines.length) {
+         fadeLines[index].style.opacity = '1';
+         setTimeout(() => {
+           showLine(index + 1);
+         }, lineInterval);
+       } else {
+         setTimeout(startTyping, waitBeforeTyping);
+       }
+     }
+
+     function startTyping() {
+       let charIndex = 0;
+       function type() {
+         if (charIndex < lastText.length) {
+           typingSpan.textContent += lastText.charAt(charIndex);
+           charIndex++;
+           setTimeout(type, typingSpeed);
+         }
+       }
+       type();
+     }
+
+     setTimeout(() => {
+       showLine(0);
+     }, 150);
+   }
+
+   // 3. メイン演出の開始
+   initTextAnimation();
+
+   const animObserver = new MutationObserver(() => {
+     initTextAnimation();
+   });
+   animObserver.observe(document.body, {
+     childList: true,
+     subtree: true
+   });
+ });
+ </script>
+</body>
+</html>

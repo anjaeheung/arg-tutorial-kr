@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>理不尽</title>
+   <link rel="stylesheet" href="../assets/css/search-modal.css">
+  <link rel="stylesheet" href="../assets/css/page-counter.css">
+  <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+  <link rel="stylesheet" href="../assets/css/search-bar.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body>
+   <!-- 上部ナビゲーション・ヘッダー -->
+  <nav class="top-nav">
+    <div class="top-nav__title">ARG初心者チュートリアル！</div>
+    <div class="top-nav__search">
+      <label class="visually-hidden" for="searchInput">検索</label>
+      <input id="searchInput" placeholder="キーワードを入力">
+      <button id="searchBtn" type="button">検索</button>
+    </div>
+  </nav>
+
+
+  <div class="site-container">
+    <header class="site-header">
+      
+    </header>
+
+</head>
+<body>
+  <div class="site-container">
+    <main class="content">
+      <article class="article">
+        <header class="article-header">
+          <h1 class="article-title">理不尽、無理ゲー要素について
+          </h1>
+        </header>
+        <div class="article-body">
+          <p>
+            ここまで進んできてくれてありがとうございます。<br>
+            急にこの言葉だけがあって調べろって言われたら<br>
+            正直理不尽、無理ゲーだなって思います。<br>
+            このチュートリアル程度の文字数なら言葉をローラーする作戦で行けると<br>
+            思いますが、文章量が増えた上で今回の言葉のように一般的な言葉が<br>
+            キーワードだとしたら…<span class="nobreak">無理ゲーですよね。</span><br>
+            個人的には急に出てくる謎解きも無理ゲー要素になりがちかな、と考えます。<br>
+            ARGと言えば謎解きという人もいるかもしれませんが<br>
+            脈絡もなく入ってくるのは理不尽、だと思います。<br>
+            このチュートリアルはそんな要素はない…<span class="nobreak">と思います<a href="../contents/hidden-links.html" class="hidden-link">。</a>←本当に？</span><br>
+            <br>協力者より：ここも厳しいでしょ、正直スマホだと<span class="nobreak">本当に無理ゲー</span><br>
+            そんなとこにリンク置いても誰も気づけないって。<span class="nobreak">。を押してね。</span>
+            <!--（。の部分が隠しリンク）-->
+          </p>
+          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">検</p>
+        </div>
+      </article>
+    </main>
+  </div>
+<footer class="site-footer">
+      <p>&copy; 2026 ARG初心者チュートリアル</p>
+      <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+    
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+  </div>
+
+<!-- page counter -->
+  <div id="page-counter" class="page-counter">
+  <span id="page-current"></span>
+  <span class="sep"> / </span>
+  <!-- エラー防止のために要素は残しつつ、非表示クラスを追加します -->
+  <span id="page-total" class="hidden-total"></span>
+  <!-- ここに表示したい分母の数字を直書きします -->
+  <span>12</span>
+</div>
+
+
+<script>window.YACHO_BASE = "../"; window.YACHO_PROVIDER_MODE = "json";</script>
+<script type="module" src="../assets/js/core/index.js"></script>
+<!-- 特定のシステムメッセージのみを安全に非表示にするスクリプト -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new MutationObserver(() => {
+    // 検索モーダルのエリアを取得
+    const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]');
+    if (modal) {
+      // モーダル内の要素を取得
+      const elements = modal.querySelectorAll('p, span, div');
+      elements.forEach((el) => {
+        // 【修正点】子要素を1つも持たない（末端の要素である）場合のみ判定します
+        if (el.children.length === 0) {
+          // 不完全なメッセージの要素だけを非表示にします
+          if (el.textContent.includes('キーワードはまだ不完全です')) {
+            el.style.display = 'none';
+          }
+          if (el.textContent.includes('キーワードの一部は正しいようです')) {
+            el.style.display = 'none';
+          }
+        }
+      });
+    }
+  });
+
+  // モーダルの動的な変化を監視
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+});
+</script>
+
+</body>
+
+</html>

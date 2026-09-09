@@ -1,0 +1,145 @@
+{
+  "singles": {
+    "ARG初心者チュートリアル": {
+      "file": "ARG初心者チュートリアル.json",
+      "paths": [
+        "contents/tutorial.html"
+      ],
+      "hint": null
+    },
+    "目的": {
+      "file": "目的.json",
+      "paths": [
+        "contents/markuteki.html"
+      ],
+      "hint": "needMore"
+    },
+    "Web探索型ARG": {
+      "file": "Web探索型ARG.json",
+      "paths": [
+        "contents/webttusaku.html"
+      ],
+      "hint": null
+    },
+    "不自然": {
+      "file": "不自然.json",
+      "paths": [
+        "contents/youc1aru1.html"
+      ],
+      "hint": null
+    },
+    "まりc": {
+      "file": "まりc.json",
+      "paths": [
+        "contents/yokuaru2.html"
+      ],
+      "hint": "needMore"
+    },
+    "現実世界": {
+      "file": "現実世界.json",
+      "paths": [
+        "contents/yokuaru4.html"
+      ],
+      "hint": "needMore"
+    },
+    "理不尽": {
+      "file": "理不尽.json",
+      "paths": [
+        "contents/unreasonable.html"
+      ],
+      "hint": null
+    },
+    "無理ゲー": {
+      "file": "無理ゲー.json",
+      "paths": [
+        "contents/unreasonable.html"
+      ],
+      "hint": null
+    },
+    "ケロケロハート": {
+      "file": "ケロケロハート.json",
+      "paths": [
+        "contents/mituketane.html"
+      ],
+      "hint": null
+    },
+    "ぬいぐるみ": {
+      "file": "ぬいぐるみ.json",
+      "paths": [
+        "contents/continue.html"
+      ],
+      "hint": null
+    },
+    "超!ARG団": {
+      "file": "超!ARG団.json",
+      "paths": [
+        "contents/2wordtutorial.html"
+      ],
+      "hint": "needMore"
+    },
+    "超ARG団": {
+      "file": "超ARG団.json",
+      "paths": [
+        "contents/2wordtutorial.html"
+      ],
+      "hint": "needMore"
+    },
+    "ユキママ": {
+      "file": "ユキママ.json",
+      "paths": [
+        "contents/yukimama.html"
+      ],
+      "hint": null
+    }
+  },
+  "pairs": {
+    "超!ARG団 + 目的": {
+      "file": "目的超!ARG団.json",
+      "paths": [
+        "contents/mokuteki-choARGdan.html"
+      ]
+    },
+    "超!ARG団 + まりc": {
+      "file": "まりc超!ARG団.json",
+      "paths": [
+        "contents/maric-choARGdan.html"
+      ]
+    },
+    "超!ARG団 + 現実世界": {
+      "file": "現実世界超!ARG団.json",
+      "paths": [
+        "contents/theARGworld.html"
+      ]
+    },
+    "まりc + 超ARG団": {
+      "file": "まりc超ARG団.json",
+      "paths": [
+        "contents/maric-choARGdan.html"
+      ]
+    },
+    "超ARG団 + 目的": {
+      "file": "目的超ARG団.json",
+      "paths": [
+        "contents/mokuteki-choARGdan.html"
+      ]
+    },
+    "超ARG団 + 現実世界": {
+      "file": "現実世界超ARG団.json",
+      "paths": [
+        "contents/theARGworld.html"
+      ]
+    }
+  },
+  "unresolved": {
+    "contents/allcomplete.html": "키워드 미확인 — 원작자가 본문에서 추측 불가로 설계",
+    "contents/maocool.html": "키워드 미확인 (ex1 보너스)",
+    "contents/soudesu.html": "키워드 미확인 (ex2 보너스)"
+  },
+  "reached_by_link": {
+    "contents/clear.html": "complete 페이지에서 링크",
+    "contents/complete.html": "hidden-links 등에서 링크",
+    "contents/hidden-links.html": "unreasonable 페이지의 숨은 링크(마침표 「。」)",
+    "contents/thankyouAlly.html": "allcomplete 등에서 링크",
+    "contents/yokuaru3.html": "URL 직접 수정(URL改変 학습 페이지)"
+  }
+}

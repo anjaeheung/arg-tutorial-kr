@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>まりc</title>
+  <link rel="stylesheet" href="../assets/css/search-modal.css">
+  <link rel="stylesheet" href="../assets/css/page-counter.css">
+  <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+  <link rel="stylesheet" href="../assets/css/search-bar.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body>
+  <!-- 上部ナビゲーション・ヘッダー -->
+  <nav class="top-nav">
+    <div class="top-nav__title">ARG初心者チュートリアル！</div>
+    <div class="top-nav__search">
+      <label class="visually-hidden" for="searchInput">検索</label>
+      <input id="searchInput" placeholder="キーワードを入力">
+      <button id="searchBtn" type="button">検索</button>
+    </div>
+  </nav>
+
+  <div class="site-container">
+    <main class="content">
+      <article class="article">
+        <header class="article-header">
+          <h1 class="article-title">選択・反転を使う <span class="nobreak">固有名詞は調べる</span></h1>
+        </header>
+        <div class="article-body">
+          <p>
+            これも不自然さを見逃さない<span class="nobreak">観察力が求められる</span><span class="nobreak">パターンでしたね。</span><br>
+            今回はわかりやすく<span class="nobreak">書いておきましたが…。</span><br>
+            行間が妙に開いている、 <span class="nobreak">下の方に謎のスペースがあるなど</span><br>
+            わかりやすいこともありますが、<span class="nobreak">急にこのパターンが</span><span class="nobreak">来ることがあるので</span><br>
+            何も見つからない時などに<span class="nobreak">全選択をするのも一つの</span><span class="nobreak">テクニックかもしれません。</span><br>
+            それと同時に今回のキーワードはまず調べることになる<span class="nobreak">人物名を設定しました。</span><br>
+            ページの順番じゃなく来た人もいるのかな、と思います。<br>
+            そんなあなたは初心者では<span class="nobreak">ありませんね？</span><br>
+            私の団にぜひ迎え入れたい。<br>
+            なんて言ってみたりして。<br>
+            でもいいんです、初心者じゃない人がプレイしてくれても。<br>
+            やってもらうこと、世の中に出すことに意味があるのですから。<br>
+            次は憧れている提示の仕方です。<br>
+            私は技術が不足しているのでこんなのしかできませんが…<br>
+            下の画像を見てください。<br>
+            <!--（画像で折り紙　いろんな角度から見ると文字が隠れている形　現実世界）-->
+          </p>
+          
+          <!-- 画像1・2枚目（自動で文章幅に収まり、縦に並びます） -->
+          <img src="/media/img/image1 (1).jpeg" alt="image1 (1).jpeg" class="content-img">
+          <img src="/media/img/image2.jpeg" alt="image2.jpeg" class="content-img">
+          
+          <!-- 問いかけの追加 -->
+          <p class="question-text">折った時に出てくる文字は？</p>
+          
+          <!-- 指定の余白（スペーサー） -->
+          <div class="spacer-md"></div>
+          
+          <!-- 解説文章の追加 -->
+          <p class="guide-text">これだと理不尽にもほどがあるので、下の画像を見てください</p>
+
+          <!-- スポイラー（クリックでモザイク開示）仕様の画像3枚目 -->
+          <!-- タップ/クリックされると自動的にぼかしが消える簡単なスクリプトを内蔵しています -->
+          <div class="spoiler-wrapper" onclick="this.classList.toggle('revealed')">
+            <img src="/media/img/image0 (1).jpeg" alt="image0 (1).jpeg" class="spoiler-image">
+            <div class="spoiler-overlay">クリックして画像を見る</div>
+          </div>
+                   
+          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem; margin-top: 30px;">ハ</p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 ARG初心者チュートリアル</p>
+      <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+    
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+  </div>
+
+  <!-- page counter -->
+  <div id="page-counter" class="page-counter">
+    <span id="page-current"></span>
+    <span class="sep"> / </span>
+    <!-- クラスに hidden-total を追加して本来の分母を完全に消します -->
+    <span id="page-total" class="hidden-total"></span>
+    <!-- 手動で設定する分母を 12 に設定 -->
+    <span>12</span>
+  </div>
+
+  <script>window.YACHO_BASE = "../"; window.YACHO_PROVIDER_MODE = "json";</script>
+  <script type="module" src="../assets/js/core/index.js"></script>
+
+  <!-- 特定のシステムメッセージのみを安全に非表示にするスクリプト -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new MutationObserver(() => {
+      // 検索モーダルのエリアを取得
+      const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]');
+      if (modal) {
+        // モーダル内の要素を取得
+        const elements = modal.querySelectorAll('p, span, div');
+        elements.forEach((el) => {
+          // 【修正点】子要素を1つも持たない（末端の要素である）場合のみ判定します
+          if (el.children.length === 0) {
+            // 不完全なメッセージの要素だけを非表示にします
+            if (el.textContent.includes('キーワードはまだ不完全です')) {
+              el.style.display = 'none';
+            }
+            if (el.textContent.includes('キーワードの一部は正しいようです')) {
+              el.style.display = 'none';
+            }
+          }
+        });
+      }
+    });
+
+    // モーダルの動的な変化を監視
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  });
+  </script>
+</body>
+</html>

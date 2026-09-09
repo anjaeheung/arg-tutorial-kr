@@ -1,0 +1,210 @@
+/* ==========================================
+   CSS Variables (超！ARG団・反転ブラックシステム)
+   ========================================== */
+:root {
+  /* これまでのブルー系（寒色）と完全に対比させた、黒とオレンジ（暖色）のパレット */
+  --bg-body: #000000;             /* 完全な黒 */
+  --bg-card: #000000;             /* カード部分も黒に統一し、シームレスな闇を表現 */
+  --bg-dark-gray: #111111;        /* ヘッダー・フッター用のわずかに明るい黒 */
+  
+  /* これまでのブルーの「反対の色調」であるオレンジ系 */
+  --color-accent: #dd6b20;        /* 検索ボタン等の鮮やかなネオンオレンジ */
+  --color-accent-hover: #c05621;  /* ホバー時の深みのあるオレンジ */
+  --color-counter-bg: #7b341e;    /* これまでの濃いブルーの反対となる、深い煉瓦色 */
+  
+  /* テキストカラー */
+  --text-dark: #cbd5e0;           
+  --text-main: #e2e8f0;           /* 黒背景で最も視認性の高い、優しい淡いグレー */
+  --text-light: #ffffff;          
+  
+  /* ボーダー・影 */
+  --border-color: #222222;        /* 闇に溶け込む薄い境界線 */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================
+   Base & Layout (全体設定)
+   ========================================== */
+body.arudan-page {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-body);
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  color: var(--text-main);
+}
+
+.site-container {
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   Header & Search Bar (上部ヘッダー)
+   ========================================== */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-dark-gray) !important;
+  padding: 12px 24px;
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.top-nav__title {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: var(--text-main) !important; /* 【修正】オレンジから、本文と同じ淡いグレーに変更 */
+}
+
+.top-nav__search {
+  display: flex;
+  gap: 8px;
+}
+
+#searchInput {
+  border: 1.5px solid var(--border-color);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  outline: none;
+  background-color: var(--bg-body);
+  color: var(--text-light);
+}
+
+#searchInput:focus {
+  border-color: var(--color-accent);
+}
+
+#searchBtn {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#searchBtn:hover {
+  background-color: var(--color-accent-hover);
+}
+
+/* ==========================================
+   アニメーションキーフレームの定義
+   ========================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px); /* 少し下からフワッと浮き上がらせる */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   Main Content (暗いカードエリア)
+   ========================================== */
+.arudan-article {
+  background-color: var(--bg-card) !important;
+  border: none !important;
+  border-radius: 8px;
+  padding: 40px 30px;
+  box-shadow: none !important;
+}
+
+/* 本文テキスト */
+.arudan-text {
+  line-height: 2;
+  font-size: 1.05rem;
+  color: var(--text-main);
+  text-align: center;
+  
+  /* 【演出継続】最初は非表示にしておき、タイトル表示から少し遅れて（0.7秒後）フェードイン */
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 0.7s both;
+}
+
+/* ==========================================
+   超！ARG団 タイトルテキスト（柔らかいフォント・フェードイン適用）
+   ========================================== */
+.arudan-logo {
+  font-size: 2.3rem;
+  
+  /* 【修正】丸みのある「丸ゴシック体」系の優先度を高め、柔らかく優しい印象にします */
+  font-family: "Hiragino Maru Gothic ProN", "Hiragino Maru Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "Yu Gothic", "Meiryo", sans-serif;
+  font-weight: 600;            /* 【修正】太さを極太から「中太」に落とし、柔らかい質感に調整 */
+  
+  color: var(--text-light);
+  text-align: center;
+  margin: 30px 0;
+  letter-spacing: 0.05em;
+  text-shadow: none;
+  
+  /* 【演出継続】最初は非表示にしておき、ページ読み込みから 0.2秒後 にフワッとフェードイン */
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+/* ==========================================
+   Page Counter (ページカウンター)
+   ========================================== */
+#page-counter,
+.page-counter {
+  background-color: var(--color-counter-bg) !important;
+  border: 1px solid var(--color-accent) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+#page-counter span,
+.page-counter span {
+  color: var(--text-light) !important;
+}
+
+/* 本来の自動分母を隠す */
+.hidden-total {
+  display: none !important;
+}
+
+/* ==========================================
+   Footer (暗いフッター)
+   ========================================== */
+.arudan-footer {
+  margin-top: 40px;
+  padding: 24px;
+  background-color: var(--bg-dark-gray) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #718096 !important;
+}
+
+.arudan-footer p {
+  margin: 6px 0;
+}
+/* 検索エリアの入力欄 */
+.top-nav__search input {
+  min-width: 0; /* 入力欄が縮みきれずにボタンを押し出すのを防ぐ */
+}
+
+/* 検索ボタンがスマホなどの狭い画面で潰れるのを防ぐ設定 */
+.top-nav__search button {
+  white-space: nowrap;  /* ボタン内の文字「検索」が縦に折り返されるのを禁止します */
+  flex-shrink: 0;      /* 画面幅が狭くなってもボタン自身が縮小されるのを防ぎます */
+}
+/* フレーズの途中での不自然な改行を防ぐ設定 */
+.nobreak {
+  display: inline-block;
+}
+.typing-segment.nobreak {
+  white-space: nowrap;
+  display: inline-block;
+}

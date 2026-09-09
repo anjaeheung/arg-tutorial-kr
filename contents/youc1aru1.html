@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>不自然</title>
+  <link rel="stylesheet" href="../assets/css/search-modal.css">
+  <link rel="stylesheet" href="../assets/css/page-counter.css">
+  <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+  <link rel="stylesheet" href="../assets/css/search-bar.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body>
+  
+  <!-- 上部ナビゲーション・ヘッダー -->
+  <nav class="top-nav">
+    <div class="top-nav__title">ARG初心者チュートリアル！</div>
+    <div class="top-nav__search">
+      <label class="visually-hidden" for="searchInput">検索</label>
+      <input id="searchInput" placeholder="キーワードを入力">
+      <button id="searchBtn" type="button">検索</button>
+    </div>
+  </nav>
+
+  <!-- メインコンテンツを包むコンテナ -->
+  <div class="site-container">
+    <main class="content">
+      <article class="article">
+        <header class="article-header">
+          <h1 class="article-title">不自然さを<span class="nobreak">見逃さない</span></h1>
+        </header>
+        <div class="article-body">
+          <p>不自然すぎましたよね。<span class="nobreak">ARG制作は初めてなので</span><br>
+            全然うまく作れませんでした。<span class="nobreak">技術が足りない。</span><br>
+            こういった縦読みもよくある<span class="nobreak">パターンですよね。</span><br>
+            （もちろん他の方はもっと上手に隠しています）<br>
+            ここまでで「」、太字、縦読みなど不自然な所について<span class="nobreak">練習できたと思います。</span><br>
+            これもよくあるパターンだな、というのをこのページでは<span class="nobreak">調べてみてください。</span><br>
+            結構見逃してしまいがちなパターンだと<span class="nobreak">自分は思います。</span><br>
+          </p>
+          
+          クリック↓タップ<br>
+          
+          <!-- 
+            【修正箇所】
+            ・onclick時に inlineスタイル（白文字指定）をリセットし、ページの通常テキストカラーに戻します。
+            ・cursor: pointer でマウスを乗せた際に指マークにし、user-select: none でタップ時の不快な文字選択（青い反転）を防ぎます。
+            ・transition により、0.3秒かけてふわっと文字が浮き上がる演出になります。
+          -->
+          <div style="color: #ffffff; cursor: pointer; user-select: none; transition: color 0.3s ease;" 
+               onclick="this.style.color = (this.style.color === 'rgb(255, 255, 255)' || this.style.color === '#ffffff') ? '' : '#ffffff';">
+            制作者名の　まりc　で検索してください。
+          </div>
+          
+          クリック↑タップ<br>
+          
+          <p>次のページもよろしく<span class="nobreak">お願いいたします。</span></p>
+          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">ロ</p>
+        </div>
+      </article>
+    </main>
+
+    <!-- フッター部分 -->
+    <footer class="site-footer">
+      <p>&copy; 2026 ARG初心者チュートリアル</p>
+      <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+    
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+  </div>
+
+  <!-- page counter -->
+  <div id="page-counter" class="page-counter">
+    <span id="page-current"></span>
+    <span class="sep"> / </span>
+    <!-- エラー防止のために要素は残しつつ、非表示クラスを追加します -->
+    <span id="page-total" class="hidden-total"></span>
+    <!-- ここに表示したい分母の数字を直書きします -->
+    <span>12</span>
+  </div>
+
+  <script>window.YACHO_BASE = "../"; window.YACHO_PROVIDER_MODE = "json";</script>
+  <script type="module" src="../assets/js/core/index.js"></script>
+
+  <!-- 特定のシステムメッセージのみを安全に非表示にするスクリプト -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new MutationObserver(() => {
+      // 検索モーダルのエリアを取得
+      const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]');
+      if (modal) {
+        // モーダル内の要素を取得
+        const elements = modal.querySelectorAll('p, span, div');
+        elements.forEach((el) => {
+          if (el.children.length === 0) {
+            // 不完全なメッセージの要素だけを非表示にします
+            if (el.textContent.includes('キーワードはまだ不完全です')) {
+              el.style.display = 'none';
+            }
+            if (el.textContent.includes('キーワードの一部は正しいようです')) {
+              el.style.display = 'none';
+            }
+          }
+        });
+      }
+    });
+
+    // モーダルの動的な変化を監視
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  });
+  </script>
+</body>
+</html>

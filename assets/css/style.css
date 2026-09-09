@@ -1,0 +1,420 @@
+/* ==========================================
+   CSS Variables (デザイン・カラーシステム)
+   ========================================== */
+:root {
+  /* テーマカラー（優しいブルー系） */
+  --bg-body: #f0f4f8;             /* 全体の淡い背景（余白部分） */
+  --bg-card: #ffffff;             /* カードや入力欄の背景 */
+  --bg-soft-blue: #e6f0fa;        /* ヘッダー・フッターの優しいブルー */
+  --color-primary: #2c5282;       /* メインの落ち着いた濃いブルー */
+  --color-accent: #4299e1;        /* ボタンや枠線などの明るいブルー */
+  --color-accent-hover: #3182ce;  /* ボタンホバー時のブルー */
+  --color-hint: #c53030;          /* ヒント用の赤系カラー */
+  
+  /* テキストカラー */
+  --text-dark: #2d3748;           /* 非常に濃いグレー（見出しなど） */
+  --text-main: #333333;           /* 標準の文字色 */
+  --text-muted: #4a5568;          /* 少し薄めのグレー */
+  --text-light: #ffffff;          /* 白文字 */
+  
+  /* ボーダー・共通の影 */
+  --border-color: #cbd5e0;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================
+   Base & Layout (全体および共通レイアウト)
+   ========================================== */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-body);
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  color: var(--text-main);
+}
+
+.site-container {
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   Header & Search Bar (上部ヘッダー・検索バー)
+   ========================================== */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-soft-blue);
+  padding: 12px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.top-nav__title {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.top-nav__search {
+  display: flex;
+  gap: 8px;
+}
+
+#searchInput {
+  border: 1.5px solid var(--border-color);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  outline: none;
+  background-color: var(--bg-card);
+  color: var(--text-main);
+}
+
+#searchInput:focus {
+  border-color: var(--color-accent);
+}
+
+#searchBtn {
+  background-color: var(--color-accent);
+  color: var(--text-light);
+  border: none;
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#searchBtn:hover {
+  background-color: var(--color-accent-hover);
+}
+
+/* ==========================================
+   Main Content (本文カードエリア)
+   ========================================== */
+.article {
+  background-color: var(--bg-card);
+  border-radius: 8px;
+  padding: 40px 30px;
+  box-shadow: var(--shadow-md);
+}
+
+.article-title {
+  text-align: center;
+  font-size: 1.75rem;
+  color: var(--color-primary);
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.article-body {
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.article-body p {
+  margin: 0;
+}
+
+.hint-text {
+  font-weight: normal;
+  color: var(--color-hint);
+}
+
+/* ==========================================
+   Search Modal (キーワード検索結果モーダル)
+   ========================================== */
+.search-modal,
+#search-modal {
+  /* 背景の半透明（ブルーをわずかに混ぜて馴染ませています） */
+  background-color: rgba(44, 82, 130, 0.4) !important;
+}
+
+.search-modal-content,
+.search-modal__content,
+[class*="search-modal-content"] {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--shadow-lg) !important;
+  color: var(--text-main) !important;
+}
+
+/* 各種テキストカラーを暗いグレーに変更 */
+[class*="search-modal"] h2,
+[class*="search-modal"] h3,
+[class*="search-modal"] p,
+[class*="search-modal"] span,
+.search-modal-content h2,
+.search-modal-content p {
+  color: var(--text-dark) !important;
+}
+
+/* 検索結果のリンク */
+[class*="search-modal"] a,
+.search-modal-content a {
+  color: #2b6cb0 !important;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+[class*="search-modal"] a:hover,
+.search-modal-content a:hover {
+  color: var(--color-primary) !important;
+  text-decoration: underline;
+}
+
+/* 閉じる（×）ボタン */
+[class*="search-modal"] [class*="close"],
+.search-modal-close {
+  color: #718096 !important;
+}
+
+/* ==========================================
+   Page Counter (ページカウンター)
+   ========================================== */
+#page-counter,
+.page-counter {
+  background-color: var(--color-primary) !important;
+  border: 1px solid var(--color-accent) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+#page-counter span,
+.page-counter span {
+  color: var(--text-light) !important;
+}
+
+/* ==========================================
+   Footer (下部フッター)
+   ========================================== */
+.site-footer {
+  margin-top: 40px;
+  padding: 24px;
+  background-color: var(--bg-soft-blue);
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.site-footer p {
+  margin: 6px 0;
+}
+/* システムが自動出力する本来のトータル数を画面から隠す */
+.hidden-total {
+  display: none !important;
+}
+/* ==========================================
+   共通のフェードインアニメーション
+   ========================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px); /* 少し下から上に浮き上がる動き */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   外枠の重複アニメーションを防止
+   ========================================== */
+.article {
+  animation: none !important; /* 枠自体のフェードインを無効にします */
+}
+
+/* ==========================================
+   順番にフェードインする設定（時間差）
+   ========================================== */
+
+/* 1. タイトル：少し早めに動き出します */
+.article-title {
+  opacity: 0; /* アニメーションが始まるまでは消しておきます */
+  /* 
+    fadeIn: アニメーション名
+    0.8s: 動く時間
+    ease-out: 滑らかな動き
+    0.2s: ページが開いてから 0.2秒後 に開始
+    both: アニメーション開始前（透明）と終了後（表示）の状態をキープする
+  */
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+/* 2. 本文：タイトルの後に遅れて現れます */
+.article-body {
+  opacity: 0; /* アニメーションが始まるまでは消しておきます */
+  /* 
+    0.7s: ページが開いてから 0.7秒後 に開始（タイトルより 0.5秒遅れ）
+  */
+  animation: fadeIn 0.8s ease-out 0.7s both;
+}
+
+/* ==========================================
+   ARG用・完全な隠しリンクのスタイル
+   ========================================== */
+.hidden-link {
+  text-decoration: none !important; /* リンクの下線を完全に消す */
+  color: inherit !important;          /* 親要素（通常の文章）と同じ文字色にする */
+}
+/* 誤ってキーボードのTabキーが押された際、隠しリンクにフォーカス（枠線）が当たってバレるのを防ぎます */
+.hidden-link:focus {
+  outline: none !important;
+}
+/* X（Twitter）共有ボタンの装飾（明るいブルー系に調整） */
+.x-share-btn {
+  display: inline-block;
+  background-color: var(--color-accent); /* 明るいアクセントブルー（#4299e1） */
+  color: var(--text-light) !important;   /* 白文字 */
+  text-decoration: none !important;      /* 下線を消す */
+  font-weight: bold;
+  padding: 14px 32px;                    /* ボタンの内の余白 */
+  border-radius: 30px;                   /* 丸みのあるボタン形状 */
+  
+  /* ボタンの影も黒ではなく「青系の淡い影」にして優しく馴染ませます */
+  box-shadow: 0 4px 10px rgba(66, 153, 225, 0.2); 
+  
+  font-size: 0.95rem;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+/* ホバー時（マウスを乗せたとき） */
+.x-share-btn:hover {
+  background-color: var(--color-accent-hover); /* 少し濃いブルー（#3182ce）に変化 */
+  transform: translateY(-2px);                  /* わずかに浮き上がる */
+  box-shadow: 0 6px 15px rgba(49, 130, 206, 0.35); /* 影を少し強く */
+}
+/* ==========================================
+   画像サイズと縦並び・マージンの調整
+   ========================================== */
+
+/* 本文内の画像すべてを「縦並び ＆ 文章幅に収める ＆ 中央寄せ」にします */
+.content-img {
+  display: block;
+  max-width: 100%;       /* 親要素（文章エリア）の幅を超えないように自動制限 */
+  height: auto;          /* アスペクト比を維持 */
+  margin: 25px auto;     /* 上下に適切な隙間を空け、中央寄せ */
+  border-radius: 6px;    /* 角を少し滑らかにして見た目を整えます */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* 軽い影を乗せます */
+}
+
+/* 問いかけテキストのスタイル */
+.question-text {
+  font-weight: bold;
+  font-size: 1.15rem;
+  color: var(--color-primary); /* デザインパレットの濃いブルーを使用 */
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* ご指定の余白（スペーサー） */
+.spacer-md {
+  margin-top: 50px;      /* 50px のマージン（余白）を設けます */
+}
+
+/* 解説メッセージ */
+.guide-text {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+/* ==========================================
+   画像3枚目のスポイラー（クリックでモザイク開示）演出
+   ========================================== */
+.spoiler-wrapper {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  margin: 25px auto;
+  cursor: pointer;       /* マウスを乗せた際、クリック可能であることが伝わるカーソルにします */
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  /* === スマホ（タップ時）の操作感をさらにスムーズにするための追記 === */
+  -webkit-tap-highlight-color: transparent; /* タップしたときに一瞬出る青い枠線（ハイライト）を消します */
+  user-select: none;                       /* スマホでの長押し時に、文字が範囲選択されてしまうのを防ぎます */
+}
+
+/* スポイラー画像（初期状態：強いぼかしをかけます） */
+.spoiler-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  filter: blur(24px);    /* ぼかし（モザイク）の強さ */
+  transition: filter 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* 0.6秒かけて滑らかに開示します */
+}
+
+/* 画像に重ねる案内メッセージ（クリックして画像を見る） */
+.spoiler-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(11, 13, 16, 0.55); /* ほんのり暗くして文字の視認性を高めます */
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  transition: opacity 0.5s ease, background-color 0.5s ease;
+  pointer-events: none;  /* テキスト部分がクリック判定を邪魔しないようにします */
+}
+
+/* クリックして「revealed（公開）」クラスが付与された時の挙動 */
+.spoiler-wrapper.revealed .spoiler-image {
+  filter: blur(0);       /* ぼかし（モザイク）を完全解除 */
+}
+
+.spoiler-wrapper.revealed .spoiler-overlay {
+  opacity: 0;            /* 案内テキストを透明にします */
+}
+/* 検索エリアの入力欄 */
+.top-nav__search input {
+  min-width: 0; /* 入力欄が縮みきれずにボタンを押し出すのを防ぐ */
+}
+
+/* 検索ボタンがスマホなどの狭い画面で潰れるのを防ぐ設定 */
+.top-nav__search button {
+  white-space: nowrap;  /* ボタン内の文字「検索」が縦に折り返されるのを禁止します */
+  flex-shrink: 0;      /* 画面幅が狭くなってもボタン自身が縮小されるのを防ぎます */
+}
+/* フレーズの途中での不自然な改行を防ぐ設定 */
+.nobreak {
+  display: inline-block;
+}
+/* ==========================================================================
+   縦読みギミック（不自然）用の調整
+   ========================================================================== */
+.vertical-mystery-block {
+  display: block;
+  white-space: nowrap;       /* スマホ画面でも絶対に自動折り返しをさせない */
+  overflow-x: auto;          /* 画面幅からはみ出た部分を横スクロールで読めるようにし、枠線の崩れを防ぐ */
+  font-family: monospace;    /* 等幅フォント。文字や全角スペースの幅を完全に統一し、縦のラインを完璧に揃えます */
+  
+  /* スクロールバーを非表示にする（ARGの怪しげな雰囲気を保ち、スクロールバーによるデザイン崩れを防ぎます） */
+  -ms-overflow-style: none;  /* IE, Edge用 */
+  scrollbar-width: none;     /* Firefox用 */
+}
+
+/* Chrome, Safari用のスクロールバー非表示設定 */
+.vertical-mystery-block::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>おめでとうございます！</title>
+  <link rel="stylesheet" href="../assets/css/search-modal.css">
+  <link rel="stylesheet" href="../assets/css/page-counter.css">
+  <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+  <link rel="stylesheet" href="../assets/css/search-bar.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body>
+  <!-- 上部ナビゲーション・ヘッダー -->
+  <nav class="top-nav">
+    <div class="top-nav__title">ARG初心者チュートリアル！</div>
+    <div class="top-nav__search">
+      <label class="visually-hidden" for="searchInput">検索</label>
+      <input id="searchInput" placeholder="キーワードを入力">
+      <button id="searchBtn" type="button">検索</button>
+    </div>
+  </nav>
+
+  <div class="site-container">
+    <main class="content">
+      <article class="article">
+        <header class="article-header">
+         <h1 class="article-title">おめでとう<span class="nobreak">ございます！</span></h1>
+        </header>
+        <div class="article-body">
+          <!-- 本文 -->
+          <p class="congrats-text">
+            これからのあなたの<span class="nobreak">ARGライフに幸あれ！</span>
+          </p>
+          
+          <!-- X（Twitter）ポスト用シェアボタン -->
+          <div class="share-area">
+            <a href="#" id="xShareBtn" target="_blank" rel="noopener noreferrer" class="x-share-btn">
+              チュートリアル完了をXで報告
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- フッター -->
+    <footer class="site-footer">
+      <p>&copy; 2026 ARG初心者チュートリアル</p>
+      <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+    
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+  </div>
+
+  <!-- page counter -->
+  <div id="page-counter" class="page-counter">
+    <span id="page-current"></span>
+    <span class="sep"> / </span>
+    <!-- クラスに hidden-total を追加して本来の分母（22）を完全に消します -->
+    <span id="page-total" class="hidden-total"></span>
+    <!-- 手動で設定する分母を 20 に設定 -->
+    <span>20</span>
+  </div>
+
+  <script>window.YACHO_BASE = "../"; window.YACHO_PROVIDER_MODE = "json";</script>
+  <script type="module" src="../assets/js/core/index.js"></script>
+
+  <!-- 【重要】紙吹雪（クラッカー）演出ライブラリの読み込み -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- 演出制御 ＆ Xポストリンク自動組み立てスクリプト -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    // ==========================================
+    // 【noteのURL設定】
+    // 後程noteが完成したら、以下のダブルクォーテーション「""」の中に、
+    // noteの実際のURLを貼り付けて上書きしてください。
+    // ==========================================
+    const noteUrl = "https://note.com/maric0604/n/n7680f9996e6c"; 
+
+    // ==========================================
+    // 【ポストされるメッセージテキスト】
+    // 1行目にタグ、2行目に本文、3行目に自動でリンクを配置
+    // ==========================================
+    const tweetText = `#ARG初心者チュートリアル\nARG初心者チュートリアルを完了しました！\n${noteUrl}`;
+
+    // リンクを自動で組み立ててボタンに設定する処理
+    const shareBtn = document.getElementById('xShareBtn');
+    if (shareBtn) {
+      const xUrl = `https://x.com/intent/post?text=${encodeURIComponent(tweetText)}`;
+      shareBtn.setAttribute('href', xUrl);
+    }
+
+  // ==========================================
+    // クラッカー演出（紙吹雪：大増量 ＆ 勢い最大化で中央上部まで広げる）
+    // ==========================================
+    if (typeof confetti === 'function') {
+      
+      // 1. 画面の「左下」から、中央上部へ向けて大増量打ち上げ
+      confetti({
+        particleCount: 200,      /* 枚数を200枚に増量（片側） */
+        spread: 85,              /* 画面全体へ広がるように拡散度をアップ */
+        angle: 55,               /* 中央上部へ届きやすいように角度をやや上に（55度） */
+        startVelocity: 60,       /* 初期速度を60に上げて、画面最上部まで勢いよく飛ばします */
+        origin: { x: 0, y: 0.8 } /* 発射位置を少し下げ、よりダイナミックな放物線にします */
+      });
+
+      // 2. 画面の「右下」から、中央上部へ向けて大増量打ち上げ
+      confetti({
+        particleCount: 200,      /* 枚数を200枚に増量（片側） */
+        spread: 85,              /* 画面全体へ広がるように拡散度をアップ */
+        angle: 125,              /* 中央上部へ届きやすいように角度をやや上に（125度） */
+        startVelocity: 60,       /* 初期速度を60に上げて、画面最上部まで勢いよく飛ばします */
+        origin: { x: 1, y: 0.8 } /* 発射位置を少し下げ、よりダイナミックな放物線にします */
+      });
+      
+    }
+    // ==========================================
+    // システムメッセージ非表示（MutationObserver）
+    // ==========================================
+    const observer = new MutationObserver(() => {
+      const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]');
+      if (modal) {
+        const elements = modal.querySelectorAll('p, span, div');
+        elements.forEach((el) => {
+          if (el.children.length === 0) {
+            if (el.textContent.includes('キーワードはまだ不完全です')) {
+              el.style.display = 'none';
+            }
+            if (el.textContent.includes('キーワードの一部は正しいようです')) {
+              el.style.display = 'none';
+            }
+          }
+        });
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  });
+  </script>
+</body>
+</html>

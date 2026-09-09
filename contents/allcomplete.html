@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>超!ARG団</title>
+ <!-- 各種CSSを読み込みます -->
+ <link rel="stylesheet" href="../assets/css/search-modal.css">
+ <link rel="stylesheet" href="../assets/css/page-counter.css">
+ <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+ <link rel="stylesheet" href="../assets/css/search-bar.css">
+ <!-- 専用スタイルシート「allcomplete.css」で外観・演出スタイルを管理します -->
+ <link rel="stylesheet" href="../assets/css/allcomplete.css">
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body class="arudan-page opening-active">
+
+ <!-- オープニング演出用の全画面オーバーレイ（画像パス：ARGdanfirst.png に調整） -->
+ <div id="opening-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #0b0c10; z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 1; transition: opacity 1.5s ease;">
+   <img id="opening-logo" src="../media/img/ARGfirst.png" alt="超！ARG団" style="max-width: 80%; max-height: 80%; object-fit: contain; opacity: 0; transition: opacity 1.5s ease; filter: drop-shadow(0 0 20px rgba(255,255,255,0.15));">
+ </div>
+
+ <!-- 上部ナビゲーション・ヘッダー -->
+ <nav class="top-nav">
+ <div class="top-nav__title">超!ARG団チュートリアル!</div>
+ <div class="top-nav__search">
+ <label class="visually-hidden" for="searchInput">検索</label>
+ <input id="searchInput" placeholder="キーワードを入力">
+ <button id="searchBtn" type="button">検索</button>
+ </div>
+ </nav>
+<div class="site-container">
+ <main class="content">
+ <article class="article arudan-article">
+ <div class="article-body">
+      <div class="arudan-logo">ありがとう</div>
+
+      <!-- 本文エリア：初期状態は非表示（opacity: 0）に設定 -->
+      <p class="arudan-text" style="opacity: 0; transition: opacity 1.2s ease;">
+        ここまで来てくれて<span class="nobreak">本当にありがとう。</span><br>
+        これで私のチュートリアルは<span class="nobreak">本当に完了です。</span><br>
+        ストーリーから推測ができないのに検索キーワードを特定、<span class="nobreak">尊敬します。</span><br>
+        正直後半は理不尽にしようと<span class="nobreak">思って作っていたので</span><br>
+        ここまで進んできてくれて、<span class="nobreak">本当に嬉しく思います。</span><br>
+        本当にあなたは<span class="nobreak">ARGが好きなんですね。</span><br>
+        最後まで来た理由は<span class="nobreak">何でしょうか。</span><br>
+        ストーリーはないので、<span class="nobreak">話が気になって、</span><span class="nobreak">と言うことはないでしょう。</span><br>
+        せっかくやったんだから、<span class="nobreak">最後までやってやろうか、</span><span class="nobreak">という思いでしょうか。</span><br>
+        ブートキャンプ作品を<span class="nobreak">制覇したい思いで、</span><span class="nobreak">その通過点の一つでしょうか。</span><br>
+        とにかくなんでもやりたいARG狂かもしれませんね。<br>
+        どんな理由でも構いません。<br>
+        すでにあなたは私の同志です。<br>
+        あなたはまたひとつ<span class="nobreak">ARGをクリアしました。</span><br>
+        きっとこれからも多くのARGを<span class="nobreak">プレイしていくのでしょう。</span><br>
+        私からのお願いです。<br>
+        と言っても特別なことは<span class="nobreak">ありません。</span><br>
+        これからもたくさん<span class="nobreak">ARGをプレイしてください。</span><br>
+        世界にARGを広めてください。<br>
+        プレイした感想をどこかに<span class="nobreak">書くだけでも構いません。</span><br>
+        クリアポストだけでも<span class="nobreak">構いません。</span><br>
+        なんだったらプレイしてくれる<span class="nobreak">だけでも構いません。</span><br>
+        そしてもし可能ならば、<span class="nobreak">ARGの制作もしてください。</span><br>
+        …これは特別なことに<span class="nobreak">なっちゃうかな？</span><br>
+        ともに世界にARGを<span class="nobreak">広めましょう。</span><br>
+        あなたに出逢うことが<span class="nobreak">できてよかった。</span><br>
+        これからもよろしくお願いします、私の大切な同志。<br>
+      </p>
+
+      <!-- 演出がすべて終了した後に表示されるエリア -->
+      <div id="final-area" class="final-area">
+        <p class="final-area__title">完了を報告する</p>
+        <a id="btn-share-x" href="#" target="_blank" rel="noopener noreferrer" class="btn-share-x">世界に広める</a>
+        <br><br>
+        <a href="../contents/thankyouAlly.html" class="link-afterword">あとがき</a>
+      </div>
+
+    </div>
+  </article>
+</main>
+
+<!-- フッター -->
+<footer class="site-footer arudan-footer">
+  <p>&copy; 2026 超！ARG団</p>
+  <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+</div>
+<div id="page-counter" class="page-counter">
+ <span id="page-current"></span>
+ <span class="sep"> / </span>
+ <span id="page-total" class="hidden-total"></span>
+ <span>20</span>
+ </div>
+<script>
+  window.YACHO_BASE = "../";
+  window.YACHO_PROVIDER_MODE = "json";
+</script>
+<script type="module" src="../assets/js/core/index.js"></script>
+ <script>
+ document.addEventListener('DOMContentLoaded', () => {
+   // 1. 検索モーダルの監視
+   const observer = new MutationObserver(() => {
+     const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]'); 
+     if (modal) {
+       const elements = modal.querySelectorAll('p, span, div');
+       elements.forEach((el) => {
+         if (el.children.length === 0) {
+           if (el.textContent.includes('キーワードはまだ不完全です')) { 
+             el.style.display = 'none'; 
+           }
+           if (el.textContent.includes('キーワードの一部は正しいようです')) {
+             el.style.display = 'none';
+           }
+         }
+       }); 
+     }
+   }); 
+
+   observer.observe(document.body, {
+     childList: true,
+     subtree: true
+   }); 
+
+   // 2. 本文テキストのアニメーション動的生成・制御スクリプト
+   function initTextAnimation() {
+     const targetContainer = document.querySelector('.arudan-text');
+     if (!targetContainer) return;
+     
+     if (targetContainer.dataset.animated === 'true') return;
+     targetContainer.dataset.animated = 'true';
+
+     const originalContent = targetContainer.innerHTML;
+     const rawLines = originalContent.split(/<br\s*\/?>/i).map(line => line.trim());
+     const validLines = rawLines.filter(line => line !== '');
+     if (validLines.length < 2) return;
+     
+     const lastText = validLines.pop();
+     
+     targetContainer.innerHTML = '';
+     targetContainer.style.opacity = '1';
+     
+     const fadeLines = [];
+     validLines.forEach((text) => {
+       const span = document.createElement('span');
+       span.className = 'fade-line';
+       span.style.opacity = '0';
+       span.style.display = 'block';
+       span.style.transition = 'opacity 0.8s ease';
+       span.style.marginBottom = '0.5em';
+       span.innerHTML = text;
+       targetContainer.appendChild(span);
+       fadeLines.push(span);
+     });
+     
+     targetContainer.appendChild(document.createElement('br'));
+     
+     const typingSpan = document.createElement('span');
+     typingSpan.id = 'typing-line';
+     typingSpan.style.display = 'block';
+     typingSpan.style.minHeight = '1.5em';
+     targetContainer.appendChild(typingSpan);
+     
+     // ★ご指定の各行表示間隔「1.7秒」に変更しました
+     const lineInterval = 1700;       // 各行 of フェード間隔（1.7秒）
+     const waitBeforeTyping = 500;    // すべてのフェード表示完了から、タイピング開始までの追加時間
+     const typingSpeed = 100;         // タイピングの速度（0.1秒間隔）
+     
+     function showLine(index) {
+       if (index < fadeLines.length) {
+         fadeLines[index].style.opacity = '1';
+         
+         let currentInterval = lineInterval;
+         
+         setTimeout(() => {
+           showLine(index + 1);
+         }, currentInterval);
+       } else {
+         setTimeout(startTyping, waitBeforeTyping);
+       }
+     }
+
+     // 【改善点】「、」の直後で綺麗に改行を折り返せるように、テキストを2つに分割します
+     const splitIndex = lastText.indexOf('、');
+     let part1Text = lastText;
+     let part2Text = '';
+     if (splitIndex !== -1) {
+       part1Text = lastText.substring(0, splitIndex + 1); // 「これからもよろしくお願いします、」
+       part2Text = lastText.substring(splitIndex + 1);    // 「私の大切な同志。」
+     }
+
+     // 分割したタイピング文字用のスパンをあらかじめ追加しておきます
+     const tSpan1 = document.createElement('span');
+     const tSpan2 = document.createElement('span');
+     tSpan2.className = 'typing-segment nobreak';      // CSSで改行させない指定を割り当てます
+     
+     typingSpan.appendChild(tSpan1);
+     typingSpan.appendChild(tSpan2);
+
+     function startTyping() {
+       let charIndex = 0;
+       
+       // 前半（これからもよろしくお願いします、）のタイピング
+       function typePart1() {
+         if (charIndex < part1Text.length) {
+           tSpan1.textContent += part1Text.charAt(charIndex);
+           charIndex++;
+           setTimeout(typePart1, typingSpeed);
+         } else {
+           charIndex = 0; // インデックスを初期化
+           typePart2();   // 後半のタイピングへ移行
+         }
+       }
+
+       // 後半（私の大切な同志。）のタイピング
+       function typePart2() {
+         if (charIndex < part2Text.length) {
+           tSpan2.textContent += part2Text.charAt(charIndex);
+           charIndex++;
+           setTimeout(typePart2, typingSpeed);
+         } else {
+           // タイピング演出がすべて完了した1秒後に、クリアポストエリアをふんわり表示
+           setTimeout(() => {
+             const finalArea = document.getElementById('final-area');
+             if (finalArea) {
+               finalArea.style.visibility = 'visible';
+               finalArea.style.opacity = '1';
+             }
+           }, 1000);
+         }
+       }
+
+       typePart1();
+     }
+
+     setTimeout(() => {
+       showLine(0);
+     }, 150);
+   }
+
+   // 3. X（旧Twitter）ポストボタンのURL生成処理
+   const shareBtn = document.getElementById('btn-share-x');
+   if (shareBtn) {
+     const hashtag = "ARG初心者チュートリアル";
+     const text = "このゲーム？をすべて完了しました";
+          
+     // ★今後作成するnoteのリンク（URL）を、下のダブルクォーテーション内に直接書き換えてください。
+     const noteUrl = "https://note.com/maric0604/n/n7680f9996e6c"; 
+     
+     shareBtn.href = `https://x.com/intent/post?text=${encodeURIComponent(text)}&hashtags=${encodeURIComponent(hashtag)}&url=${encodeURIComponent(noteUrl)}`;
+   }
+
+   // 4. オープニング演出の制御とメインコンテンツの起動
+   const overlay = document.getElementById('opening-overlay');
+   const logo = document.getElementById('opening-logo');
+
+   function revealMainContent() {
+     // 本文のアニメーション再構築処理を開始
+     initTextAnimation();
+
+     const animObserver = new MutationObserver(() => {
+       initTextAnimation();
+     });
+     animObserver.observe(document.body, {
+       childList: true,
+       subtree: true
+     });
+   }
+
+   if (overlay && logo) {
+     // ① 0.5秒後に画像（ロゴ）をフェードイン
+     setTimeout(() => {
+       logo.style.opacity = '1';
+     }, 500);
+
+     // ② 4.0秒後にフェードアウトを開始
+     setTimeout(() => {
+       logo.style.opacity = '0';
+       overlay.style.opacity = '0';
+
+       // ③ フェードアウトの完了に要素を非表示にし、本編コンテンツを表示
+       setTimeout(() => {
+         overlay.style.display = 'none';
+         
+         // bodyの制限クラス「opening-active」を外します
+         // これにより、allcomplete.cssで制御されているタイトルとフッターのアニメーションが自動開始されます
+         document.body.classList.remove('opening-active');
+         
+         // 本編のアニメーション（フェードイン・タイピングなど）を開始
+         revealMainContent();
+       }, 1500);
+
+     }, 4000);
+   } else {
+     // オープニング用要素が見つからない場合は、制限クラスを即座に外して表示します
+     document.body.classList.remove('opening-active');
+     revealMainContent();
+   }
+ });
+ </script>
+</body>
+</html>

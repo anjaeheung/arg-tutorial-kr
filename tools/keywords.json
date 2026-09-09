@@ -1,0 +1,86 @@
+{
+  "ARG初心者チュートリアル": {
+    "results": [
+      {
+        "title": "ARG初心者チュートリアル",
+        "path": "contents/tutorial.html"
+      }
+    ]
+  },
+  "Web探索型ARG": {
+    "results": [
+      {
+        "title": "強調表示",
+        "path": "contents/webttusaku.html"
+      }
+    ]
+  },
+  "まりc": {
+    "results": [
+      {
+        "title": "選択・反転・固有名詞",
+        "path": "contents/yokuaru2.html"
+      }
+    ],
+    "hint": "needMore"
+  },
+  "ケロケロハート": {
+    "results": [
+      {
+        "title": "○",
+        "path": "contents/mituketane.html"
+      }
+    ]
+  },
+  "不自然": {
+    "results": [
+      {
+        "title": "不自然さ",
+        "path": "contents/youc1aru1.html"
+      }
+    ]
+  },
+  "無理ゲー": {
+    "results": [
+      {
+        "title": "理不尽・無理ゲー要素",
+        "path": "contents/unreasonable.html"
+      }
+    ]
+  },
+  "現実世界": {
+    "results": [
+      {
+        "title": "現実世界",
+        "path": "contents/yokuaru4.html"
+      }
+    ],
+    "hint": "needMore"
+  },
+  "理不尽": {
+    "results": [
+      {
+        "title": "理不尽・無理ゲー要素",
+        "path": "contents/unreasonable.html"
+      }
+    ]
+  },
+  "目的": {
+    "results": [
+      {
+        "title": "目的",
+        "path": "contents/markuteki.html"
+      }
+    ],
+    "hint": "needMore"
+  },
+  "超!ARG団": {
+    "results": [
+      {
+        "title": "それだけですか？",
+        "path": "contents/2wordtutorial.html"
+      }
+    ],
+    "hint": "needMore"
+  }
+}

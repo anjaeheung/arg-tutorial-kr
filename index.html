@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>はじまり</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/search-modal.css">
+  <link rel="stylesheet" href="assets/css/page-counter.css">
+  <link rel="stylesheet" href="assets/css/page-list-modal.css">
+  <link rel="stylesheet" href="assets/css/search-bar.css">
+   <link rel="stylesheet" href="assets/css/style.css">
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body>
+  <!-- 上部ナビゲーション・ヘッダー -->
+  <nav class="top-nav">
+    <div class="top-nav__title">ARG初心者チュートリアル！</div>
+    <div class="top-nav__search">
+      <label class="visually-hidden" for="searchInput">検索</label>
+      <input id="searchInput" placeholder="キーワードを入力">
+      <button id="searchBtn" type="button">検索</button>
+    </div>
+  </nav>
+
+  <div class="site-container">
+    <header class="site-header">
+      
+    </header>
+    <main class="content">
+      <article class="article">
+        <header class="article-header">
+          <h1 class="article-title">ARG初心者チュートリアルへようこそ！</h1>
+        </header>
+        <div class="article-body">
+          <div class="article-body">
+          みなさんはじめまして。<br>
+          Web探索型ARGの進め方を練習するページを作りました。<br>
+          世の中にはいろんなWeb探索型ARGがあって難しそう…<br>
+          クリアできる気がしなくてプレイするのが不安…<br>
+          そんな人のための<span class="nobreak">練習用ARGです！</span><br>
+          一緒にいろんなパターンを<span class="nobreak">練習しましょう！</span><br>
+          <br>まずは一歩目、サイト内検索を<span class="nobreak">試してみましょう！</span><br>
+          　　ARG初心者チュートリアル　と右上の検索フォームから<span class="nobreak">検索してください。</span>
+        </div>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <p>&copy; 2026 ARG初心者チュートリアル</p>
+      <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+    
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+  </div>
+
+ <!-- page counter -->
+  <div id="page-counter" class="page-counter">
+  <span id="page-current"></span>
+  <span class="sep"> / </span>
+  <!-- エラー防止のために要素は残しつつ、非表示クラスを追加します -->
+  <span id="page-total" class="hidden-total"></span>
+  <!-- ここに表示したい分母の数字を直書きします -->
+  <span>12</span>
+</div>
+
+
+<script>window.YACHO_BASE = ""; window.YACHO_PROVIDER_MODE = "json";</script>
+<script type="module" src="assets/js/core/index.js"></script>
+
+<!-- 特定のシステムメッセージのみを安全に非表示にするスクリプト -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new MutationObserver(() => {
+    // 検索モーダルのエリアを取得
+    const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]');
+    if (modal) {
+      // モーダル内の要素を取得
+      const elements = modal.querySelectorAll('p, span, div');
+      elements.forEach((el) => {
+        // 子要素を1つも持たない（末端の要素である）場合のみ判定します
+        if (el.children.length === 0) {
+          // 不完全なメッセージの要素だけを非表示にします
+          if (el.textContent.includes('キーワードはまだ不完全です')) {
+            el.style.display = 'none';
+          }
+          if (el.textContent.includes('キーワードの一部は正しいようです')) {
+            el.style.display = 'none';
+          }
+        }
+      });
+    }
+  });
+
+  // モーダルの動的な変化を監視
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+});
+</script>
+
+</body>
+</html>

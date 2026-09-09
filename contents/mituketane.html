@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>みつけたね</title>
+  <!-- mitsuketa.css を読み込みます -->
+  <link rel="stylesheet" href="../assets/css/search-modal.css">
+  <link rel="stylesheet" href="../assets/css/page-counter.css">
+  <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+  <link rel="stylesheet" href="../assets/css/search-bar.css">
+  <link rel="stylesheet" href="../assets/css/mitsuketa.css">
+
+  <!-- 【新規追加】答えショートカットボタン用の個別スタイル -->
+  <style>
+    /* 
+      演出4: 答えへのショートカットエリア 
+      Xアカウントボタン（10.5秒後）のフワッとした出現が終わる「11.5秒後」にアニメーションを開始します。
+    */
+    .fade-step-4 {
+      opacity: 0;
+      text-align: center;
+      margin-top: 35px; /* Xボタンとの間隔 */
+      animation: fadeInNormal 1s ease-out 11.5s both;
+    }
+
+    /* 注意書きスタイル */
+    .shortcut-note {
+      font-size: 0.85rem;
+      color: #a0aec0;
+      margin-bottom: 10px;
+    }
+
+    /* 答えボタンのスタイル */
+    .ans-btn {
+      display: inline-block;
+      background-color: #e53e3e; /* 注意を引く赤系 */
+      color: #ffffff;
+      padding: 8px 24px;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.2s, transform 0.2s;
+    }
+
+    .ans-btn:hover {
+      background-color: #fc8181;
+      transform: translateY(-1px);
+    }
+
+    /* 表示されるキーワードのテキストスタイル */
+    .answer-text {
+      margin: 10px 0 0 0;
+      font-size: 1.15rem;
+      color: #fbd38d; /* 目立つ薄黄色 */
+      font-weight: bold;
+      /* 答えが表示される際も、パッと出るのではなくフワッと表示させます */
+      animation: fadeInNormal 0.4s ease-out forwards;
+    }
+  </style>
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body class="dark-page">
+  
+  <p class="fade-step-1"><span>み</span><span>つ</span><span>け</span><span>た</span><span>ね</span></p>
+
+  <nav class="top-nav">
+    <div class="top-nav__search">
+      <label class="visually-hidden" for="searchInput">検索</label>
+      <input id="searchInput" placeholder="キーワードを入力">
+      <button id="searchBtn" type="button">検索</button>
+    </div>
+  </nav>
+
+  <div class="site-container">
+    <main class="content">
+      <article class="article dark-article">
+        
+        <!-- コンテンツエリア -->
+        <div class="article-body overlap-container">
+          
+          <!-- ※ここにあった「みつけたね」のタグは削除しました（上のbody直下に移動したため） -->
+          
+          <!-- 演出2＆3のグループ: 演出1が消えた後、カード中央に入れ替わりで現れます -->
+          <div class="fade-step-group">
+            <p class="fade-step-2">
+              <span class="word-1">協力者</span>
+              <span class="word-2">Xアカウント</span>
+              <span class="word-3">まりcがフォローしている</span>
+              <span class="word-4">自己紹介の5文字</span>
+            </p>
+            
+            <div class="fade-step-3">
+              <a href="https://x.com/nstzg3Cq4s3rsAU" target="_blank" rel="noopener noreferrer" class="link-btn">
+                まりcのXアカウント（外部リンク）
+              </a>
+            </div>
+
+            <!-- 【新規追加】答えへのショートカットボタンとテキスト表示エリア -->
+            <div class="fade-step-4">
+              <p class="shortcut-note">X見れない人、答えにショートカットしたい人はこちら</p>
+              <button type="button" id="ansBtn" class="ans-btn" onclick="revealAnswer()">答え</button>
+              <p id="answer-text" class="answer-text" style="display: none;">キーワードは「<strong>ぬいぐるみ</strong>」です</p>
+            </div>
+
+          </div>
+
+        </div>
+        
+      </article>
+    </main>
+
+    <footer class="site-footer dark-footer">
+      <p>&copy; 2026 ARG初心者チュートリアル</p>
+      <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+    
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+  </div>
+
+  <!-- page counter -->
+  <div id="page-counter" class="page-counter">
+    <span id="page-current"></span>
+    <span class="sep"> / </span>
+    <!-- クラスに hidden-total を追加して本来の分母（22）を完全に消します -->
+    <span id="page-total" class="hidden-total"></span>
+    <!-- 手動で設定する分母を 20 に設定 -->
+    <span>20</span>
+  </div>
+
+  <script>window.YACHO_BASE = "../"; window.YACHO_PROVIDER_MODE = "json";</script>
+  <script type="module" src="../assets/js/core/index.js"></script>
+  
+  <!-- 特定のシステムメッセージの非表示 ＆ カウンター出現タイマー ＆ ボタン処理 -->
+  <script>
+  // 【新規追加】「答え」ボタンをクリックした時に実行する処理
+  function revealAnswer() {
+    const ansBtn = document.getElementById('ansBtn');
+    const ansText = document.getElementById('answer-text');
+    if (ansBtn && ansText) {
+      ansBtn.style.display = 'none'; // ボタンを非表示にします
+      ansText.style.display = 'block'; // キーワードテキストを表示します
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // 11.5秒後（11500ミリ秒後）にページカウンターに「show-counter」クラスを付与
+    setTimeout(() => {
+      const counter = document.getElementById('page-counter');
+      if (counter) {
+        counter.classList.add('show-counter');
+      }
+    }, 11500);
+
+    const observer = new MutationObserver(() => {
+      // 検索モーダルのエリアを取得
+      const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]');
+      if (modal) {
+        // モーダル内の要素を取得
+        const elements = modal.querySelectorAll('p, span, div');
+        elements.forEach((el) => {
+          // 子要素を1つも持たない（末端の要素である）場合のみ判定します
+          if (el.children.length === 0) {
+            // 不完全なメッセージの要素だけを非表示にします
+            if (el.textContent.includes('キーワードはまだ不完全です')) {
+              el.style.display = 'none';
+            }
+            if (el.textContent.includes('キーワードの一部は正しいようです')) {
+              el.style.display = 'none';
+            }
+          }
+        });
+      }
+    });
+
+    // モーダルの動的な変化を監視
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  });
+  </script>
+
+</body>
+</html>

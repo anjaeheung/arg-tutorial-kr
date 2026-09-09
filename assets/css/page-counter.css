@@ -1,0 +1,34 @@
+/* =====================================================
+   page-counter
+   ===================================================== */
+.page-counter,
+#page-counter {
+  position: fixed !important;
+  right: max(12px, env(safe-area-inset-right, 0px)) !important;
+  bottom: max(12px, env(safe-area-inset-bottom, 0px)) !important;
+  left: auto !important;
+  top: auto !important;
+  font-size: var(--font-size-xs, 12px);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 0.5rem 0.875rem;
+  border-radius: 100px;
+  pointer-events: none;
+  z-index: 9999 !important;
+  transition: background 0.15s;
+}
+
+/* visitHistory 有効時はクリック可能 */
+#page-counter[data-yacho-visit-mode="modal"],
+#page-counter[data-yacho-visit-mode="page"] {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+#page-counter[data-yacho-visit-mode="modal"]:hover,
+#page-counter[data-yacho-visit-mode="page"]:hover {
+  background: rgba(0, 0, 0, 0.88);
+}
+
