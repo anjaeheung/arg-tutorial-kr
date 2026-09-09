@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>クリアページ</title>
+  <title>클리어 페이지</title>
   <link rel="stylesheet" href="../assets/css/search-modal.css">
   <link rel="stylesheet" href="../assets/css/page-counter.css">
   <link rel="stylesheet" href="../assets/css/page-list-modal.css">
@@ -16,11 +16,11 @@
 <body>
   <!-- 上部ナビゲーション・ヘッダー -->
   <nav class="top-nav">
-    <div class="top-nav__title">ARG初心者チュートリアル！</div>
+    <div class="top-nav__title">ARG 초보자 튜토리얼!</div>
     <div class="top-nav__search">
-      <label class="visually-hidden" for="searchInput">検索</label>
-      <input id="searchInput" placeholder="キーワードを入力">
-      <button id="searchBtn" type="button">検索</button>
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
     </div>
   </nav>
 
@@ -34,28 +34,28 @@
     <main class="content">
       <article class="article">
         <header class="article-header">
-          <h1 class="article-title">チュートリアル完了！</h1>
+          <h1 class="article-title">튜토리얼 완료!</h1>
         </header>
         <div class="article-body">
           <p>
-            プレイいただき、<span class="nobreak">ありがとうございました！</span><br>
-            偉そうにARG初心者チュートリアルなどと言ってしまい、申し訳ございません。<br>
-            初めての制作でこんな作品を作ってしまいました。<br>
-            それでも、同志の皆さんなら笑って許してくれると<span class="nobreak">信じています。</span><br>
-            今作は自分が考えたよくあるパターン、として内容を決めていますが、作者様方の工夫により、新しいギミックなどどんどん出てきていることと思います。<br>
-            このチュートリアルも今後追加などしていけたらいいなと考えています。<br>
-            でもまだまだ私の技術が<span class="nobreak">足りません。</span><br>
-            今回の作品を習作としてこれからも制作して<span class="nobreak">いきたいです。</span><br>
-            また別の作品でお会いしたときは、よろしくしてやってくれると嬉しいです。<br>
-            クリアページへ→<a href="../contents/clear.html" class="hidden-link" >🐸</a>
+            플레이해 주셔서 <span class="nobreak">감사합니다!</span><br>
+            건방지게 ARG 초보자 튜토리얼 따위를 만들어 버려 죄송합니다.<br>
+            첫 제작으로 이런 작품을 만들고 말았습니다.<br>
+            그래도 동지 여러분이라면 웃으며 용서해 주시리라 <span class="nobreak">믿고 있습니다.</span><br>
+            이번 작품은 제가 생각한 흔한 패턴, 이라는 기준으로 내용을 정했습니다만, 제작자분들의 궁리로 새로운 장치들이 계속 나오고 있으리라 생각합니다.<br>
+            이 튜토리얼도 앞으로 계속 추가해 나갈 수 있으면 좋겠다고 생각합니다.<br>
+            하지만 아직 제 기술이 <span class="nobreak">부족합니다.</span><br>
+            이번 작품을 습작으로 삼아 앞으로도 계속 만들어 <span class="nobreak">나가고 싶습니다.</span><br>
+            또 다른 작품에서 만났을 때, 잘 봐주시면 기쁘겠습니다.<br>
+            클리어 페이지로→<a href="../contents/clear.html" class="hidden-link" >🐸</a>
           </p>  
         </div>
       </article>
     </main>
   </div>
  <footer class="site-footer">
-      <p>&copy; 2026 ARG初心者チュートリアル</p>
-      <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
     
       <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
     </footer>
@@ -87,10 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // 【修正点】子要素を1つも持たない（末端の要素である）場合のみ判定します
         if (el.children.length === 0) {
           // 不完全なメッセージの要素だけを非表示にします
-          if (el.textContent.includes('キーワードはまだ不完全です')) {
+          if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
             el.style.display = 'none';
           }
-          if (el.textContent.includes('キーワードの一部は正しいようです')) {
+          if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
             el.style.display = 'none';
           }
         }

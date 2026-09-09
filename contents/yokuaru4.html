@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>現実世界</title>
+  <title>현실세계</title>
    <link rel="stylesheet" href="../assets/css/search-modal.css">
   <link rel="stylesheet" href="../assets/css/page-counter.css">
   <link rel="stylesheet" href="../assets/css/page-list-modal.css">
@@ -16,11 +16,11 @@
 <body>
  <!-- 上部ナビゲーション・ヘッダー -->
   <nav class="top-nav">
-    <div class="top-nav__title">ARG初心者チュートリアル！</div>
+    <div class="top-nav__title">ARG 초보자 튜토리얼!</div>
     <div class="top-nav__search">
-      <label class="visually-hidden" for="searchInput">検索</label>
-      <input id="searchInput" placeholder="キーワードを入力">
-      <button id="searchBtn" type="button">検索</button>
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
     </div>
   </nav>
 
@@ -34,29 +34,29 @@
     <main class="content">
       <article class="article">
         <header class="article-header">
-          <h1 class="article-title">物理的なギミックってすごい</h1>
+          <h1 class="article-title">물리적 장치란 대단하다</h1>
         </header>
         <div class="article-body">
-          <p>現実の物を使う謎解き、<span class="nobreak">物理ギミックですね。</span><span class="nobreak">正直憧れます。</span><br>
-            個人では正直かなり無理がありますが、<span class="nobreak">実物があったり</span><span class="nobreak">操作したり</span><br>
-            一気に現実感が高まると<span class="nobreak">思います。</span><br>
-            写真のURLをつなぐ、程度が現実的なライン<span class="nobreak">なんでしょうか。</span><br>
-            画像のコントラストや明度をいじるパターンも<span class="nobreak">ありますよね。</span><br>
-            次はよくあるパターンですが、<span class="nobreak">個人的には苦手です。</span><br>
-            スマホだとすごく<span class="nobreak">わかりにくいです。</span><br>
-            大変だと思いますが、<span class="nobreak">URLをみてください。</span><br>
-            yokuaru2、yokuaru4、<span class="nobreak">3はどこ？</span><br>
-            1は変なので無視しましょう。きっと別の謎なんでしょう。<br>
-            ここまで付き合ってくれているあなたはとても<span class="nobreak">いい人ですね。</span><br>
+          <p>현실의 물건을 쓰는 수수께끼 풀이, <span class="nobreak">물리 장치죠.</span><span class="nobreak">솔직히 동경합니다.</span><br>
+            개인으로서는 솔직히 상당히 무리가 있지만, <span class="nobreak">실물이 있거나 </span><span class="nobreak">조작하거나 하면</span><br>
+            단숨에 현실감이 높아진다고 <span class="nobreak">생각합니다.</span><br>
+            사진의 URL을 잇는 정도가 현실적인 선 <span class="nobreak">일까요.</span><br>
+            이미지의 대비나 명도를 건드리는 패턴도 <span class="nobreak">있죠.</span><br>
+            다음은 흔한 패턴입니다만, <span class="nobreak">개인적으로는 잘 못합니다.</span><br>
+            스마트폰에서는 굉장히 <span class="nobreak">알아보기 어렵습니다.</span><br>
+            번거로우시겠지만, <span class="nobreak">URL을 봐 주세요.</span><br>
+            yokuaru2、yokuaru4、<span class="nobreak">3은 어디에?</span><br>
+            1은 이상하니 무시합시다. 분명 다른 수수께끼겠죠.<br>
+            여기까지 함께해 주신 당신은 정말 <span class="nobreak">좋은 분이네요.</span><br>
           </p>
-          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">ー</p>
+          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">트</p>
         </div>
       </article>
     </main>
   </div>
  <footer class="site-footer">
-      <p>&copy; 2026 ARG初心者チュートリアル</p>
-      <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
     
       <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
     </footer>
@@ -88,10 +88,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // 【修正点】子要素を1つも持たない（末端の要素である）場合のみ判定します
         if (el.children.length === 0) {
           // 不完全なメッセージの要素だけを非表示にします
-          if (el.textContent.includes('キーワードはまだ不完全です')) {
+          if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
             el.style.display = 'none';
           }
-          if (el.textContent.includes('キーワードの一部は正しいようです')) {
+          if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
             el.style.display = 'none';
           }
         }

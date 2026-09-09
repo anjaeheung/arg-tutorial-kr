@@ -128,10 +128,22 @@
       "paths": [
         "contents/theARGworld.html"
       ]
+    },
+    "超!ARG団 + 新世界": {
+      "file": "新世界超!ARG団.json",
+      "paths": [
+        "contents/allcomplete.html"
+      ],
+      "note": "후반 3페이지에 한 글자씩 숨긴 세로읽기(新世界)로 도달"
+    },
+    "超ARG団 + 新世界": {
+      "file": "新世界超ARG団.json",
+      "paths": [
+        "contents/allcomplete.html"
+      ]
     }
   },
   "unresolved": {
-    "contents/allcomplete.html": "키워드 미확인 — 원작자가 본문에서 추측 불가로 설계",
     "contents/maocool.html": "키워드 미확인 (ex1 보너스)",
     "contents/soudesu.html": "키워드 미확인 (ex2 보너스)"
   },

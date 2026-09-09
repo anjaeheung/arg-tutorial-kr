@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>不自然</title>
+  <title>부자연</title>
   <link rel="stylesheet" href="../assets/css/search-modal.css">
   <link rel="stylesheet" href="../assets/css/page-counter.css">
   <link rel="stylesheet" href="../assets/css/page-list-modal.css">
@@ -17,11 +17,11 @@
   
   <!-- 上部ナビゲーション・ヘッダー -->
   <nav class="top-nav">
-    <div class="top-nav__title">ARG初心者チュートリアル！</div>
+    <div class="top-nav__title">ARG 초보자 튜토리얼!</div>
     <div class="top-nav__search">
-      <label class="visually-hidden" for="searchInput">検索</label>
-      <input id="searchInput" placeholder="キーワードを入力">
-      <button id="searchBtn" type="button">検索</button>
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
     </div>
   </nav>
 
@@ -30,19 +30,19 @@
     <main class="content">
       <article class="article">
         <header class="article-header">
-          <h1 class="article-title">不自然さを<span class="nobreak">見逃さない</span></h1>
+          <h1 class="article-title">부자연스러움을<span class="nobreak">놓치지 않는다</span></h1>
         </header>
         <div class="article-body">
-          <p>不自然すぎましたよね。<span class="nobreak">ARG制作は初めてなので</span><br>
-            全然うまく作れませんでした。<span class="nobreak">技術が足りない。</span><br>
-            こういった縦読みもよくある<span class="nobreak">パターンですよね。</span><br>
-            （もちろん他の方はもっと上手に隠しています）<br>
-            ここまでで「」、太字、縦読みなど不自然な所について<span class="nobreak">練習できたと思います。</span><br>
-            これもよくあるパターンだな、というのをこのページでは<span class="nobreak">調べてみてください。</span><br>
-            結構見逃してしまいがちなパターンだと<span class="nobreak">自分は思います。</span><br>
+          <p>너무 부자연스러웠죠.<span class="nobreak">ARG 제작은 처음이라</span><br>
+            전혀 잘 만들지 못했습니다.<span class="nobreak">기술이 부족합니다.</span><br>
+            이런 세로읽기도 흔한 <span class="nobreak">패턴이죠.</span><br>
+            （물론 다른 분들은 훨씬 더 능숙하게 숨깁니다）<br>
+            여기까지 「」, 굵은 글씨, 세로읽기 등 부자연스러운 부분을<span class="nobreak">연습해 보셨을 겁니다.</span><br>
+            이것도 흔한 패턴이구나 싶은 것을 이 페이지에서는 <span class="nobreak">조사해 보세요.</span><br>
+            꽤 놓치기 쉬운 패턴이라고 <span class="nobreak">저는 생각합니다.</span><br>
           </p>
           
-          クリック↓タップ<br>
+          클릭↓탭<br>
           
           <!-- 
             【修正箇所】
@@ -52,21 +52,21 @@
           -->
           <div style="color: #ffffff; cursor: pointer; user-select: none; transition: color 0.3s ease;" 
                onclick="this.style.color = (this.style.color === 'rgb(255, 255, 255)' || this.style.color === '#ffffff') ? '' : '#ffffff';">
-            制作者名の　まりc　で検索してください。
+            제작자 이름인　마리c　로 검색해 주세요.
           </div>
           
-          クリック↑タップ<br>
+          클릭↑탭<br>
           
-          <p>次のページもよろしく<span class="nobreak">お願いいたします。</span></p>
-          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">ロ</p>
+          <p>다음 페이지도 잘 <span class="nobreak">부탁드립니다.</span></p>
+          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">로</p>
         </div>
       </article>
     </main>
 
     <!-- フッター部分 -->
     <footer class="site-footer">
-      <p>&copy; 2026 ARG初心者チュートリアル</p>
-      <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
     
       <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
     </footer>
@@ -97,10 +97,10 @@
         elements.forEach((el) => {
           if (el.children.length === 0) {
             // 不完全なメッセージの要素だけを非表示にします
-            if (el.textContent.includes('キーワードはまだ不完全です')) {
+            if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
               el.style.display = 'none';
             }
-            if (el.textContent.includes('キーワードの一部は正しいようです')) {
+            if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
               el.style.display = 'none';
             }
           }

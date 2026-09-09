@@ -4,7 +4,7 @@
  <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>超!ARG団</title>
+ <title>초!ARG단</title>
  <!-- 各種CSSを読み込みます -->
  <link rel="stylesheet" href="../assets/css/search-modal.css">
  <link rel="stylesheet" href="../assets/css/page-counter.css">
@@ -18,37 +18,37 @@
 
  <!-- 上部ナビゲーション・ヘッダー -->
  <nav class="top-nav">
- <div class="top-nav__title">超!ARG団チュートリアル!</div>
+ <div class="top-nav__title">초!ARG단 튜토리얼!</div>
  <div class="top-nav__search">
- <label class="visually-hidden" for="searchInput">検索</label>
- <input id="searchInput" placeholder="キーワードを入力">
- <button id="searchBtn" type="button">検索</button>
+ <label class="visually-hidden" for="searchInput">검색</label>
+ <input id="searchInput" placeholder="키워드를 입력">
+ <button id="searchBtn" type="button">검색</button>
  </div>
  </nav>
 <div class="site-container">
  <main class="content">
  <article class="article arudan-article">
  <div class="article-body">
-      <div class="arudan-logo">世界を変えるARG</div>
+      <div class="arudan-logo">세계를 바꾸는 ARG</div>
 
       <!-- 本文エリア：初期状態は非表示（opacity: 0）に設定 -->
       <p class="arudan-text" style="opacity: 0; transition: opacity 1.2s ease;">
-        正解です。<br>
-        このワードで検索することを思いつけるなら、もう大丈夫。<br>
+        정답입니다.<br>
+        이 단어로 검색할 생각을 해낼 수 있다면, 이제 괜찮습니다.<br>
         <br>
-        1つ見つけると次が見つかる、<span class="nobreak">というパターンでした。</span><br>
+        하나를 찾으면 다음이 보인다, <span class="nobreak">는 패턴이었습니다.</span><br>
         <br>
-        ここまで来てくれたあなたへ、<span class="nobreak">私たちが目指しているものを</span><span class="nobreak">お話しします。</span><br>
+        여기까지 와 준 당신에게, <span class="nobreak">우리가 지향하는 것을 </span><span class="nobreak">이야기하겠습니다.</span><br>
             
-        現実世界とARG世界が<span class="nobreak">混ざること。</span><br>
-        ARGが現実世界を超えていく、<span class="nobreak">そんな未来。</span><br>
-        超えた時に世界を変えていくのはARG作者たち。<br>
-        最前線に立つのは<span class="nobreak">プレイヤーたち。</span><br>
-        今よりきっとずっと刺激的で<span class="nobreak">楽しい世界になるはずです。</span><br>
+        현실 세계와 ARG 세계가 <span class="nobreak">뒤섞이는 것.</span><br>
+        ARG가 현실 세계를 넘어서는, <span class="nobreak">그런 미래.</span><br>
+        넘어섰을 때 세계를 바꿔 나가는 건 ARG 작자들.<br>
+        최전선에 서는 건 <span class="nobreak">플레이어들.</span><br>
+        지금보다 분명 훨씬 자극적이고 <span class="nobreak">즐거운 세계가 될 겁니다.</span><br>
         
-        現実に<span class="g-color">界</span>入するため、ARGもプレイヤーもまだまだ数が必要です。<br>
-        世界を共に変えていく<span class="nobreak">同志が必要です。</span><br>
-        こんなところまで来てくれるあなたの力が必要です。<br>
+        현실에 <span class="g-color">계</span>입하기 위해, ARG도 플레이어도 아직 수가 더 필요합니다.<br>
+        세계를 함께 바꿔 나갈 <span class="nobreak">동지가 필요합니다.</span><br>
+        이런 데까지 와 주는 당신의 힘이 필요합니다.<br>
       </p>
     </div>
   </article>
@@ -56,8 +56,8 @@
 
 <!-- フッター -->
 <footer class="site-footer arudan-footer">
-  <p>&copy; 2026 超！ARG団</p>
-  <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+  <p>&copy; 2026 초！ARG단 — 원작 まりc</p>
+  <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
 
       <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
     </footer>
@@ -82,10 +82,10 @@
        const elements = modal.querySelectorAll('p, span, div');
        elements.forEach((el) => {
          if (el.children.length === 0) {
-           if (el.textContent.includes('キーワードはまだ不完全です')) { 
+           if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) { 
              el.style.display = 'none'; 
            }
-           if (el.textContent.includes('キーワードの一部は正しいようです')) {
+           if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
              el.style.display = 'none';
            }
          }

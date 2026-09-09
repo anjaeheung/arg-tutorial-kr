@@ -4,7 +4,7 @@
  <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>超!ARG団</title>
+ <title>초!ARG단</title>
  <!-- 各種CSSを読み込みます -->
  <link rel="stylesheet" href="../assets/css/search-modal.css">
  <link rel="stylesheet" href="../assets/css/page-counter.css">
@@ -18,31 +18,31 @@
 
  <!-- 上部ナビゲーション・ヘッダー -->
  <nav class="top-nav">
- <div class="top-nav__title">超!ARG団チュートリアル!</div>
+ <div class="top-nav__title">초!ARG단 튜토리얼!</div>
  <div class="top-nav__search">
- <label class="visually-hidden" for="searchInput">検索</label>
- <input id="searchInput" placeholder="キーワードを入力">
- <button id="searchBtn" type="button">検索</button>
+ <label class="visually-hidden" for="searchInput">검색</label>
+ <input id="searchInput" placeholder="키워드를 입력">
+ <button id="searchBtn" type="button">검색</button>
  </div>
  </nav>
 <div class="site-container">
  <main class="content">
  <article class="article arudan-article">
  <div class="article-body">
-      <div class="arudan-logo">目的について</div>
+      <div class="arudan-logo">목적에 대해</div>
 
       <!-- 本文エリア：初期状態は非表示（opacity: 0）に設定 -->
       <p class="arudan-text" style="opacity: 0; transition: opacity 1.2s ease;">
-        正解です。<br>
-        少ない情報からよくこの2ワードにたどり着きましたね。<br>
-        さすがです。<br>
+        정답입니다.<br>
+        적은 정보로 이 두 단어까지 잘 찾아오셨네요.<br>
+        역시입니다.<br>
         <br>
-        私たちの目的、ですね。<br>
-        ARGをプレイする人を増やすこと、ARGを作る人を増やすこと。<br>
-        世界にもっとARGを！と言ったところでしょうか。<br>
-        そのためにARG初心者<span class="nobreak">チュートリアルと</span><br>
-        称して<span class="highlight-cyan">新</span>しい同志を<span class="nobreak">探していました。</span><br>
-        もうあなたは私たちの同志だと思っていますよ。<br>
+        우리의 목적, 말이죠.<br>
+        ARG를 플레이하는 사람을 늘리는 것, ARG를 만드는 사람을 늘리는 것.<br>
+        세상에 더 많은 ARG를! 이라고나 할까요.<br>
+        그래서 ARG 초보자 <span class="nobreak">튜토리얼이라 </span><br>
+        칭하며 <span class="highlight-cyan">신</span>입 동지를 <span class="nobreak">찾고 있었습니다.</span><br>
+        이미 당신은 우리의 동지라고 생각하고 있어요.<br>
       </p>
     </div>
   </article>
@@ -50,8 +50,8 @@
 
 <!-- フッター -->
 <footer class="site-footer arudan-footer">
-  <p>&copy; 2026 超！ARG団</p>
-  <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+  <p>&copy; 2026 초！ARG단 — 원작 まりc</p>
+  <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
 
       <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
     </footer>
@@ -76,10 +76,10 @@
        const elements = modal.querySelectorAll('p, span, div');
        elements.forEach((el) => {
          if (el.children.length === 0) {
-           if (el.textContent.includes('キーワードはまだ不完全です')) { 
+           if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) { 
              el.style.display = 'none'; 
            }
-           if (el.textContent.includes('キーワードの一部は正しいようです')) {
+           if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
              el.style.display = 'none';
            }
          }

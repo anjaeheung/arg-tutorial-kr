@@ -4,7 +4,7 @@
  <meta charset="UTF-8">
  <meta name="robots" content="noindex, nofollow">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>超!ARG団</title>
+ <title>초!ARG단</title>
 
  <!-- 整理後の外部CSSを読み込み -->
  <link rel="stylesheet" href="../assets/css/yukimama.css">
@@ -51,7 +51,7 @@
 
  <!-- オープニング演出用オーバーレイ -->
  <div id="opening-overlay">
-   <div class="opening-text">どうして</div>
+   <div class="opening-text">어째서</div>
  </div>
 
  <!-- 画面ノイズ演出用のオーバーレイ -->
@@ -82,10 +82,10 @@
        const elements = modal.querySelectorAll('p, span, div');
        elements.forEach((el) => {
          if (el.children.length === 0) {
-           if (el.textContent.includes('キーワードはまだ不完全です')) { 
+           if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) { 
              el.style.display = 'none'; 
            }
-           if (el.textContent.includes('キーワードの一部は正しいようです')) {
+           if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
              el.style.display = 'none';
            }
          }
@@ -147,7 +147,7 @@
 
        firstMsg = document.createElement('div');
        firstMsg.className = 'opening-question first-msg';
-       firstMsg.textContent = 'ねえ　どうして？';
+       firstMsg.textContent = '있잖아　어째서?';
        overlay.appendChild(firstMsg);
 
        requestAnimationFrame(() => {
@@ -176,7 +176,7 @@
 
        secondMsg = document.createElement('div');
        secondMsg.className = 'opening-question second-msg';
-       secondMsg.innerHTML = 'どうして<br>あんなにはやく<br>みつけたの？';
+       secondMsg.innerHTML = '어째서<br>그렇게 빨리<br>찾아낸 거야?';
        overlay.appendChild(secondMsg);
 
        requestAnimationFrame(() => {
@@ -209,7 +209,7 @@
 
        thirdMsg = document.createElement('div');
        thirdMsg.className = 'opening-question third-msg';
-       thirdMsg.textContent = 'そっか';
+       thirdMsg.textContent = '그렇구나';
        overlay.appendChild(thirdMsg);
 
        requestAnimationFrame(() => {
@@ -233,7 +233,7 @@
 
        fourthMsg = document.createElement('div');
        fourthMsg.className = 'opening-question fourth-msg';
-       fourthMsg.textContent = '同志になってくれるんだね';
+       fourthMsg.textContent = '동지가 되어 주는구나';
        overlay.appendChild(fourthMsg);
 
        requestAnimationFrame(() => {
@@ -257,7 +257,7 @@
 
        fifthMsg = document.createElement('div');
        fifthMsg.className = 'opening-question fifth-msg';
-       fifthMsg.textContent = 'ありがとう';
+       fifthMsg.textContent = '고마워';
        overlay.appendChild(fifthMsg);
 
        requestAnimationFrame(() => {
@@ -275,7 +275,7 @@
      setTimeout(() => {
        sixthMsg = document.createElement('div');
        sixthMsg.className = 'opening-question sixth-msg';
-       sixthMsg.innerHTML = 'これからも<br>たくさん<br>あそぼうね';
+       sixthMsg.innerHTML = '앞으로도<br>많이<br>놀자';
        overlay.appendChild(sixthMsg);
 
        requestAnimationFrame(() => {
@@ -327,7 +327,7 @@
 
        const span = document.createElement('span');
        span.className = 'spam-text';
-       span.textContent = 'どうして';
+       span.textContent = '어째서';
        
        const x = Math.random() * 100; 
        const y = Math.random() * 100; 
@@ -362,7 +362,7 @@
      for (let i = 0; i < totalCount; i++) {
        const item = document.createElement('div');
        item.className = 'grid-item';
-       item.textContent = 'どうして';
+       item.textContent = '어째서';
        item.style.animationDelay = `${Math.random() * 0.4}s`;
        grid.appendChild(item);
      }
@@ -379,7 +379,7 @@
      for (let i = 0; i < totalCount; i++) {
        const item = document.createElement('div');
        item.className = 'arigatou-grid-item';
-       item.textContent = 'ありがとう';
+       item.textContent = '고마워';
        // 0秒〜0.5秒の間でランダムに高速パラパラと敷き詰めます
        item.style.animationDelay = `${Math.random() * 0.5}s`;
        grid.appendChild(item);

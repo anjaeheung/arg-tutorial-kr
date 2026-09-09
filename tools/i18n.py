@@ -25,6 +25,20 @@ STR_LIT = re.compile(r"""(['"])((?:\.|(?!\1)[^\\n])*)\1""")
 TPL_LIT = re.compile(r"`((?:\.|[^\`])*)`", re.S)
 BLOCK = re.compile(r"<(script|style)\b[^>]*>(.*?)</\1\s*>", re.S | re.I)
 
+NEWLINE = chr(10)
+
+# 정규식으로 JS 를 파싱하면 따옴표 짝이 어긋나 코드 덩어리가 통째로 잡힐 때가 있다.
+# 그런 조각에 번역을 주입하면 스크립트가 깨지므로 후보에서 제외한다.
+CODEISH = (");", "=>", "function", "document.", "classList", "setTimeout",
+           "querySelector", "addEventListener", "//", "getElementById")
+
+
+def looks_like_code(piece):
+    if any(tok in piece for tok in CODEISH):
+        return True
+    # 표시용 문자열은 줄바꿈과 세미콜론을 함께 갖지 않는다
+    return NEWLINE in piece and ";" in piece
+
 
 def js_segments(js, offset=0):
     """JS 문자열 리터럴 위치. 따옴표 3종을 모두 본다."""
@@ -74,7 +88,7 @@ def collect(path):
             continue
         seen.add((s, e))
         piece = raw[s:e]
-        if piece.strip() and JA.search(piece):
+        if piece.strip() and JA.search(piece) and not looks_like_code(piece):
             items.append({"kind": kind, "start": s, "end": e, "ja": piece, "ko": ""})
     return raw, items
 
@@ -114,9 +128,7 @@ def cmd_extract():
     save(catalog)
     chars = sum(len(i["ja"]) for v in catalog.values() for i in v)
     kept = sum(1 for v in catalog.values() for i in v if i["ko"])
-    print(f"파일 {len(catalog)}개 / 문자열 {total}개 / 원문 {chars}자 / 번역 유지 {kept}개")
-    for rel, items in catalog.items():
-        print(f"  {len(items):3d}  {rel}")
+    print("파일 %d개 / 문자열 %d개 / 원문 %d자 / 번역 유지 %d개" % (len(catalog), total, chars, kept))
 
 
 def cmd_dump():
@@ -184,7 +196,8 @@ def cmd_status():
     print("번역 %d/%d" % (done, total))
     for rel, items in catalog.items():
         d = sum(1 for i in items if i["ko"])
-        print("  %9s  %s" % ("완료" if d == len(items) else "%d/%d" % (d, len(items)), rel))
+        if d != len(items):
+            print("  %9s  %s" % ("%d/%d" % (d, len(items)), rel))
 
 
 if __name__ == "__main__":

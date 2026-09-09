@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARG初心者チュートリアル</title>
+  <title>ARG초보자튜토리얼</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="../assets/css/search-modal.css">
   <link rel="stylesheet" href="../assets/css/page-counter.css">
@@ -16,11 +16,11 @@
 <body>
   <!-- 上部ナビゲーション・ヘッダー -->
   <nav class="top-nav">
-    <div class="top-nav__title">ARG初心者チュートリアル！</div>
+    <div class="top-nav__title">ARG 초보자 튜토리얼!</div>
     <div class="top-nav__search">
-      <label class="visually-hidden" for="searchInput">検索</label>
-      <input id="searchInput" placeholder="キーワードを入力">
-      <button id="searchBtn" type="button">検索</button>
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
     </div>
   </nav>
 
@@ -29,26 +29,26 @@
     <main class="content">
       <article class="article">
         <header class="article-header">
-           <h1 class="article-title">チュートリアルが<span class="nobreak">はじまるよ</span></h1>
+           <h1 class="article-title">튜토리얼이<span class="nobreak">시작됩니다</span></h1>
         </header>
         <div class="article-body">
           <p>
-            そうです、それが第一歩です！<br>
-            怪しい言葉や気になる言葉など<span class="nobreak">隠されたキーワードを見つけ</span><br>
-            検索して新しいページに進む。<span class="nobreak">それが基本です。</span><br>
-            次はこのゲームを制作した目的についてお話ししたいと思います。<br>
-            何を検索したらいいのか、<span class="nobreak">わかりますか？</span><br>
-            目的について、<span class="nobreak">お話ししたいです。</span><br>
+            그렇습니다, 그게 첫걸음입니다!<br>
+            수상한 말이나 신경 쓰이는 말 등 <span class="nobreak">숨겨진 키워드를 찾아내고</span><br>
+            검색해서 새로운 페이지로 나아간다. <span class="nobreak">그것이 기본입니다.</span><br>
+            다음은 이 게임을 만든 목적에 대해 이야기하고 싶습니다.<br>
+            무엇을 검색하면 좋을지, <span class="nobreak">아시겠나요?</span><br>
+            목적에 대해, <span class="nobreak">이야기하고 싶습니다.</span><br>
           </p>
-          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">ケ</p>
+          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">케</p>
         </div>
       </article>
     </main>
 
     <!-- フッター部分 -->
     <footer class="site-footer">
-      <p>&copy; 2026 ARG初心者チュートリアル</p>
-      <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
     
       <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
     </footer>
@@ -79,10 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // 【修正点】子要素を1つも持たない（末端の要素である）場合のみ判定します
         if (el.children.length === 0) {
           // 不完全なメッセージの要素だけを非表示にします
-          if (el.textContent.includes('キーワードはまだ不完全です')) {
+          if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
             el.style.display = 'none';
           }
-          if (el.textContent.includes('キーワードの一部は正しいようです')) {
+          if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
             el.style.display = 'none';
           }
         }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>みつけたね</title>
+  <title>찾아냈네요</title>
   <!-- mitsuketa.css を読み込みます -->
   <link rel="stylesheet" href="../assets/css/search-modal.css">
   <link rel="stylesheet" href="../assets/css/page-counter.css">
@@ -66,13 +66,13 @@
 </head>
 <body class="dark-page">
   
-  <p class="fade-step-1"><span>み</span><span>つ</span><span>け</span><span>た</span><span>ね</span></p>
+  <p class="fade-step-1"><span>찾</span><span>아</span><span>냈</span><span>네</span><span>요</span></p>
 
   <nav class="top-nav">
     <div class="top-nav__search">
-      <label class="visually-hidden" for="searchInput">検索</label>
-      <input id="searchInput" placeholder="キーワードを入力">
-      <button id="searchBtn" type="button">検索</button>
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
     </div>
   </nav>
 
@@ -88,23 +88,23 @@
           <!-- 演出2＆3のグループ: 演出1が消えた後、カード中央に入れ替わりで現れます -->
           <div class="fade-step-group">
             <p class="fade-step-2">
-              <span class="word-1">協力者</span>
-              <span class="word-2">Xアカウント</span>
-              <span class="word-3">まりcがフォローしている</span>
-              <span class="word-4">自己紹介の5文字</span>
+              <span class="word-1">협력자</span>
+              <span class="word-2">X 계정</span>
+              <span class="word-3">마리c가 팔로우하고 있는</span>
+              <span class="word-4">자기소개의 일본어 5글자</span>
             </p>
             
             <div class="fade-step-3">
               <a href="https://x.com/nstzg3Cq4s3rsAU" target="_blank" rel="noopener noreferrer" class="link-btn">
-                まりcのXアカウント（外部リンク）
+                마리c의 X 계정(외부 링크)
               </a>
             </div>
 
             <!-- 【新規追加】答えへのショートカットボタンとテキスト表示エリア -->
             <div class="fade-step-4">
-              <p class="shortcut-note">X見れない人、答えにショートカットしたい人はこちら</p>
-              <button type="button" id="ansBtn" class="ans-btn" onclick="revealAnswer()">答え</button>
-              <p id="answer-text" class="answer-text" style="display: none;">キーワードは「<strong>ぬいぐるみ</strong>」です</p>
+              <p class="shortcut-note">X를 볼 수 없는 분, 답으로 건너뛰고 싶은 분은 여기</p>
+              <button type="button" id="ansBtn" class="ans-btn" onclick="revealAnswer()">답</button>
+              <p id="answer-text" class="answer-text" style="display: none;">키워드는 「<strong>ぬいぐるみ(인형)</strong>」입니다</p>
             </div>
 
           </div>
@@ -115,8 +115,8 @@
     </main>
 
     <footer class="site-footer dark-footer">
-      <p>&copy; 2026 ARG初心者チュートリアル</p>
-      <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
     
       <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
     </footer>
@@ -166,10 +166,10 @@
           // 子要素を1つも持たない（末端の要素である）場合のみ判定します
           if (el.children.length === 0) {
             // 不完全なメッセージの要素だけを非表示にします
-            if (el.textContent.includes('キーワードはまだ不完全です')) {
+            if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
               el.style.display = 'none';
             }
-            if (el.textContent.includes('キーワードの一部は正しいようです')) {
+            if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
               el.style.display = 'none';
             }
           }

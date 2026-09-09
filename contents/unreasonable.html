@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>理不尽</title>
+  <title>부조리</title>
    <link rel="stylesheet" href="../assets/css/search-modal.css">
   <link rel="stylesheet" href="../assets/css/page-counter.css">
   <link rel="stylesheet" href="../assets/css/page-list-modal.css">
@@ -16,11 +16,11 @@
 <body>
    <!-- 上部ナビゲーション・ヘッダー -->
   <nav class="top-nav">
-    <div class="top-nav__title">ARG初心者チュートリアル！</div>
+    <div class="top-nav__title">ARG 초보자 튜토리얼!</div>
     <div class="top-nav__search">
-      <label class="visually-hidden" for="searchInput">検索</label>
-      <input id="searchInput" placeholder="キーワードを入力">
-      <button id="searchBtn" type="button">検索</button>
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
     </div>
   </nav>
 
@@ -36,33 +36,33 @@
     <main class="content">
       <article class="article">
         <header class="article-header">
-          <h1 class="article-title">理不尽、無理ゲー要素について
+          <h1 class="article-title">부조리, 무리게임 요소에 대해
           </h1>
         </header>
         <div class="article-body">
           <p>
-            ここまで進んできてくれてありがとうございます。<br>
-            急にこの言葉だけがあって調べろって言われたら<br>
-            正直理不尽、無理ゲーだなって思います。<br>
-            このチュートリアル程度の文字数なら言葉をローラーする作戦で行けると<br>
-            思いますが、文章量が増えた上で今回の言葉のように一般的な言葉が<br>
-            キーワードだとしたら…<span class="nobreak">無理ゲーですよね。</span><br>
-            個人的には急に出てくる謎解きも無理ゲー要素になりがちかな、と考えます。<br>
-            ARGと言えば謎解きという人もいるかもしれませんが<br>
-            脈絡もなく入ってくるのは理不尽、だと思います。<br>
-            このチュートリアルはそんな要素はない…<span class="nobreak">と思います<a href="../contents/hidden-links.html" class="hidden-link">。</a>←本当に？</span><br>
-            <br>協力者より：ここも厳しいでしょ、正直スマホだと<span class="nobreak">本当に無理ゲー</span><br>
-            そんなとこにリンク置いても誰も気づけないって。<span class="nobreak">。を押してね。</span>
+            여기까지 진행해 주셔서 감사합니다.<br>
+            갑자기 이 말만 덩그러니 놓고 조사하라고 하면<br>
+            솔직히 부조리하고 무리게임이라고 생각합니다.<br>
+            이 튜토리얼 정도의 글자 수라면 단어를 훑는 작전으로 갈 수 있다고<br>
+            생각합니다만, 글이 많아진 데다 이번 말처럼 일반적인 단어가<br>
+            키워드라고 한다면…<span class="nobreak">무리게임이죠.</span><br>
+            개인적으로는 갑자기 튀어나오는 수수께끼 풀이도 무리게임 요소가 되기 쉽다고 봅니다.<br>
+            ARG 하면 수수께끼 풀이라는 분도 계실지 모르지만<br>
+            맥락 없이 끼어드는 건 부조리하다고 생각합니다.<br>
+            이 튜토리얼에는 그런 요소가 없다…<span class="nobreak">고 생각합니다<a href="../contents/hidden-links.html" class="hidden-link">。</a>←정말로?</span><br>
+            <br>협력자로부터: 여기도 빡세지, 솔직히 스마트폰이면 <span class="nobreak">진짜 무리게임</span><br>
+            그런 데다 링크 놔봤자 아무도 못 알아챈다니까.<span class="nobreak">。을 눌러 봐.</span>
             <!--（。の部分が隠しリンク）-->
           </p>
-          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">検</p>
+          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">검</p>
         </div>
       </article>
     </main>
   </div>
 <footer class="site-footer">
-      <p>&copy; 2026 ARG初心者チュートリアル</p>
-      <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
     
       <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
     </footer>
@@ -94,10 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // 【修正点】子要素を1つも持たない（末端の要素である）場合のみ判定します
         if (el.children.length === 0) {
           // 不完全なメッセージの要素だけを非表示にします
-          if (el.textContent.includes('キーワードはまだ不完全です')) {
+          if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
             el.style.display = 'none';
           }
-          if (el.textContent.includes('キーワードの一部は正しいようです')) {
+          if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
             el.style.display = 'none';
           }
         }

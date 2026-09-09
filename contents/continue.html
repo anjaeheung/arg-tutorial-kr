@@ -4,7 +4,7 @@
  <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>超!ARG団</title>
+ <title>초!ARG단</title>
  <!-- 専用CSS ChoARGdan.css を読み込みます -->
  <link rel="stylesheet" href="../assets/css/search-modal.css">
  <link rel="stylesheet" href="../assets/css/page-counter.css">
@@ -81,16 +81,16 @@
 
  <!-- オープニング演出用の全画面オーバーレイ -->
  <div id="opening-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #0b0c10; z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 1; transition: opacity 1.5s ease;">
-   <img id="opening-logo" src="../media/img/ARGfirst.png" alt="超！ARG団" style="max-width: 80%; max-height: 80%; object-fit: contain; opacity: 0; transition: opacity 1.5s ease; filter: drop-shadow(0 0 20px rgba(255,255,255,0.15));">
+   <img id="opening-logo" src="../media/img/ARGfirst.png" alt="초！ARG단" style="max-width: 80%; max-height: 80%; object-fit: contain; opacity: 0; transition: opacity 1.5s ease; filter: drop-shadow(0 0 20px rgba(255,255,255,0.15));">
  </div>
 
  <!-- 上部ナビゲーション・ヘッダー(超!ARG団チュートリアル!に変更) -->
  <nav class="top-nav">
- <div class="top-nav__title">超!ARG団チュートリアル!</div>
+ <div class="top-nav__title">초!ARG단 튜토리얼!</div>
  <div class="top-nav__search">
- <label class="visually-hidden" for="searchInput">検索</label>
- <input id="searchInput" placeholder="キーワードを入力">
- <button id="searchBtn" type="button">検索</button>
+ <label class="visually-hidden" for="searchInput">검색</label>
+ <input id="searchInput" placeholder="키워드를 입력">
+ <button id="searchBtn" type="button">검색</button>
  </div>
  </nav>
 <div class="site-container">
@@ -98,17 +98,17 @@
  <article class="article arudan-article">
  <div class="article-body">
       <!-- ★インラインスタイルを削除し、元のプレーンなタグに戻しました -->
-      <div class="arudan-logo">超！ARG団</div>
+      <div class="arudan-logo">초！ARG단</div>
 
       <!-- 本文エリア：初期状態は非表示（opacity: 0）に設定 -->
       <p class="arudan-text" style="opacity: 0; transition: opacity 1.2s ease;">
-        超！ARG団へようこそ！<br>
-        ようこそ同志。<br>
-        ここまで来てくれるとは・・・<br>
-        本当にARGが好きなんですね。<br>
-        歓迎します。<br>
+        초！ARG단에 오신 것을 환영합니다!<br>
+        어서 오세요, 동지.<br>
+        여기까지 와 주시다니……<br>
+        정말로 ARG를 좋아하시는군요.<br>
+        환영합니다.<br>
         <br>
-        さあ、チュートリアルを続けましょう。
+        자, 튜토리얼을 계속합시다.
       </p>
     </div>
   </article>
@@ -116,8 +116,8 @@
 
 <!-- フッター（★インラインスタイルを削除し、元のプレーンなタグに戻しました） -->
 <footer class="site-footer arudan-footer">
-  <p>&copy; 2026 超！ARG団</p>
-  <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+  <p>&copy; 2026 초！ARG단 — 원작 まりc</p>
+  <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
 
       <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
     </footer>
@@ -142,10 +142,10 @@
        const elements = modal.querySelectorAll('p, span, div');
        elements.forEach((el) => {
          if (el.children.length === 0) {
-           if (el.textContent.includes('キーワードはまだ不完全です')) { 
+           if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) { 
              el.style.display = 'none'; 
            }
-           if (el.textContent.includes('キーワードの一部は正しいようです')) {
+           if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
              el.style.display = 'none';
            }
          }
@@ -206,11 +206,11 @@
      const waitMiddle = 1500;        
      const typingSpeed = 100;        
      
-     const part1Text = 'さあ、';
+     const part1Text = '자, ';
      const remainingText = lastText.startsWith(part1Text) ? lastText.substring(part1Text.length) : lastText;
 
      // 【改善点】「続けましょう。」の直前で折り返せるように、内部テキストを更に分割します
-     const splitIndex = remainingText.indexOf('続けましょう。');
+     const splitIndex = remainingText.indexOf('계속합시다.');
      let part2Text = remainingText;
      let part3Text = '';
      if (splitIndex !== -1) {

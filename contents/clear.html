@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>おめでとうございます！</title>
+  <title>축하합니다!</title>
   <link rel="stylesheet" href="../assets/css/search-modal.css">
   <link rel="stylesheet" href="../assets/css/page-counter.css">
   <link rel="stylesheet" href="../assets/css/page-list-modal.css">
@@ -15,11 +15,11 @@
 <body>
   <!-- 上部ナビゲーション・ヘッダー -->
   <nav class="top-nav">
-    <div class="top-nav__title">ARG初心者チュートリアル！</div>
+    <div class="top-nav__title">ARG 초보자 튜토리얼!</div>
     <div class="top-nav__search">
-      <label class="visually-hidden" for="searchInput">検索</label>
-      <input id="searchInput" placeholder="キーワードを入力">
-      <button id="searchBtn" type="button">検索</button>
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
     </div>
   </nav>
 
@@ -27,18 +27,18 @@
     <main class="content">
       <article class="article">
         <header class="article-header">
-         <h1 class="article-title">おめでとう<span class="nobreak">ございます！</span></h1>
+         <h1 class="article-title">축하<span class="nobreak">합니다!</span></h1>
         </header>
         <div class="article-body">
           <!-- 本文 -->
           <p class="congrats-text">
-            これからのあなたの<span class="nobreak">ARGライフに幸あれ！</span>
+            앞으로 당신의 <span class="nobreak">ARG 라이프에 행운이 있기를!</span>
           </p>
           
           <!-- X（Twitter）ポスト用シェアボタン -->
           <div class="share-area">
             <a href="#" id="xShareBtn" target="_blank" rel="noopener noreferrer" class="x-share-btn">
-              チュートリアル完了をXで報告
+              튜토리얼 완료를 X에 공유
             </a>
           </div>
         </div>
@@ -47,8 +47,8 @@
 
     <!-- フッター -->
     <footer class="site-footer">
-      <p>&copy; 2026 ARG初心者チュートリアル</p>
-      <p>このWebサイトの内容はすべてフィクションであり、実在の人物・団体とは一切関係がありません。</p>  
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
     
       <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
     </footer>
@@ -85,7 +85,9 @@
     // 【ポストされるメッセージテキスト】
     // 1行目にタグ、2行目に本文、3行目に自動でリンクを配置
     // ==========================================
-    const tweetText = `#ARG初心者チュートリアル\nARG初心者チュートリアルを完了しました！\n${noteUrl}`;
+    const tweetText = `#ARG初心者チュートリアル #ARG초보자튜토리얼
+ARG 초보자 튜토리얼을 완료했습니다!
+${noteUrl}`;
 
     // リンクを自動で組み立ててボタンに設定する処理
     const shareBtn = document.getElementById('xShareBtn');
@@ -127,10 +129,10 @@
         const elements = modal.querySelectorAll('p, span, div');
         elements.forEach((el) => {
           if (el.children.length === 0) {
-            if (el.textContent.includes('キーワードはまだ不完全です')) {
+            if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
               el.style.display = 'none';
             }
-            if (el.textContent.includes('キーワードの一部は正しいようです')) {
+            if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
               el.style.display = 'none';
             }
           }
