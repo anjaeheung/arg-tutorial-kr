@@ -38,6 +38,25 @@ SPACED = {
     "케로케로하트": [],
 }
 
+# 검색 결과 목록에 뜨는 표시용 제목. 키워드와는 별개라 따로 옮긴다.
+TITLES = {
+    "ARG初心者チュートリアル": "ARG초보자튜토리얼",
+    "おめでとう": "축하합니다",
+    "それだけですか？": "그것뿐인가요?",
+    "ユキママさん": "유키마마 씨",
+    "不自然さ": "부자연스러움",
+    "強調表示": "강조 표시",
+    "現実世界": "현실세계",
+    "理不尽・無理ゲー要素": "부조리·무리게임 요소",
+    "目的": "목적",
+    "超！ARG団": "초！ARG단",
+    "超！ARG団の構成員": "초！ARG단의 구성원",
+    "超！ARG団の目的": "초！ARG단의 목적",
+    "超！ARG団は現実世界を変えていく": "초！ARG단은 현실 세계를 바꿔 나간다",
+    "選択・反転・固有名詞": "선택·반전·고유명사",
+}
+
+
 def combined(tokens):
     """엔진이 실제로 fetch 하는 파일명을 계산한다."""
     t = [x for x in tokens if x]
@@ -53,8 +72,11 @@ def localize(dest: Path):
     data = json.loads(dest.read_text(encoding="utf-8"))
     items = data.get("results") if isinstance(data, dict) else data
     for it in items or []:
-        if it.get("title") in KO:
-            it["title"] = KO[it["title"]]
+        t = it.get("title")
+        if t in TITLES:
+            it["title"] = TITLES[t]
+        elif t in KO:
+            it["title"] = KO[t]
     dest.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
@@ -93,6 +115,15 @@ def main():
         localize(SEARCH / f"{name}.json")
         made += 1
         print(f"  2단어 {KO[a]} + {KO[b]} -> {name}.json")
+
+    # 일본어 이름 파일에도 한국어 제목이 뜨도록 data/search 전체를 훑는다
+    swept = 0
+    for f in sorted(SEARCH.glob("*.json")):
+        before = f.read_text(encoding="utf-8")
+        localize(f)
+        if f.read_text(encoding="utf-8") != before:
+            swept += 1
+    print("제목 한국어화: %d개 파일" % swept)
 
     print(f"\n한글 검색 파일 {made}개 생성 / 총 {len(list(SEARCH.glob('*.json')))}개")
 
