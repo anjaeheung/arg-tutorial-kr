@@ -90,6 +90,20 @@
         "contents/yukimama.html"
       ],
       "hint": null
+    },
+    "まおくぅる": {
+      "file": "まおくぅる.json",
+      "paths": [
+        "contents/maocool.html"
+      ],
+      "hint": "needMore"
+    },
+    "まおくーる": {
+      "file": "まおくーる.json",
+      "paths": [
+        "contents/maocool.html"
+      ],
+      "hint": "needMore"
     }
   },
   "pairs": {
@@ -141,12 +155,23 @@
       "paths": [
         "contents/allcomplete.html"
       ]
+    },
+    "まおくぅる + まりc": {
+      "file": "まおくぅるまりc.json",
+      "paths": [
+        "contents/soudesu.html"
+      ],
+      "note": "후기 마지막 서명이 단서"
+    },
+    "まおくーる + まりc": {
+      "file": "まおくーるまりc.json",
+      "paths": [
+        "contents/soudesu.html"
+      ],
+      "note": "후기 마지막 서명이 단서"
     }
   },
-  "unresolved": {
-    "contents/maocool.html": "키워드 미확인 (ex1 보너스)",
-    "contents/soudesu.html": "키워드 미확인 (ex2 보너스)"
-  },
+  "unresolved": {},
   "reached_by_link": {
     "contents/clear.html": "complete 페이지에서 링크",
     "contents/complete.html": "hidden-links 등에서 링크",
