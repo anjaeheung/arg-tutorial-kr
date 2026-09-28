@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>현실세계</title>
+   <link rel="stylesheet" href="../assets/css/search-modal.css">
+  <link rel="stylesheet" href="../assets/css/page-counter.css">
+  <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+  <link rel="stylesheet" href="../assets/css/search-bar.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body>
+ <!-- 上部ナビゲーション・ヘッダー -->
+  <nav class="top-nav">
+    <div class="top-nav__title">ARG 초보자 튜토리얼!</div>
+    <div class="top-nav__search">
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
+    </div>
+  </nav>
+
+  <div class="site-container">
+    <header class="site-header">
+      
+    </header>
+
+<body>
+  <div class="site-container">
+    <main class="content">
+      <article class="article">
+        <header class="article-header">
+          <h1 class="article-title">물리적 장치란 대단하다</h1>
+        </header>
+        <div class="article-body">
+          <p>현실의 물건을 쓰는 수수께끼 풀이, <span class="nobreak">물리 장치죠.</span><span class="nobreak">솔직히 동경합니다.</span><br>
+            개인으로서는 솔직히 상당히 무리가 있지만, <span class="nobreak">실물이 있거나 </span><span class="nobreak">조작하거나 하면</span><br>
+            단숨에 현실감이 높아진다고 <span class="nobreak">생각합니다.</span><br>
+            사진의 URL을 잇는 정도가 현실적인 선 <span class="nobreak">일까요.</span><br>
+            이미지의 대비나 명도를 건드리는 패턴도 <span class="nobreak">있죠.</span><br>
+            다음은 흔한 패턴입니다만, <span class="nobreak">개인적으로는 잘 못합니다.</span><br>
+            스마트폰에서는 굉장히 <span class="nobreak">알아보기 어렵습니다.</span><br>
+            번거로우시겠지만, <span class="nobreak">URL을 봐 주세요.</span><br>
+            yokuaru2, yokuaru4, <span class="nobreak">3은 어디에?</span><br>
+            1은 이상하니 무시합시다. 분명 다른 수수께끼겠죠.<br>
+            여기까지 함께해 주신 당신은 정말 <span class="nobreak">좋은 분이네요.</span><br>
+          </p>
+          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">트</p>
+        </div>
+      </article>
+    </main>
+  </div>
+ <footer class="site-footer">
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
+    
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+  </div>
+
+<!-- page counter -->
+  <div id="page-counter" class="page-counter">
+  <span id="page-current"></span>
+  <span class="sep"> / </span>
+  <!-- エラー防止のために要素は残しつつ、非表示クラスを追加します -->
+  <span id="page-total" class="hidden-total"></span>
+  <!-- ここに表示したい分母の数字を直書きします -->
+  <span>12</span>
+</div>
+
+
+<script>window.YACHO_BASE = "../"; window.YACHO_PROVIDER_MODE = "json";</script>
+<script type="module" src="../assets/js/core/index.js"></script>
+<!-- 特定のシステムメッセージのみを安全に非表示にするスクリプト -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new MutationObserver(() => {
+    // 検索モーダルのエリアを取得
+    const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]');
+    if (modal) {
+      // モーダル内の要素を取得
+      const elements = modal.querySelectorAll('p, span, div');
+      elements.forEach((el) => {
+        // 【修正点】子要素を1つも持たない（末端の要素である）場合のみ判定します
+        if (el.children.length === 0) {
+          // 不完全なメッセージの要素だけを非表示にします
+          if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
+            el.style.display = 'none';
+          }
+          if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
+            el.style.display = 'none';
+          }
+        }
+      });
+    }
+  });
+
+  // モーダルの動的な変化を監視
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+});
+</script>
+
+
+</body>
+
+</html>

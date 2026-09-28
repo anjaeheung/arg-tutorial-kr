@@ -1,0 +1,310 @@
+/* ==========================================
+   ページ全体の黒背景設定
+   ========================================== */
+body.dark-page {
+  background-color: #0b0d10; /* 画面全体の基本背景色（完全な闇） */
+  color: #f7fafc;
+}
+
+/* ==========================================
+   カード背景・枠線を時間差で出現させるアニメーション
+   ========================================== */
+@keyframes fadeInCard {
+  from {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+  to {
+    background-color: #121519;
+    border-color: #1a202c;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* 最初はカードの仕切り線（ボーダー）や背景色を透明にし、11.5秒後に浮かび上がらせます */
+.dark-article {
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+  animation: fadeInCard 1s ease-out 11.5s both;
+}
+
+/* ==========================================
+   フッターのセンタリングと見た目の調整
+   ========================================== */
+.dark-footer {
+  background-color: #121519 !important;
+  color: #718096 !important;
+  text-align: center !important;
+  padding: 30px 20px !important;
+  border-radius: 8px;
+  margin-top: 50px;
+  border: 1px solid #1a202c !important;
+  line-height: 1.6;
+}
+
+.dark-footer p {
+  margin: 8px 0;
+  font-size: 0.85rem;
+}
+
+/* ==========================================
+   アニメーションキーフレームの定義
+   ========================================== */
+
+/* 1. 「みつけたね」専用：位置（真ん中）をキープしたまま、不透明度のみを制御 */
+@keyframes fadeInOutRed {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  85% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    visibility: hidden;
+  }
+}
+
+/* 2. 通常のフェードイン */
+@keyframes fadeInNormal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 3. 検索システム・フッター専用：安全なフェードイン */
+@keyframes fadeInSystem {
+  from {
+    opacity: 0;
+    pointer-events: none; /* 出現するまでは操作（入力・クリック）を無効化 */
+  }
+  to {
+    opacity: 1;
+    pointer-events: auto; /* 出現したら有効化 */
+  }
+}
+
+/* ==========================================
+   検索窓・フッターの時間差出現
+   ========================================== */
+
+/* ヘッダー（検索システム）を11.5秒後にフェードイン */
+.top-nav {
+  opacity: 0;
+  animation: fadeInSystem 1s ease-out 11.5s both;
+}
+
+/* フッターを11.5秒後にフェードイン */
+.site-footer {
+  opacity: 0;
+  animation: fadeInSystem 1s ease-out 11.5s both;
+}
+
+/* ==========================================
+   【修正】ページカウンターの時間差出現（Transition方式）
+   ========================================== */
+
+/* 最初は完全に非表示にし、フワッと表示させるためのTransitionを設定します */
+#page-counter,
+.page-counter {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 1s ease-out !important; /* 1秒かけてフワッと表示 */
+}
+
+/* 11.5秒後、JSから「show-counter」クラスが付与されたら表示状態にします */
+#page-counter.show-counter,
+.page-counter.show-counter {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* ページカウンターの文字色を白（#ffffff）に指定（mitsuketa.css限定） */
+#page-counter span,
+.page-counter span {
+  color: #ffffff !important;
+}
+
+/* ==========================================
+   ページカウンターの重複表示解決
+   ========================================== */
+.hidden-total {
+  display: none !important; /* Yachoの元の分母（22）を完全に非表示にします */
+}
+
+/* ==========================================
+   グリッド重ね合わせ（オーバーレイ）設定
+   ========================================== */
+.overlap-container {
+  display: grid;
+  grid-template-areas: "overlap-space";
+  justify-items: center;
+  align-items: center;
+  min-height: 250px;
+  padding: 20px 0;
+}
+
+/* ==========================================
+   各パーツへの演出適用
+   ========================================== */
+
+/* ==========================================
+   演出1: 「みつけたね」細くて不気味な赤文字（画面全体のど真ん中に固定表示）
+   ========================================== */
+.fade-step-1 {
+  position: fixed;            /* 画面全体（ビューポート）を基準にします */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 完全に上下左右の真ん中へ */
+  width: 100vw;               /* 横幅を画面幅いっぱいに確保 */
+  z-index: 9999;              /* 他のすべての要素の最前面に表示 */
+  margin: 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+  pointer-events: none;       /* 表示中も背後の要素のクリック動作などを邪魔しないようにします */
+  
+  font-family: "Yu Mincho", "游明朝", "MS Mincho", "ＭＳ 明朝", serif; 
+  font-weight: 200;                    
+  letter-spacing: 0.4em;               
+  padding-left: 0.4em;                 /* 中央位置にぴったり合わせる補正 */
+  color: #e53e3e;
+  text-shadow: 0 0 10px rgba(229, 62, 62, 0.6); 
+
+  font-size: clamp(3rem, 10vw, 8rem);  /* 【PC完全維持】元のフォントサイズ指定に戻しました */
+  text-align: center;
+  animation: fadeInOutRed 5s ease-in-out forwards;
+
+  /* PC時の元の挙動に干渉せず、不意な改行だけを絶対に防ぐ設定 */
+  white-space: nowrap; 
+}
+
+/* 
+  【PC完全維持】PC時は span にレイアウトを適用せず、通常のテキスト（display: inline）
+  として扱うことで、これまでの文字間隔（letter-spacing）を100%そのまま再現します。
+*/
+.fade-step-1 span {
+  display: inline; 
+}
+
+/* ==========================================
+   【新規追加】スマホ時（画面幅768px以下）のみに限定してW字レイアウトを適用
+   ========================================== */
+@media (max-width: 768px) {
+  .fade-step-1 {
+    display: flex;                 /* スマホ時のみレイアウトをフレックスに変更 */
+    justify-content: space-around; /* 画面幅いっぱいに均等に広げる */
+    letter-spacing: 0;             /* 自動配置にするため、PC用のレタースペースをリセット */
+    padding-left: 0;               /* PC用の左側中央寄せ補正をリセット */
+  }
+
+  .fade-step-1 span {
+    display: inline-block;         /* 上下移動（translateY）を有効にするためインラインブロック化 */
+  }
+
+  /* Wの形になるよう、スマホ時のみ各文字を上下にずらします */
+  /* み */
+  .fade-step-1 span:nth-child(1) {
+    transform: translateY(-0.6em);
+  }
+  /* つ */
+  .fade-step-1 span:nth-child(2) {
+    transform: translateY(0.6em);
+  }
+  /* け */
+  .fade-step-1 span:nth-child(3) {
+    transform: translateY(-0.1em);
+  }
+  /* た */
+  .fade-step-1 span:nth-child(4) {
+    transform: translateY(0.6em);
+  }
+  /* ね */
+  .fade-step-1 span:nth-child(5) {
+    transform: translateY(-0.6em);
+  }
+}
+
+/* 演出2＆3（協力者〜ボタン）のグループ */
+.fade-step-group {
+  grid-area: overlap-space;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+}
+
+/* 演出2: 一つずつ順番に浮かび上がる言葉たち */
+.fade-step-2 {
+  font-size: 1.2rem;
+  line-height: 2.2;
+  color: #e2e8f0;
+  text-align: center;
+  margin: 0 0 30px 0;
+}
+
+.fade-step-2 span {
+  display: inline-block;
+  margin: 5px 12px;
+  opacity: 0;
+  animation: fadeInNormal 1.2s ease-out both;
+}
+
+/* タイムライン */
+.fade-step-2 .word-1 { animation-delay: 5.2s; } /* 「協力者」 */
+.fade-step-2 .word-2 { animation-delay: 6.5s; } /* 「Xアカウント」 */
+.fade-step-2 .word-3 { animation-delay: 7.8s; } /* 「まりcがフォローしている」 */
+.fade-step-2 .word-4 { animation-delay: 9.1s; } /* 「自己紹介の5文字」 */
+
+/* 演出3: Xアカウントへのリンクボタン */
+.fade-step-3 {
+  opacity: 0;
+  text-align: center;
+  margin-top: 45px;
+  animation: fadeInNormal 1s ease-out 10.5s both;
+}
+
+/* ボタン風リンクのデザイン */
+.link-btn {
+  display: inline-block;
+  background-color: #2b6cb0;
+  color: #ffffff !important;
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.link-btn:hover {
+  background-color: #3182ce;
+  transform: translateY(-2px);
+}
+/* 検索エリアの入力欄 */
+.top-nav__search input {
+  min-width: 0; /* 入力欄が縮みきれずにボタンを押し出すのを防ぐ */
+}
+
+/* 検索ボタンがスマホなどの狭い画面で潰れるのを防ぐ設定 */
+.top-nav__search button {
+  white-space: nowrap;  /* ボタン内の文字「検索」が縦に折り返されるのを禁止します */
+  flex-shrink: 0;      /* 画面幅が狭くなってもボタン自身が縮小されるのを防ぎます */
+}
+/* フレーズの途中での不自然な改行を防ぐ設定 */
+.nobreak {
+  display: inline-block;
+}

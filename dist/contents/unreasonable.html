@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부조리</title>
+   <link rel="stylesheet" href="../assets/css/search-modal.css">
+  <link rel="stylesheet" href="../assets/css/page-counter.css">
+  <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+  <link rel="stylesheet" href="../assets/css/search-bar.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body>
+   <!-- 上部ナビゲーション・ヘッダー -->
+  <nav class="top-nav">
+    <div class="top-nav__title">ARG 초보자 튜토리얼!</div>
+    <div class="top-nav__search">
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
+    </div>
+  </nav>
+
+
+  <div class="site-container">
+    <header class="site-header">
+      
+    </header>
+
+</head>
+<body>
+  <div class="site-container">
+    <main class="content">
+      <article class="article">
+        <header class="article-header">
+          <h1 class="article-title">부조리, 노답 요소에 대해
+          </h1>
+        </header>
+        <div class="article-body">
+          <p>
+            여기까지 진행해 주셔서 감사합니다.<br>
+            갑자기 이 말만 덩그러니 놓고 조사하라고 하면<br>
+            솔직히 부조리하고 노답이라고 생각합니다.<br>
+            이 튜토리얼 정도의 글자 수라면 단어를 하나씩 훑어보는 식으로도 풀 수 있다고<br>
+            생각합니다만, 글이 많아진 데다 이번 말처럼 일반적인 단어가<br>
+            키워드라고 한다면…<span class="nobreak">노답이죠.</span><br>
+            개인적으로는 갑자기 튀어나오는 수수께끼 풀이도 노답 요소가 되기 쉽다고 봅니다.<br>
+            ARG 하면 수수께끼 풀이라는 분도 계실지 모르지만<br>
+            맥락 없이 끼어드는 건 부조리하다고 생각합니다.<br>
+            이 튜토리얼에 그런 요소는 없다…<span class="nobreak">고 생각합니다<a href="../contents/hidden-links.html" class="hidden-link">。</a>←정말로?</span><br>
+            <br><span style="color:#ffffff;">협력자: 여기도 빡세잖아, 솔직히 스마트폰이면 <span class="nobreak">진짜 노답</span><br>
+            그런 데 링크를 놔봤자 아무도 못 알아챈다니까. <span class="nobreak">「。」을 눌러 봐.</span></span>
+            <!--（。の部分が隠しリンク）-->
+          </p>
+          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">검</p>
+        </div>
+      </article>
+    </main>
+  </div>
+<footer class="site-footer">
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
+    
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+  </div>
+
+<!-- page counter -->
+  <div id="page-counter" class="page-counter">
+  <span id="page-current"></span>
+  <span class="sep"> / </span>
+  <!-- エラー防止のために要素は残しつつ、非表示クラスを追加します -->
+  <span id="page-total" class="hidden-total"></span>
+  <!-- ここに表示したい分母の数字を直書きします -->
+  <span>12</span>
+</div>
+
+
+<script>window.YACHO_BASE = "../"; window.YACHO_PROVIDER_MODE = "json";</script>
+<script type="module" src="../assets/js/core/index.js"></script>
+<!-- 特定のシステムメッセージのみを安全に非表示にするスクリプト -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new MutationObserver(() => {
+    // 検索モーダルのエリアを取得
+    const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]');
+    if (modal) {
+      // モーダル内の要素を取得
+      const elements = modal.querySelectorAll('p, span, div');
+      elements.forEach((el) => {
+        // 【修正点】子要素を1つも持たない（末端の要素である）場合のみ判定します
+        if (el.children.length === 0) {
+          // 不完全なメッセージの要素だけを非表示にします
+          if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
+            el.style.display = 'none';
+          }
+          if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
+            el.style.display = 'none';
+          }
+        }
+      });
+    }
+  });
+
+  // モーダルの動的な変化を監視
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,304 @@
+/* kouhan.css */
+/* ==========================================
+   CSS Variables (超！ARG団・反転ブラックシステム)
+   ========================================== */
+:root {
+  --bg-body: #000000;             /* 完全な黒 */
+  --bg-card: #000000;             /* カード部分も黒に統一 */
+  --bg-dark-gray: #111111;        /* ヘッダー・フッター用のわずかに明るい黒 */
+  
+  --color-accent: #dd6b20;        /* 検索ボタン等の鮮やかなネオンオレンジ */
+  --color-accent-hover: #c05621;  /* ホバー時の深みのあるオレンジ */
+  --color-counter-bg: #7b341e;    /* 深い煉瓦色 */
+  
+  --text-dark: #cbd5e0;           
+  --text-main: #e2e8f0;           /* 黒背景で視認性の高い、優しい淡いグレー */
+  --text-light: #ffffff;          
+  
+  --border-color: #222222;        
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================
+   Base & Layout (全体設定)
+   ========================================== */
+body.arudan-page {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-body);
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  color: var(--text-main);
+}
+
+.site-container {
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   Header & Search Bar (上部ヘッダー)
+   ========================================== */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-dark-gray) !important;
+  padding: 12px 24px;
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.top-nav__title {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: var(--text-main) !important; 
+}
+
+.top-nav__search {
+  display: flex;
+  gap: 8px;
+}
+
+#searchInput {
+  border: 1.5px solid var(--border-color);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  outline: none;
+  background-color: var(--bg-body);
+  color: var(--text-light);
+}
+
+#searchInput:focus {
+  border-color: var(--color-accent);
+}
+
+#searchBtn {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#searchBtn:hover {
+  background-color: var(--color-accent-hover);
+}
+
+/* ==========================================
+   アニメーションキーフレームの定義
+   ========================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px); 
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUpLogoCustom {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInFooterCustom {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ==========================================
+   Main Content (暗いカードエリア)
+   ========================================== */
+.arudan-article {
+  background-color: var(--bg-card) !important;
+  border: none !important;
+  border-radius: 8px;
+  padding: 40px 30px;
+  box-shadow: none !important;
+}
+
+/* 本文テキスト */
+.arudan-text {
+  line-height: 2;
+  font-size: 1.05rem;
+  color: var(--text-main);
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 0.7s both;
+}
+
+/* ==========================================
+   超！ARG団 タイトルテキスト
+   ========================================== */
+body.arudan-page .arudan-logo {
+  font-size: 2.3rem;
+  font-family: "Hiragino Maru Gothic ProN", "Hiragino Maru Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "Yu Gothic", "Meiryo", sans-serif;
+  font-weight: 600;            
+  color: var(--text-light);
+  text-align: center;
+  margin: 30px 0;
+  letter-spacing: 0.05em;
+  text-shadow: none;
+  
+  opacity: 0;
+  animation: fadeInUpLogoCustom 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+}
+
+/* ==========================================
+   Page Counter (ページカウンター)
+   ========================================== */
+#page-counter,
+.page-counter {
+  background-color: var(--color-counter-bg) !important;
+  border: 1px solid var(--color-accent) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+#page-counter span,
+.page-counter span {
+  color: var(--text-light) !important;
+}
+
+.hidden-total {
+  display: none !important;
+}
+
+/* ==========================================
+   Footer (暗いフッター)
+   ========================================== */
+body.arudan-page .arudan-footer {
+  margin-top: 40px;
+  padding: 24px;
+  background-color: var(--bg-dark-gray) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #718096 !important;
+  
+  animation: fadeInFooterCustom 2.5s ease-out forwards !important;
+}
+
+body.arudan-page .arudan-footer p {
+  margin: 6px 0;
+}
+
+/* ==========================================
+   「新」用の水色ネオンハイライト
+   ========================================== */
+.highlight-cyan {
+  color: #00b4ff;          /* 画像の「A」の中央部分の鮮やかなシアン */
+  font-weight: bold;       
+  text-shadow: 0 0 8px rgba(0, 180, 255, 0.6); 
+}
+
+/* ==========================================
+   ★「世」用の緑ハイライト（画像の「R」に近い色）
+   ========================================== */
+.highlight-green {
+  color: #39d31d;          /* 画像の「R」の中央〜上部付近の鮮やかな黄緑 */
+  font-weight: bold;       
+  text-shadow: 0 0 8px rgba(57, 211, 29, 0.6); /* ほんのりした光彩 */
+}
+
+.g-color {
+  color: #8B2EE0;
+  font-weight: bold;
+}
+/* 検索エリアの入力欄 */
+.top-nav__search input {
+  min-width: 0; /* 入力欄が縮みきれずにボタンを押し出すのを防ぐ */
+}
+
+/* 検索ボタンがスマホなどの狭い画面で潰れるのを防ぐ設定 */
+.top-nav__search button {
+  white-space: nowrap;  /* ボタン内の文字「検索」が縦に折り返されるのを禁止します */
+  flex-shrink: 0;      /* 画面幅が狭くなってもボタン自身が縮小されるのを防ぎます */
+}
+/* フレーズの途中での不自然な改行を防ぐ設定 */
+.nobreak {
+  display: inline-block;
+}
+.typing-segment.nobreak {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+/* 自分語りの区切り用マージン */
+   .jibungatari-divider {
+     margin-top: 4em;
+     margin-bottom: 100vh; /* 次の文章が見えないように画面1つ分の高さを確保 */
+     text-align: center;
+     font-weight: bold;
+     color: #888;
+   }
+
+   /* --- ここから追加 --- */
+   /* ボタンを包むコンテナ（前半テキストの終了に合わせたフェードイン） */
+   .clear-button-container {
+     text-align: center;
+     margin-top: 3em;
+     margin-bottom: 3em;
+     opacity: 0;
+     /* 1行ずつ文字が出るJavaScriptの演出（約8秒）の後にフェードインを開始させます */
+     animation: fadeInBtn 1.2s ease-in-out forwards;
+     animation-delay: 8s; 
+   }
+
+   /* 実績登録ボタンのデザイン */
+   .clear-button {
+     display: inline-block;
+     padding: 14px 36px;
+     background-color: #111; /* 背景をダークにして「無」を表現 */
+     color: #fff !important;
+     text-decoration: none;
+     font-weight: bold;
+     font-size: 1.1rem;
+     border: 2px solid #fff; /* 白の境界線でスタイリッシュに */
+     border-radius: 4px;
+     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+     transition: all 0.3s ease;
+     letter-spacing: 0.05em;
+   }
+
+   /* ホバー（マウスを乗せたとき）の演出 */
+   .clear-button:hover {
+     background-color: #fff;
+     color: #111 !important;
+     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+     transform: translateY(-2px);
+     text-decoration: none;
+   }
+
+   /* クリックしたとき */
+   .clear-button:active {
+     transform: translateY(0);
+   }
+
+   /* ボタンフェードイン用のキーフレーム */
+   @keyframes fadeInBtn {
+     to {
+       opacity: 1;
+     }
+   }
+   /* --- ここまで追加 --- */

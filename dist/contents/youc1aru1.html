@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부자연</title>
+  <link rel="stylesheet" href="../assets/css/search-modal.css">
+  <link rel="stylesheet" href="../assets/css/page-counter.css">
+  <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+  <link rel="stylesheet" href="../assets/css/search-bar.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body>
+  
+  <!-- 上部ナビゲーション・ヘッダー -->
+  <nav class="top-nav">
+    <div class="top-nav__title">ARG 초보자 튜토리얼!</div>
+    <div class="top-nav__search">
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
+    </div>
+  </nav>
+
+  <!-- メインコンテンツを包むコンテナ -->
+  <div class="site-container">
+    <main class="content">
+      <article class="article">
+        <header class="article-header">
+          <h1 class="article-title">부자연스러움을 <span class="nobreak">놓치지 않는다</span></h1>
+        </header>
+        <div class="article-body">
+          <p>너무 부자연스러웠죠.<span class="nobreak">ARG 제작은 처음이라</span><br>
+            전혀 잘 만들지 못했습니다.<span class="nobreak">기술이 부족합니다.</span><br>
+            이런 세로읽기도 흔한 <span class="nobreak">패턴이죠.</span><br>
+            （물론 다른 분들은 훨씬 더 능숙하게 숨깁니다）<br>
+            여기까지 「」, 굵은 글씨, 세로읽기 등 부자연스러운 부분을 <span class="nobreak">연습해 보셨을 겁니다.</span><br>
+            이것도 흔한 패턴이구나 싶은 것을 이 페이지에서는 <span class="nobreak">조사해 보세요.</span><br>
+            꽤 놓치기 쉬운 패턴이라고 <span class="nobreak">저는 생각합니다.</span><br>
+          </p>
+          
+          클릭↓탭<br>
+          
+          <!-- 
+            【修正箇所】
+            ・onclick時に inlineスタイル（白文字指定）をリセットし、ページの通常テキストカラーに戻します。
+            ・cursor: pointer でマウスを乗せた際に指マークにし、user-select: none でタップ時の不快な文字選択（青い反転）を防ぎます。
+            ・transition により、0.3秒かけてふわっと文字が浮き上がる演出になります。
+          -->
+          <div style="color: #ffffff; cursor: pointer; user-select: none; transition: color 0.3s ease;" 
+               onclick="this.style.color = (this.style.color === 'rgb(255, 255, 255)' || this.style.color === '#ffffff') ? '' : '#ffffff';">
+            제작자 이름인　마리c　로 검색해 주세요.
+          </div>
+          
+          클릭↑탭<br>
+          
+          <p>다음 페이지도 잘 <span class="nobreak">부탁드립니다.</span></p>
+          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">로</p>
+        </div>
+      </article>
+    </main>
+
+    <!-- フッター部分 -->
+    <footer class="site-footer">
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
+    
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+  </div>
+
+  <!-- page counter -->
+  <div id="page-counter" class="page-counter">
+    <span id="page-current"></span>
+    <span class="sep"> / </span>
+    <!-- エラー防止のために要素は残しつつ、非表示クラスを追加します -->
+    <span id="page-total" class="hidden-total"></span>
+    <!-- ここに表示したい分母の数字を直書きします -->
+    <span>12</span>
+  </div>
+
+  <script>window.YACHO_BASE = "../"; window.YACHO_PROVIDER_MODE = "json";</script>
+  <script type="module" src="../assets/js/core/index.js"></script>
+
+  <!-- 特定のシステムメッセージのみを安全に非表示にするスクリプト -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new MutationObserver(() => {
+      // 検索モーダルのエリアを取得
+      const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]');
+      if (modal) {
+        // モーダル内の要素を取得
+        const elements = modal.querySelectorAll('p, span, div');
+        elements.forEach((el) => {
+          if (el.children.length === 0) {
+            // 不完全なメッセージの要素だけを非表示にします
+            if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
+              el.style.display = 'none';
+            }
+            if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
+              el.style.display = 'none';
+            }
+          }
+        });
+      }
+    });
+
+    // モーダルの動的な変化を監視
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  });
+  </script>
+</body>
+</html>

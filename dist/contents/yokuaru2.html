@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마리c</title>
+  <link rel="stylesheet" href="../assets/css/search-modal.css">
+  <link rel="stylesheet" href="../assets/css/page-counter.css">
+  <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+  <link rel="stylesheet" href="../assets/css/search-bar.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body>
+  <!-- 上部ナビゲーション・ヘッダー -->
+  <nav class="top-nav">
+    <div class="top-nav__title">ARG 초보자 튜토리얼!</div>
+    <div class="top-nav__search">
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
+    </div>
+  </nav>
+
+  <div class="site-container">
+    <main class="content">
+      <article class="article">
+        <header class="article-header">
+          <h1 class="article-title">선택·반전을 쓴다 <span class="nobreak">고유명사는 조사한다</span></h1>
+        </header>
+        <div class="article-body">
+          <p>
+            이것도 부자연스러움을 놓치지 않는 <span class="nobreak">관찰력이 필요한 </span><span class="nobreak">패턴이었죠.</span><br>
+            이번에는 알기 쉽게 <span class="nobreak">적어 두었습니다만….</span><br>
+            줄 간격이 묘하게 벌어져 있다, <span class="nobreak">아래쪽에 수수께끼 같은 여백이 있다 등</span><br>
+            알기 쉬운 경우도 있지만, <span class="nobreak">갑자기 이 패턴이 </span><span class="nobreak">나올 때가 있으니</span><br>
+            아무것도 찾지 못했을 때 <span class="nobreak">전체 선택을 해보는 것도 하나의 </span><span class="nobreak">테크닉일지도 모릅니다.</span><br>
+            그와 동시에 이번 키워드는 우선 조사하게 되는 <span class="nobreak">인물 이름으로 정했습니다.</span><br>
+            페이지 순서대로 오지 않은 분도 있으려나, 싶습니다.<br>
+            그런 당신은 초보자가 <span class="nobreak">아니군요?</span><br>
+            제 단체에 꼭 맞이하고 싶습니다.<br>
+            같은 말을 해보기도 하고요.<br>
+            그래도 괜찮습니다, 초보자가 아닌 분이 플레이해 주셔도.<br>
+            해 주시는 것, 세상에 내놓는 것에 의미가 있으니까요.<br>
+            다음은 제가 동경하는 제시 방식입니다.<br>
+            저는 기술이 부족해서 이런 것밖에 못 하지만…<br>
+            아래 이미지를 봐 주세요.<br>
+            <!--（画像で折り紙　いろんな角度から見ると文字が隠れている形　現実世界）-->
+          </p>
+          
+          <!-- 画像1・2枚目（自動で文章幅に収まり、縦に並びます） -->
+          <img src="../media/img/image1 (1).jpeg" alt="한글이 적힌 흰 종이, 펼친 상태" class="content-img">
+          <img src="../media/img/image2.jpeg" alt="한글이 적힌 노란 종이, 펼친 상태" class="content-img">
+          
+          <!-- 問いかけの追加 -->
+          <p class="question-text">접었을 때 나오는 글자는?</p>
+          
+          <!-- 指定の余白（スペーサー） -->
+          <div class="spacer-md"></div>
+          
+          <!-- 解説文章の追加 -->
+          <p class="guide-text">이대로는 너무 부조리하니, 아래 이미지를 봐 주세요</p>
+
+          <!-- スポイラー（クリックでモザイク開示）仕様の画像3枚目 -->
+          <!-- タップ/クリックされると自動的にぼかしが消える簡単なスクリプトを内蔵しています -->
+          <div class="spoiler-wrapper" onclick="this.classList.toggle('revealed')">
+            <img src="../media/img/image0 (1).jpeg" alt="두 종이를 겹쳐 접은 상태" class="spoiler-image">
+            <div class="spoiler-overlay">클릭해서 이미지 보기</div>
+          </div>
+
+                   
+          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem; margin-top: 30px;">하</p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
+    
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+  </div>
+
+  <!-- page counter -->
+  <div id="page-counter" class="page-counter">
+    <span id="page-current"></span>
+    <span class="sep"> / </span>
+    <!-- クラスに hidden-total を追加して本来の分母を完全に消します -->
+    <span id="page-total" class="hidden-total"></span>
+    <!-- 手動で設定する分母を 12 に設定 -->
+    <span>12</span>
+  </div>
+
+  <script>window.YACHO_BASE = "../"; window.YACHO_PROVIDER_MODE = "json";</script>
+  <script type="module" src="../assets/js/core/index.js"></script>
+
+  <!-- 特定のシステムメッセージのみを安全に非表示にするスクリプト -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new MutationObserver(() => {
+      // 検索モーダルのエリアを取得
+      const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]');
+      if (modal) {
+        // モーダル内の要素を取得
+        const elements = modal.querySelectorAll('p, span, div');
+        elements.forEach((el) => {
+          // 【修正点】子要素を1つも持たない（末端の要素である）場合のみ判定します
+          if (el.children.length === 0) {
+            // 不完全なメッセージの要素だけを非表示にします
+            if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
+              el.style.display = 'none';
+            }
+            if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
+              el.style.display = 'none';
+            }
+          }
+        });
+      }
+    });
+
+    // モーダルの動的な変化を監視
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  });
+  </script>
+</body>
+</html>

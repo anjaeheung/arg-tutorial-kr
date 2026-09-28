@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>초!ARG단</title>
+ <!-- 各種CSSを読み込みます -->
+ <link rel="stylesheet" href="../assets/css/search-modal.css">
+ <link rel="stylesheet" href="../assets/css/page-counter.css">
+ <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+ <link rel="stylesheet" href="../assets/css/search-bar.css">
+ <!-- 新しい制御用CSS「kouhan.css」を適用させます -->
+ <link rel="stylesheet" href="../assets/css/kouhan.css">
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body class="arudan-page">
+
+ <!-- 上部ナビゲーション・ヘッダー -->
+ <nav class="top-nav">
+ <div class="top-nav__title">초!ARG단 튜토리얼!</div>
+ <div class="top-nav__search">
+ <label class="visually-hidden" for="searchInput">검색</label>
+ <input id="searchInput" placeholder="키워드를 입력">
+ <button id="searchBtn" type="button">검색</button>
+ </div>
+ </nav>
+<div class="site-container">
+ <main class="content">
+ <article class="article arudan-article">
+ <div class="article-body">
+      <div class="arudan-logo">세계를 바꾸는 ARG</div>
+
+      <!-- 本文エリア：初期状態は非表示（opacity: 0）に設定 -->
+      <p class="arudan-text" style="opacity: 0; transition: opacity 1.2s ease;">
+        정답입니다.<br>
+        이 단어로 검색할 생각을 해낼 수 있다면, 이제 괜찮습니다.<br>
+        <br>
+        하나를 찾으면 다음이 보인다, <span class="nobreak">는 패턴이었습니다.</span><br>
+        <br>
+        여기까지 와 준 당신에게, <span class="nobreak">우리가 지향하는 것을 </span><span class="nobreak">이야기하겠습니다.</span><br>
+            
+        현실 세계와 ARG 세계가 <span class="nobreak">뒤섞이는 것.</span><br>
+        ARG가 현실 세계를 넘어서는, <span class="nobreak">그런 미래.</span><br>
+        넘어섰을 때 세계를 바꿔 나가는 건 ARG 제작자들.<br>
+        최전선에 서는 건 <span class="nobreak">플레이어들.</span><br>
+        지금보다 분명 훨씬 자극적이고 <span class="nobreak">즐거운 세계가 될 겁니다.</span><br>
+        
+        현실에 <span class="g-color">계</span>입하기 위해, ARG도 플레이어도 아직 수가 더 필요합니다.<br>
+        세계를 함께 바꿔 나갈 <span class="nobreak">동지가 필요합니다.</span><br>
+        이런 데까지 와 주는 당신의 힘이 필요합니다.<br>
+      </p>
+    </div>
+  </article>
+</main>
+
+<!-- フッター -->
+<footer class="site-footer arudan-footer">
+  <p>&copy; 2026 초！ARG단 — 원작 まりc</p>
+  <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
+
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+</div>
+<div id="page-counter" class="page-counter">
+ <span id="page-current"></span>
+ <span class="sep"> / </span>
+ <span id="page-total" class="hidden-total"></span>
+ <span>20</span>
+ </div>
+<script>
+  window.YACHO_BASE = "../";
+  window.YACHO_PROVIDER_MODE = "json";
+</script>
+<script type="module" src="../assets/js/core/index.js"></script>
+ <script>
+ document.addEventListener('DOMContentLoaded', () => {
+   // 1. 検索モーダルの監視
+   const observer = new MutationObserver(() => {
+     const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]'); 
+     if (modal) {
+       const elements = modal.querySelectorAll('p, span, div');
+       elements.forEach((el) => {
+         if (el.children.length === 0) {
+           if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) { 
+             el.style.display = 'none'; 
+           }
+           if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
+             el.style.display = 'none';
+           }
+         }
+       }); 
+     }
+   }); 
+
+   observer.observe(document.body, {
+     childList: true,
+     subtree: true
+   }); 
+
+   // 2. 本文テキストのアニメーション動的生成・制御スクリプト
+   function initTextAnimation() {
+     const targetContainer = document.querySelector('.arudan-text');
+     if (!targetContainer) return;
+     
+     if (targetContainer.dataset.animated === 'true') return;
+     targetContainer.dataset.animated = 'true';
+
+     const originalContent = targetContainer.innerHTML;
+     const rawLines = originalContent.split(/<br\s*\/?>/i).map(line => line.trim());
+     const validLines = rawLines.filter(line => line !== '');
+     if (validLines.length < 2) return;
+     
+     // 最後の1行をタイピング対象に指定
+     const lastText = validLines.pop();
+     
+     targetContainer.innerHTML = '';
+     targetContainer.style.opacity = '1';
+     
+     const fadeLines = [];
+     validLines.forEach((text) => {
+       const span = document.createElement('span');
+       span.className = 'fade-line';
+       span.style.opacity = '0';
+       span.style.display = 'block';
+       span.style.transition = 'opacity 0.8s ease';
+       span.style.marginBottom = '0.5em';
+       span.innerHTML = text;
+       targetContainer.appendChild(span);
+       fadeLines.push(span);
+     });
+     
+     targetContainer.appendChild(document.createElement('br'));
+     
+     const typingSpan = document.createElement('span');
+     typingSpan.id = 'typing-line';
+     typingSpan.style.display = 'block';
+     typingSpan.style.minHeight = '1.5em';
+     targetContainer.appendChild(typingSpan);
+     
+     // ★タイピング演出までのテンポを自然にする設定
+     const lineInterval = 1200;       // 各行の表示間隔（1秒）
+     const waitBeforeTyping = 500;    // すべてのフェード表示完了から、タイピング開始までの追加時間。合計1.2秒（1秒+0.2秒）で始まります
+     const typingSpeed = 100;         // タイピングの速度（1文字あたり0.1秒）
+     
+     function showLine(index) {
+       if (index < fadeLines.length) {
+         fadeLines[index].style.opacity = '1';
+         
+         // 基本の表示間隔は1秒
+         let currentInterval = lineInterval;
+         
+         // 「ここまで来てくれたあなたへ〜」（4行目 / インデックス3）が表示された後のみ、
+         // 次の行への移行間隔を3000ms（3秒）に設定して演出を一時停止させます。
+         if (index === 3) {
+           currentInterval = 3000;
+         }
+         
+         setTimeout(() => {
+           showLine(index + 1);
+         }, currentInterval);
+       } else {
+         // 全てのフェードが完了した後、指定したウェイト（合計1.2秒）の後にタイピング演出を開始
+         setTimeout(startTyping, waitBeforeTyping);
+       }
+     }
+
+     function startTyping() {
+       let charIndex = 0;
+       function type() {
+         if (charIndex < lastText.length) {
+           typingSpan.textContent += lastText.charAt(charIndex);
+           charIndex++;
+           setTimeout(type, typingSpeed);
+         }
+       }
+       type();
+     }
+
+     setTimeout(() => {
+       showLine(0);
+     }, 150);
+   }
+
+   // 3. メイン演出の開始
+   initTextAnimation();
+
+   const animObserver = new MutationObserver(() => {
+     initTextAnimation();
+   });
+   animObserver.observe(document.body, {
+     childList: true,
+     subtree: true
+   });
+ });
+ </script>
+</body>
+</html>

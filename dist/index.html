@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>시작</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/search-modal.css">
+  <link rel="stylesheet" href="assets/css/page-counter.css">
+  <link rel="stylesheet" href="assets/css/page-list-modal.css">
+  <link rel="stylesheet" href="assets/css/search-bar.css">
+   <link rel="stylesheet" href="assets/css/style.css">
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body>
+  <!-- 上部ナビゲーション・ヘッダー -->
+  <nav class="top-nav">
+    <div class="top-nav__title">ARG 초보자 튜토리얼!</div>
+    <div class="top-nav__search">
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
+    </div>
+  </nav>
+
+  <div class="site-container">
+    <header class="site-header">
+      
+    </header>
+    <main class="content">
+      <article class="article">
+        <header class="article-header">
+          <h1 class="article-title">ARG 초보자 튜토리얼에 오신 것을 환영합니다!</h1>
+        </header>
+        <div class="article-body">
+          <div class="article-body">
+          여러분 처음 뵙겠습니다.<br>
+          웹 탐색형 ARG를 진행하는 법을 연습하는 페이지를 만들었습니다.<br>
+          세상에는 여러 웹 탐색형 ARG가 있는데 어려워 보이고…<br>
+          클리어할 자신이 없어서 플레이하기가 불안하고…<br>
+          그런 분들을 위한 <span class="nobreak">연습용 ARG입니다!</span><br>
+          함께 여러 패턴을 <span class="nobreak">연습해 봅시다!</span><br>
+          <br>우선 첫걸음, 사이트 내 검색을 <span class="nobreak">시험해 봅시다!</span><br>
+          　　ARG초보자튜토리얼　을 오른쪽 위 검색창에서 <span class="nobreak">검색해 주세요.</span>
+        </div>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
+    
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+  </div>
+
+ <!-- page counter -->
+  <div id="page-counter" class="page-counter">
+  <span id="page-current"></span>
+  <span class="sep"> / </span>
+  <!-- エラー防止のために要素は残しつつ、非表示クラスを追加します -->
+  <span id="page-total" class="hidden-total"></span>
+  <!-- ここに表示したい分母の数字を直書きします -->
+  <span>12</span>
+</div>
+
+
+<script>window.YACHO_BASE = ""; window.YACHO_PROVIDER_MODE = "json";</script>
+<script type="module" src="assets/js/core/index.js"></script>
+
+<!-- 特定のシステムメッセージのみを安全に非表示にするスクリプト -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new MutationObserver(() => {
+    // 検索モーダルのエリアを取得
+    const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]');
+    if (modal) {
+      // モーダル内の要素を取得
+      const elements = modal.querySelectorAll('p, span, div');
+      elements.forEach((el) => {
+        // 子要素を1つも持たない（末端の要素である）場合のみ判定します
+        if (el.children.length === 0) {
+          // 不完全なメッセージの要素だけを非表示にします
+          if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
+            el.style.display = 'none';
+          }
+          if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
+            el.style.display = 'none';
+          }
+        }
+      });
+    }
+  });
+
+  // モーダルの動的な変化を監視
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+});
+</script>
+
+</body>
+</html>

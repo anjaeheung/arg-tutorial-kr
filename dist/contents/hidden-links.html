@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>숨은 링크</title>
+ <link rel="stylesheet" href="../assets/css/search-modal.css">
+  <link rel="stylesheet" href="../assets/css/page-counter.css">
+  <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+  <link rel="stylesheet" href="../assets/css/search-bar.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body>
+ <!-- 上部ナビゲーション・ヘッダー -->
+  <nav class="top-nav">
+    <div class="top-nav__title">ARG 초보자 튜토리얼!</div>
+    <div class="top-nav__search">
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
+    </div>
+  </nav>
+  
+  <div class="site-container">
+    <header class="site-header">
+      
+    </header>
+
+<body>
+  <div class="site-container">
+    <main class="content">
+      <article class="article">
+        <header class="article-header">
+          <h1 class="article-title">숨은 링크</h1>
+        </header>
+        <div class="article-body">
+          <p>
+            있죠, 이런 거. 숨은 링크라는 <span class="nobreak">녀석입니다.</span><br>
+            갑자기 이 패턴이 나왔을 때 막히는 경우도 있겠다 싶어 준비했습니다.<br>
+            꽤 놓쳐서 다음은 뭐지? 하게 되는 것 같습니다.<br>
+            마우스 포인터가 바뀌기라도 하면 그나마 친절한 <span class="nobreak">편입니다만….</span><br>
+            페이지 구석의 작은 링크 같은 거라면 부조리 요소가 된다고 생각합니다.<br>
+            <br>
+            여기까지 플레이해 주셔서 감사합니다.<br>
+            아직 소개하지 못한 패턴이나 장치, 채팅 형식 게임 같은 것들이 있지만, 튜토리얼로서는 여기까지로 하겠습니다.<br><br>
+            여기서부터는 실전입니다!<span class="nobreak">이번 제3회 </span>웹 미스터리 부트캠프에서 훌륭한 작품이 많이 만들어지고 있습니다.<br>
+            많이 플레이해 주시면 기쁘겠습니다.<br><br>
+            <a href="../contents/complete.html" >튜토리얼 완료!</a>
+          </p>
+          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">색</p>
+        </div>
+      </article>
+    </main>
+  </div>
+<footer class="site-footer">
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
+    
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+  </div>
+
+<!-- page counter -->
+  <div id="page-counter" class="page-counter">
+  <span id="page-current"></span>
+  <span class="sep"> / </span>
+  <!-- エラー防止のために要素は残しつつ、非表示クラスを追加します -->
+  <span id="page-total" class="hidden-total"></span>
+  <!-- ここに表示したい分母の数字を直書きします -->
+  <span>12</span>
+</div>
+
+
+<script>window.YACHO_BASE = "../"; window.YACHO_PROVIDER_MODE = "json";</script>
+<script type="module" src="../assets/js/core/index.js"></script>
+<!-- 特定のシステムメッセージのみを安全に非表示にするスクリプト -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new MutationObserver(() => {
+    // 検索モーダルのエリアを取得
+    const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]');
+    if (modal) {
+      // モーダル内の要素を取得
+      const elements = modal.querySelectorAll('p, span, div');
+      elements.forEach((el) => {
+        // 【修正点】子要素を1つも持たない（末端の要素である）場合のみ判定します
+        if (el.children.length === 0) {
+          // 不完全なメッセージの要素だけを非表示にします
+          if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
+            el.style.display = 'none';
+          }
+          if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
+            el.style.display = 'none';
+          }
+        }
+      });
+    }
+  });
+
+  // モーダルの動的な変化を監視
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+});
+</script>
+
+</body>
+</html>

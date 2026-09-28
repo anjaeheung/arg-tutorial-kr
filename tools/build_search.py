@@ -84,6 +84,44 @@ def localize(dest: Path):
     dest.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+# 화면에 뜨는 제목은 전각 「！」를 쓰는데(초！ARG단) 검색 파일 이름은 반각 「!」다.
+# 제목을 보고 그대로 치면 안 열린다. 게다가 한국어는 「초!ARG단의 목적」처럼
+# 조사 「의」를 붙여 치기 십상이라 그 형태도 함께 받아 준다.
+DAN_FORMS = ["초!ARG단", "초！ARG단", "초ARG단",
+             "초!ARG단의", "초！ARG단의", "초ARG단의"]
+
+# 두 단어 조합에서 「초!ARG단」과 짝이 되는 말 → 복사해 올 원본(1)에서 만들어진 파일
+DAN_PAIRS = {
+    "목적": "목적초!ARG단.json",
+    "마리c": "마리c초!ARG단.json",
+    "현실세계": "초!ARG단현실세계.json",
+    "신세계": "신세계초!ARG단.json",
+}
+
+
+def build_dan_aliases():
+    """「초!ARG단」의 전각·조사 변형을 한 단어·두 단어 모두 받아 준다."""
+    made = 0
+    base = SEARCH / "초!ARG단.json"
+    for form in DAN_FORMS:
+        if base.exists():
+            dest = SEARCH / f"{combined([form])}.json"
+            if not dest.exists():
+                shutil.copyfile(base, dest)
+                made += 1
+        for partner, srcname in DAN_PAIRS.items():
+            src = SEARCH / srcname
+            if not src.exists():
+                continue
+            dest = SEARCH / f"{combined([form, partner])}.json"
+            if dest.exists():
+                continue
+            shutil.copyfile(src, dest)
+            made += 1
+    print("  초!ARG단 변형(전각 ！·조사 의) %d개" % made)
+    return made
+
+
 def main():
     if not SEARCH.exists():
         print("data/search 가 없다"); return
@@ -119,6 +157,8 @@ def main():
         localize(SEARCH / f"{name}.json")
         made += 1
         print(f"  2단어 {KO[a]} + {KO[b]} -> {name}.json")
+
+    made += build_dan_aliases()
 
     # 일본어 이름 파일에도 한국어 제목이 뜨도록 data/search 전체를 훑는다
     swept = 0

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL 조작</title>
+  <link rel="stylesheet" href="../assets/css/search-modal.css">
+  <link rel="stylesheet" href="../assets/css/page-counter.css">
+  <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+  <link rel="stylesheet" href="../assets/css/search-bar.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body>
+ <!-- 上部ナビゲーション・ヘッダー -->
+  <nav class="top-nav">
+    <div class="top-nav__title">ARG 초보자 튜토리얼!</div>
+    <div class="top-nav__search">
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
+    </div>
+  </nav>
+
+
+  <div class="site-container">
+    <header class="site-header">
+      
+    </header>
+
+<body>
+  <div class="site-container">
+    <main class="content">
+      <article class="article">
+        <header class="article-header">
+          <h1 class="article-title">URL을 고쳐도 <span class="nobreak">되는가 문제</span></h1>
+        </header>
+        <div class="article-body">
+          <p>꽤 있죠, <span class="nobreak">이 패턴.</span><br>
+            하지만 이 부분은 상당히 신중해야 하는 것이라고 생각합니다.<br>
+            처음 설명에 안 써 있으니까~… 가 동선이라면 곤란해지겠죠.<br>
+            이번에는 URL이 yokuaru2→yokuaru4로 <span class="nobreak">되어 있다는 것을 </span><span class="nobreak">이유로 삼았습니다.</span><br>
+            yokuaru3이 건너뛰어졌으니 <span class="nobreak">그런 것입니다.</span>화면을 넓게 보는 것도 <span class="nobreak">필요하네요.</span><br>
+            꽤 이것이 부조리한 동선이 되어 노답이 되는 경우도 있는 것 같습니다.<br>
+            하지만 이번에 패턴으로 익혀 두셨다면<br>
+            선택지의 하나로 앞으로 <span class="nobreak">활용할 수 있지 </span><span class="nobreak">않을까요.</span><br>
+            다음은, 이 페이지에서 무언가를 검색한다면 <span class="nobreak">어떤 말일까? 를</span><br>
+            생각해 보시는 건 <span class="nobreak">어떨까요?</span><br>
+            명백히 붕 떠 보이는지…는 <span class="nobreak">사람마다 다르지만</span><br>
+            이건가? 하고 생각해 주시면 좋겠습니다.<br><br><br>
+            <span style="color:#ffffff;">협력자: 여기 꽤 부조리한데—「노답」 아니야?</span>            
+          </p>
+          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">를</p>
+        </div>
+      </article>
+    </main>
+  </div>
+ <footer class="site-footer">
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
+    
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+  </div>
+
+<!-- page counter -->
+  <div id="page-counter" class="page-counter">
+  <span id="page-current"></span>
+  <span class="sep"> / </span>
+  <!-- エラー防止のために要素は残しつつ、非表示クラスを追加します -->
+  <span id="page-total" class="hidden-total"></span>
+  <!-- ここに表示したい分母の数字を直書きします -->
+  <span>12</span>
+</div>
+
+
+<script>window.YACHO_BASE = "../"; window.YACHO_PROVIDER_MODE = "json";</script>
+<script type="module" src="../assets/js/core/index.js"></script>
+<!-- 特定のシステムメッセージのみを安全に非表示にするスクリプト -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new MutationObserver(() => {
+    // 検索モーダルのエリアを取得
+    const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]');
+    if (modal) {
+      // モーダル内の要素を取得
+      const elements = modal.querySelectorAll('p, span, div');
+      elements.forEach((el) => {
+        // 【修正点】子要素を1つも持たない（末端の要素である）場合のみ判定します
+        if (el.children.length === 0) {
+          // 不完全なメッセージの要素だけを非表示にします
+          if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
+            el.style.display = 'none';
+          }
+          if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
+            el.style.display = 'none';
+          }
+        }
+      });
+    }
+  });
+
+  // モーダルの動的な変化を監視
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+});
+</script>
+
+
+</body>
+
+</html>

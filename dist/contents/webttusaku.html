@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>웹탐색형ARG</title>
+  <link rel="stylesheet" href="../assets/css/search-modal.css">
+  <link rel="stylesheet" href="../assets/css/page-counter.css">
+  <link rel="stylesheet" href="../assets/css/page-list-modal.css">
+  <link rel="stylesheet" href="../assets/css/search-bar.css">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <!-- 【新規追加】縦読みブロックの頭揃え・縦ライン死守用スタイル -->
+  <style>
+    .vertical-mystery-block {
+      display: inline-block;          /* 1つのブロックとして機能させつつ、周囲の文脈に馴染ませます */
+      text-align: left;               /* 確実に左揃え（頭揃え）を強制 */
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; /* 全環境共通の等幅フォント */
+      letter-spacing: 0;              /* 文字間隔をリセット */
+      white-space: nowrap;            /* 勝手な自動折り返しによる縦読みの崩れを完全に防ぎます */
+      font-size: clamp(10px, 3.2vw, 1rem); /* スマホ画面でもはみ出さず、かつ折り返されないよう文字サイズを自動縮小 */
+      vertical-align: middle;
+      margin: 10px 0;                 /* 上下に少しスペースを確保 */
+    }
+  </style>
+<meta name="generator" content="simple-item-master-three">
+</head>
+<body>
+  <!-- 上部ナビゲーション・ヘッダー -->
+  <nav class="top-nav">
+    <div class="top-nav__title">ARG 초보자 튜토리얼!</div>
+    <div class="top-nav__search">
+      <label class="visually-hidden" for="searchInput">검색</label>
+      <input id="searchInput" placeholder="키워드를 입력">
+      <button id="searchBtn" type="button">검색</button>
+    </div>
+  </nav>
+
+  <div class="site-container">
+    <header class="site-header">
+      
+    </header>
+
+  <div class="site-container">
+    <main class="content">
+      <article class="article">
+        <header class="article-header">
+          <h1 class="article-title">강조 표시는 <span class="nobreak">놓치지 않는다!</span></h1>
+        </header>
+        <div class="article-body">
+          <p>웹 탐색형 ARG란, 실재하는 웹페이지를 탐색하며 수수께끼를 푸는 게임입니다.<br>
+            같은 AI스러운 대답을 <span class="nobreak">해봤습니다.</span><br>
+            실제로 존재하는 웹페이지를 검색해 안쪽으로 나아가는<br>
+            인습 마을이나 수상한 종교, 수상한 회사 등 조사하고 싶어지는 <span class="nobreak">소재죠.</span><br>
+            언젠가 제 단체도 그런 <span class="nobreak">수상한 집단의 일원이 </span><span class="nobreak">될 수 있을까요.</span><br>
+            <span class="vertical-mystery-block"><b>부</b>러 불길한 소리를 해봤을 뿐입니다.　　　　　　　　　　<br><b>자</b>랑은 아니지만 이 튜토리얼엔 그런 게 없고, 당<br><b>연</b>히 비밀을 파헤치는 요소도 없습니다.　　　　　　　　</span><br>
+            
+            이야기가 샜네요. 이런 식으로 알아보기 쉽게<br>
+            「」나 굵은 글씨로 표시해 두는 경우가 많습니다.<span class="nobreak">（라기보다 그렇게 하지 않으면 </span><span class="nobreak">꽤 무차별 대입이 되기 쉽</span><span class="nobreak">거든요）</span><br>
+            특히 도입부에서는 이렇게 알기 쉽게 시작하는 경우가 많다고 생각합니다.<br>
+            <b>「」, 굵은 글씨는 반드시 체크</b>.<br>
+            그럼 다음으로 가시죠. 명백히 수상하죠.<br>
+            흔한 세로읽기입니다. 3글자로.
+          </p>
+          <p style="text-align: right; color: #bdc8d5; font-size: 0.85rem;">케</p>
+
+        </div>
+      </article>
+    </main>
+  </div>
+<footer class="site-footer">
+      <p>&copy; 2026 ARG 초보자 튜토리얼 — 원작 まりc</p>
+      <p>이 웹사이트의 내용은 모두 픽션이며, 실재하는 인물·단체와는 일절 관계가 없습니다.</p>  
+    
+      <p class="yacho-powered-by" style="margin-top:8px;font-size:11px;opacity:.55;">Powered by <a href="https://sim3.net/yacho/" target="_blank" rel="noopener">YACHO(SIM3)</a></p>
+    </footer>
+  </div>
+
+<!-- page counter -->
+  <div id="page-counter" class="page-counter">
+  <span id="page-current"></span>
+  <span class="sep"> / </span>
+  <!-- エラー防止のために要素は残しつつ、非表示クラスを追加します -->
+  <span id="page-total" class="hidden-total"></span>
+  <!-- ここに表示したい分母の数字を直書きします -->
+  <span>12</span>
+</div>
+
+
+<script>window.YACHO_BASE = "../"; window.YACHO_PROVIDER_MODE = "json";</script>
+<script type="module" src="../assets/js/core/index.js"></script>
+<!-- 特定のシステムメッセージのみを安全に非表示にするスクリプト -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new MutationObserver(() => {
+    // 検索モーダルのエリアを取得
+    const modal = document.querySelector('.search-modal-content, .search-modal__content, [class*="search-modal"]');
+    if (modal) {
+      // モーダル内の要素を取得
+      const elements = modal.querySelectorAll('p, span, div');
+      elements.forEach((el) => {
+        // 【修正点】子要素を1つも持たない（末端の要素である）場合のみ判定します
+        if (el.children.length === 0) {
+          // 不完全なメッセージの要素だけを非表示にします
+          if (el.textContent.includes('키워드가 아직 완전하지 않습니다')) {
+            el.style.display = 'none';
+          }
+          if (el.textContent.includes('키워드의 일부는 맞는 것 같습니다')) {
+            el.style.display = 'none';
+          }
+        }
+      });
+    }
+  });
+
+  // モーダルの動的な変化を監視
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+});
+</script>
+
+</body>
+
+</html>
